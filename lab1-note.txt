@@ -1,0 +1,145 @@
+1. The PC's Physical Address Space
+
++------------------+  <- 0xFFFFFFFF (4GB)                 [Intel 80386]
+|      32-bit      |
+|  memory mapped   |
+|     devices      |
+|                  |
+/\/\/\/\/\/\/\/\/\/\
+
+/\/\/\/\/\/\/\/\/\/\
+|                  |
+|      Unused      |
+|                  |
++------------------+  <- depends on amount of RAM
+|                  |
+|                  |
+| Extended Memory  |
+|                  |
+|                  |
++------------------+  <- 0x00100000 (1MB)                 [Intel 8088]
+|     BIOS ROM     |
++------------------+  <- 0x000F0000 (960KB)
+|  16-bit devices, |
+|  expansion ROMs  |
++------------------+  <- 0x000C0000 (768KB)
+|   VGA Display    |
++------------------+  <- 0x000A0000 (640KB)
+|                  |
+|    Low Memory    |                                      [Conventional Memory]
+|                  |
++------------------+  <- 0x00000000
+
+
+2. The ROM BIOS
+
+# The Intel 8086/.../80486 Instruction Set : http://zsmith.co/intel.html
+
+# The IBM PC starts executing at physical address 0x000ffff0, which is at the
+# very top of the 64KB area reserved for the ROM BIOS. 
+# On processor reset, the processor enters real mode and sets CS to 0xf000 and
+# the IP to 0xfff0, so that execution begins at that (CS:IP) segment address.
+
+# There is a long jump instruction.
+[f000:fff0]    0xffff0: ljmp   $0xf000,$0xe05b   # goto 0xfe05b
+
+# I can't tell what's at %cs:0x65b4 and why that's special
+[f000:e05b]    0xfe05b: cmpl   $0x0,%cs:0x65b4
+[f000:e062]    0xfe062: jne    0xfd3aa
+
+# Set up initial stack to 0x0:0x7000
+[f000:e066]    0xfe066: xor    %ax,%ax
+[f000:e068]    0xfe068: mov    %ax,%ss
+[f000:e06a]    0xfe06a: mov    $0x7000,%esp
+
+[f000:e070]    0xfe070: mov    $0xf431f,%edx
+[f000:e076]    0xfe076: jmp    0xfd233
+
+[f000:d233]    0xfd233: mov    %eax,%ecx
+
+# This disables interrupts (CLear Interrupt) so that the current code cannot
+# be swapped out by the CPU. It makes sense to do this during critical sections
+# of code.
+[f000:d236]    0xfd236: cli
+
+# Not sure why the direction flag is being disabled. Direction flag is used by
+# the REP instructions.
+[f000:d237]    0xfd237: cld
+
+# Access CMOS-RAM
+#     0x8f : disable NMI(bit 7), read from address 0x0f (bits 0-6)
+# See : http://www.gameprogrammer.com/archive/html/msg08485.html
+[f000:d238]    0xfd238: mov    $0x8f,%eax # 0x8f : (1000 1111) 
+[f000:d23e]    0xfd23e: out    %al,$0x70  # write 0x8f to port 0x70
+[f000:d240]    0xfd240: in     $0x71,%al  # read 'Shutdown Status Byte' from port 0x71
+
+# System Port 0x92
+# See : http://kernelx.weebly.com/a20-address-line.html
+[f000:d242]    0xfd242: in     $0x92,%al
+[f000:d244]    0xfd244: or     $0x2,%al   # set bit 1, enable A20 gate
+[f000:d246]    0xfd246: out    %al,$0x92
+
+# lidt (Load Interrupt Descriptor Table, 286+). Data structure needed to process
+# hardware and software interrupts.
+[f000:d248]    0xfd248: lidtw  %cs:0x68f8
+
+# lgdt (Load Global Descriptor Table, 286+). Data structure used to hold information
+# about the different memory segments code can access.
+[f000:d24e]    0xfd24e: lgdtw  %cs:0x68b4
+
+# cr0(386+) is a control register that holds various flags.
+# Specifically what the code here does is that it sets bit 0 of cr0 to
+# 1, which enables protected mode.
+# See : https://en.wikipedia.org/wiki/Control_register
+[f000:d254]    0xfd254: mov    %cr0,%eax
+[f000:d257]    0xfd257: or     $0x1,%eax
+[f000:d25b]    0xfd25b: mov    %eax,%cr0
+
+# This instruction switches us to 32-bit mode by changing the code segment.
+[f000:d25e]    0xfd25e: ljmpl  $0x8,$0xfd266
+
+# Initialize the segment registers to 0x10. They all now point to the second
+# segment descriptor.
+0xfd266:     mov    $0x10,%eax
+0xfd26b:     mov    %eax,%ds
+0xfd26d:     mov    %eax,%es
+0xfd26f:     mov    %eax,%ss
+0xfd271:     mov    %eax,%fs
+0xfd273:     mov    %eax,%gs
+0xfd275:     mov    %ecx,%eax
+
+# The BIOS is responsible for performing basic system initialization such as 
+# activating the video card and checking the amount of memory installed.
+
+# The BIOS starts calling functions that have no labels so I can't tell
+# exactly what they're doing.
+0xfd277:     jmp    *%edx
+0xf431f:     push   %ebx
+0xf4320:     sub    $0x2c,%esp
+0xf4323:     movl   $0xf6114,0x4(%esp)
+0xf432b:     movl   $0xf5f0f,(%esp)
+0xf4332:     call   0xf23f4
+...
+
+# When the BIOS finds a bootable floppy or hard disk, it loads the 512-byte 
+# boot sector into memory at physical addresses 0x7c00 through 0x7dff, then 
+# uses a jmp instruction to set the CS:IP to 0000:7c00 and starts executing
+# in real mode, passing control to the boot loader. 
+
+3. The Boot Loader
+
+# What is the last instruction of the boot loader executed, and what is the 
+# first instruction of the kernel it just loaded?
+
+From obj/boot/boot.asm:
+    ((void (*)(void)) (ELFHDR->e_entry))(); 
+7d61:       ff 15 18 00 01 00       call   *0x10018
+
+The first instruction of the kernel:
+    0x10000c:	movw   $0x1234,0x472 
+
+# Where is the first instruction of the kernel? 0x10000c  
+# How does the boot loader decide how many sectors it must read in order to fetch 
+# the entire kernel from disk? Where does it find this information? in ELF file !
+# We load the 1st page of the kernel image from disk, and we will get the number 
+# of Proghdrs and the size of image fragment we should load for each header.
