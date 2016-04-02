@@ -50,17 +50,17 @@ enum {
 	ALLOC_ZERO = 1<<0,
 };
 
-void	mem_init(void);
+void    mem_init(void);
 
-void	page_init(void);
+void    page_init(void);
 struct PageInfo *page_alloc(int alloc_flags);
-void	page_free(struct PageInfo *pp);
-int	page_insert(pde_t *pgdir, struct PageInfo *pp, void *va, int perm);
-void	page_remove(pde_t *pgdir, void *va);
+void    page_free(struct PageInfo *pp);
+int     page_insert(pde_t *pgdir, struct PageInfo *pp, void *va, int perm);
+void    page_remove(pde_t *pgdir, void *va);
 struct PageInfo *page_lookup(pde_t *pgdir, void *va, pte_t **pte_store);
-void	page_decref(struct PageInfo *pp);
+void    page_decref(struct PageInfo *pp);
 
-void	tlb_invalidate(pde_t *pgdir, void *va);
+void    tlb_invalidate(pde_t *pgdir, void *va);
 
 static inline physaddr_t
 page2pa(struct PageInfo *pp)
