@@ -403,26 +403,20 @@ boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm
 // Hint: The TA solution is implemented using pgdir_walk, page_remove,
 // and page2pa.
 //
+// Ref: https://github.com/Clann24/jos/blob/master/lab2/README.md
+//
 int
 page_insert(pde_t *pgdir, struct PageInfo *pp, void *va, int perm)
-{		
-	struct PageInfo *aux_pp = NULL;
-	
-	pte_t *pte = pgdir_walk(pgdir, va, 0);
-	if (pte != NULL && (*pte & PTE_P)) 
-		page_remove(pgdir, va);
+{
+        pte_t *pte = pgdir_walk(pgdir, va, 1);
+        if (pte == NULL)  return -E_NO_MEM;
 
-	pte = pgdir_walk(pgdir, va, 1);
-	if (pte == NULL) return -E_NO_MEM;
+        pp->pp_ref++;
+        if (*pte & PTE_P)
+                page_remove(pgdir, va);
+        *pte = page2pa(pp) | perm | PTE_P;
 
-	aux_pp = page_alloc(0);
-	if (aux_pp != NULL && aux_pp != pp)
-		page_free(aux_pp);
-	
-	*pte = page2pa(pp) | perm | PTE_P;
-	pp->pp_ref++;
-	
-	return 0;
+        return 0;
 }
 
 //
