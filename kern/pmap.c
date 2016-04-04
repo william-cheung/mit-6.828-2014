@@ -192,7 +192,6 @@ mem_init(void)
 	// we just set up the mapping anyway.
 	// Permissions: kernel RW, user NONE
 	n = (uint32_t)(-1) - KERNBASE + 1;
-	cprintf("%08x\n", n);
 	boot_map_region(kern_pgdir, KERNBASE, n, 0, PTE_W | PTE_P);
 
 	// Check that the initial page directory has been set up correctly.
