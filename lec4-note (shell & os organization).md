@@ -4,7 +4,7 @@
 Homework solution
 ==
 
-* Let's review solution for <a href="../homework/sh.c">sh.c</a>
+* Let's review solution for <a href="./homework/hw2-shell/sh.c">sh.c</a>
   * exec
   * redirect
   * pipe
