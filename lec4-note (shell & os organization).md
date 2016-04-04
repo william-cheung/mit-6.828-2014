@@ -60,11 +60,15 @@ Exploring system calls with more shell features
 
 System call observations
 ==
-
-* The fork/exec split looks wasteful; why is it useful? (A: exercise 2)
+  
+* The fork/exec split looks wasteful; why is it useful?
+    This separation allows the shell to fix up the child process before 
+    the child runs the intended program. (example: io redirection)
 
 * System call interface simple, just ints and char buffers.  why not have open()
   return a pointer reference to a kernel file object?
+    the file descriptor interface abstracts away the differences between files, pipes,
+    and devices, making them all look like streams of bytes.
 
 * Linux has a nice representation of a process and its FDs, under /proc/PID/
   * maps: VA range, perms (p=private, s=shared), offset, dev, inode, pathname
@@ -163,5 +167,5 @@ xv6 kernel address space
 * start w. kernel address space
   machine has booted
   code runs without virtual memory
-  set up up kernel address space
+  set up kernel address space
   walk through kvmalloc()
