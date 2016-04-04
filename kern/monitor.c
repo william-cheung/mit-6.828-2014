@@ -214,20 +214,10 @@ dump_contents_v(void* va1, void* va2)
 }
 
 static void
-dump_contents_p(physaddr_t pa1, physaddr_t pa2) {
-	int count = 0;
-	physaddr_t pa;
-
-	panic("dump_contents_p is not implemented");	
-
-	for (pa = pa1; pa < pa2; pa++) {
-		if (count == 0)
-			cprintf("0x%08x: ", pa);
-		if (++count == 16) {	
-			count = 0;
-			cprintf("\n");
-		}
-	}
+dump_contents_p(physaddr_t pa1, physaddr_t pa2) 
+{
+	//panic("dump_contents_p is not implemented");	
+	dump_contents_v(KADDR(pa1), KADDR(pa2));
 }
 
 int 
