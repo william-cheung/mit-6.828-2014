@@ -27,13 +27,13 @@ Exploring system calls with more shell features
  * What will this shell command do?
     ``` $ sh < script > out ```
 	
-	* the script itself didn't redirect the echo output, but it did inherit a fd
-   1 that was redirected to out.
+    * the script itself didn't redirect the echo output, but it did inherit a fd
+      1 that was redirected to out.
 
     * to make this work it is important that offset is implicit (maintained by
       kernel)
 	  
-	* this is why read and write don't take an offset argument
+    * this is why read and write don't take an offset argument
    
  * Is the following the same as above?
 	```
@@ -62,13 +62,13 @@ System call observations
 ==
   
 * The fork/exec split looks wasteful; why is it useful?
-    This separation allows the shell to fix up the child process before 
-    the child runs the intended program. (example: io redirection)
+    - This separation allows the shell to fix up the child process before 
+      the child runs the intended program. (example: io redirection)
 
 * System call interface simple, just ints and char buffers.  why not have open()
   return a pointer reference to a kernel file object?
-    the file descriptor interface abstracts away the differences between files, pipes,
-    and devices, making them all look like streams of bytes.
+    - the file descriptor interface abstracts away the differences between files, pipes,
+      and devices, making them all look like streams of bytes.
 
 * Linux has a nice representation of a process and its FDs, under /proc/PID/
   * maps: VA range, perms (p=private, s=shared), offset, dev, inode, pathname
