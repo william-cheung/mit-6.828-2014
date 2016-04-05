@@ -20,10 +20,10 @@ Exploring system calls with more shell features
 
 * You can run the shell, redirect its stdin/stdout, etc.
   * I'll run this shell script with ```sh < script```:
-	```
+     ```
      echo one
      echo two
-	 ```
+     ```
  * What will this shell command do?
     ``` $ sh < script > out ```
 	
@@ -34,9 +34,13 @@ Exploring system calls with more shell features
       kernel)
 	  
     * this is why read and write don't take an offset argument
+    	* another example: ```(echo Hello World!; ls) > out``` The ls program does not 
+    	  have to do any work to figure out where in file out to write;  it would if 
+    	  write() took an offset argument.
+    	* this  unusual  API  simplifies  composing programs
    
  * Is the following the same as above?
-	```
+    ```
      $ echo one > out
      $ echo two > out
     ```
@@ -44,8 +48,6 @@ Exploring system calls with more shell features
  * How to implement sequencing/lists (;,&&,||)
    ```
    $ gcc x.c ; ./a.out
-   ```
-   ```
    $ gcc x.c && ./a.out
    ```
 
