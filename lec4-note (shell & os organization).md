@@ -88,25 +88,29 @@ OS organization
 * Now we have a feel for what Unix system call interface provides, how to implement the interface?
 
 * Why have an o/s at all?  why not just a library?
-  then apps are free to use it, or not -- flexible
-  apps can directly interact with hardware
-  some tiny O/Ss for embedded processors work this way
+  * library approach 
+    * apps are free to use it, or not -- flexible
+    * apps can directly interact with hardware
+    * some tiny O/Ss for embedded processors work this way
+    * downside:
+    	1) the operating system cannot enforce time-sharing
+        2) does not provide strong isolation if applications are mutually distrustful
 
 * Key requirement:
-  isolation
-  multiplexing
-  interaction
+  - isolation
+  - multiplexing
+  - interaction
 
 * helpful approach: abstract machine resources rather than raw hardware
-  File system, not raw disk
-  TCP, not a raw ethernet
-  Processes, not raw CPU/memory
-  abstractions often ease multiplexing and interaction
-  also more convenient and portable
+  - File system, not raw disk
+  - TCP, not a raw ethernet
+  - Processes, not raw CPU/memory
+  - abstractions often ease multiplexing and interaction
+  - also more convenient and portable
 
 * Goals:
-  apps must use OS interface, cannot directly interact with hardware
-  apps cannot harm operating system
+  - apps must use OS interface, cannot directly interact with hardware
+  - apps cannot harm operating system
 
 * Hardware support for isolation
   * Processors support user mode and kernel mode
@@ -120,9 +124,9 @@ OS organization
 
   * Operating systems runs in kernel mode
 	- kernel is a big program
-	  services: processes, file system, net
-	  low-level: devices, virtual memory
-	  all of kernel runs with full hardware privilege (convenient)
+	- services: processes, file system, net
+	- low-level: devices, virtual memory
+	- all of kernel runs with full hardware privilege (convenient)
 	  
   * Applications run in user mode
 	- isolated from kernel
@@ -136,18 +140,18 @@ OS organization
 	  - this design is called a monolithic kernel
 	  - kernel interface ~= system call interface
 	  - good: easy for subsystems to cooperate
-		one cache shared by file system and virtual memory
+		- one cache shared by file system and virtual memory
 	  - bad: interactions are complex
-		leads to bugs
-		no isolation within kernel
+		- leads to bugs
+		- no isolation within kernel
 
 	* alternative: microkernel design
 	  - many OS services run as ordinary user programs
-		file system in a file server
+		- file system in a file server
 	  - kernel implements minimal mechanism to run services in user space
-		IPC
-		virtual memory
-		threads
+		- IPC
+		- virtual memory
+		- threads
 	  - kernel interface != system call interface		
 	  - good: more isolation
 
