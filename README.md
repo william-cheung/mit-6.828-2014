@@ -13,4 +13,6 @@
   - Part 3: Kernel Address Space
 * Homework: xv6 system calls
 
-Website : https://pdos.csail.mit.edu/6.828/2014/index.html
+My xv6 repo: https://github.com/william-cheung/xv6-public
+
+Website: https://pdos.csail.mit.edu/6.828/2014/index.html
