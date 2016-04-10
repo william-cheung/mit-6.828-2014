@@ -54,7 +54,7 @@ trap(struct trapframe *tf)
       panic("trap");
     }
 	
-	// For lazy page allocation
+    // For lazy page allocation
     if (tf->trapno == T_PGFLT && tf->eip < proc->sz){
       int mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm);
       uint va;
