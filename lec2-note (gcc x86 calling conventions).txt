@@ -1,0 +1,74 @@
+GCC x86 Calling Conventions
+
+  1) x86 dictates that stack grows down
+
+  2) GCC dictates how the stack is used. Contract between caller and callee on x86:
+     at entry to a function (i.e. just after call):
+        %eip points at first instruction of function
+        %esp+4 points at first argument
+        %esp points at return address 
+     after ret instruction:
+        %eip contains return address
+        %esp points at arguments pushed by caller
+        called function may have trashed arguments
+        %eax (and %edx, if return type is 64-bit) contains return value (or trash if function is void)
+        %eax, %edx (above), and %ecx may be trashed
+        %ebp, %ebx, %esi, %edi must contain contents from time of call 
+     terminology:
+        %eax, %ecx, %edx are "caller save" registers
+        %ebp, %ebx, %esi, %edi are "callee save" registers 
+
+  3) Functions can do anything that doesn't violate contract. By convention, GCC does more:
+
+     * each function has a stack frame marked by %ebp, %esp
+
+    		       +------------+   |
+    		       | arg 2      |   \
+    		       +------------+    >- previous function's stack frame
+    		       | arg 1      |   /
+    		       +------------+   |
+    		       | ret %eip   |   /
+    		       +============+   
+    		       | saved %ebp |   \
+    		%ebp-> +------------+   |
+    		       |            |   |
+    		       |   local    |   \
+    		       | variables, |    >- current function's stack frame
+    		       |    etc.    |   /
+    		       |            |   |
+    		       |            |   |
+    		%esp-> +------------+   /
+    		
+
+    * %esp can move to make stack frame bigger, smaller
+    * %ebp points at saved %ebp from previous function, chain to walk stack
+    * function prologue:
+
+    			pushl %ebp
+    			movl %esp, %ebp
+    		
+
+      or
+
+    			enter $0, $0
+    		
+
+      enter usually not used: 4 bytes vs 3 for pushl+movl, not on hardware fast-path anymore
+    * function epilogue can easily find return EIP on stack:
+
+    			movl %ebp, %esp
+    			popl %ebp
+    		
+
+      or
+
+    			leave
+    		
+
+  4) Compiling, linking, loading:
+
+     * Preprocessor takes C source code (ASCII text), expands #include etc, produces C source code
+     * Compiler takes C source code (ASCII text), produces assembly language (also ASCII text)
+     * Assembler takes assembly language (ASCII text), produces .o file (binary, machine-readable!)
+     * Linker takes multiple '.o's, produces a single program image (binary)
+     * Loader loads the program image into memory at run-time and starts it executing 
