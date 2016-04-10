@@ -55,24 +55,24 @@ trap(struct trapframe *tf)
     }
 	
 	// For lazy page allocation
-	if (tf->trapno == T_PGFLT && tf->eip < proc->sz){
-	  int mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm);
-	  uint va;
-	  char *mem;
+    if (tf->trapno == T_PGFLT && tf->eip < proc->sz){
+      int mappages(pde_t *pgdir, void *va, uint size, uint pa, int perm);
+      uint va;
+      char *mem;
 
-	  cprintf("page fault, allocating page for the process " 
-	          "(pid %d, addr 0x%x)\n", proc->pid, tf->eip);
+      cprintf("page fault, allocating page for the process "
+               "(pid %d, addr 0x%x)\n", proc->pid, tf->eip);
 
-	  va = PGROUNDDOWN(rcr2());
-	  mem = kalloc();
-	  if (mem == 0) { 
-	  	cprintf("pid %d trap out of memory--kill proc\n", proc->pid);
-	  	proc->killed = 1;
-	  }
-	  memset(mem, 0, PGSIZE);
-	  mappages(proc->pgdir, (char *)va, PGSIZE, v2p(mem), PTE_W|PTE_U);
-	  break;
-	}
+      va = PGROUNDDOWN(rcr2());
+      mem = kalloc();
+      if (mem == 0) { 
+  	cprintf("pid %d trap out of memory--kill proc\n", proc->pid);
+  	proc->killed = 1;
+      }
+      memset(mem, 0, PGSIZE);
+      mappages(proc->pgdir, (char *)va, PGSIZE, v2p(mem), PTE_W|PTE_U);
+      break;
+    }
 
     // In user space, assume process misbehaved.
     cprintf("pid %d %s: trap %d err %d on cpu %d "
