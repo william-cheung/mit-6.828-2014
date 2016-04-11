@@ -392,6 +392,9 @@ boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm
 	size_t i;
 	for (i = 0; i < size; i += PGSIZE) {
 		pte_t *pte = pgdir_walk(pgdir, (void *)(va + i), 1);
+		// what if we don't have as much as 256MB memory ?
+		if (PGNUM(pa + i) >= npages)
+			continue;
 		*pte = (pa + i) | perm | PTE_P;
 	}
 }
