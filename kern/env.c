@@ -115,7 +115,13 @@ void
 env_init(void)
 {
 	// Set up envs array
-	// LAB 3: Your code here.
+	int i;
+	for (i = 0; i < NENV; i++) {
+		envs[i].env_id = 0;
+		envs[i].env_status = ENV_FREE;
+		envs[i].env_link = env_free_list;
+		env_free_list = envs[i];
+	}
 
 	// Per-CPU part of the initialization
 	env_init_percpu();
@@ -142,6 +148,17 @@ env_init_percpu(void)
 	lldt(0);
 }
 
+static void
+env_map_region(pde_t *env_pgdir, uintptr_t va, size_t size, int perm) 
+{
+	int i;
+	for (i = 0; i < size; i += PGSIZE) {
+		p = page_lookup(kern_pgdir, (void *)(va + i), NULL);
+		if (p == NULL) break;
+		page_insert(e->env_pgdir, p, (void *)(va + i), perm);
+	}
+}
+
 //
 // Initialize the kernel virtual memory layout for environment e.
 // Allocate a page directory, set e->env_pgdir accordingly,
@@ -155,7 +172,6 @@ env_init_percpu(void)
 static int
 env_setup_vm(struct Env *e)
 {
-	int i;
 	struct PageInfo *p = NULL;
 
 	// Allocate a page for the page directory
@@ -177,9 +193,17 @@ env_setup_vm(struct Env *e)
 	//	is an exception -- you need to increment env_pgdir's
 	//	pp_ref for env_free to work correctly.
 	//    - The functions in kern/pmap.h are handy.
+	e->env_pgdir = (pde_t *) page2kva(p);
+	p->pp_ref++;
 
-	// LAB 3: Your code here.
+	env_map_region(e->env_pgdir, UPAGES, PTSIZE, PTE_U | PTE_P);
+	
+	env_map_region(e->env_pgdir, UENVS, PTSIZE, PTE_U | PTE_P);
 
+	env_map_region(e->env_pgdir, KSTACKTOP - KSTKSIZE, KSTKSIZE, PTE_W | PTE_P);
+
+	env_map_region(e->env_pgdir, KERNBASE, - KERNBASE, PTE_W | PTE_P);
+	
 	// UVPT maps the env's own page table read-only.
 	// Permissions: kernel R, user R
 	e->env_pgdir[PDX(UVPT)] = PADDR(e->env_pgdir) | PTE_P | PTE_U;
@@ -260,13 +284,23 @@ env_alloc(struct Env **newenv_store, envid_t parent_id)
 static void
 region_alloc(struct Env *e, void *va, size_t len)
 {
-	// LAB 3: Your code here.
-	// (But only if you need it for load_icode.)
+	// Implement the func if you need it for load_icode
 	//
 	// Hint: It is easier to use region_alloc if the caller can pass
 	//   'va' and 'len' values that are not page-aligned.
 	//   You should round va down, and round (va + len) up.
 	//   (Watch out for corner-cases!)
+	char *sa = (char *) ROUNDDOWN(va);
+	char *ea = (char *) ROUNDUP((char *) va + len);
+	for (; sa < ea; sa += PGSIZE) {
+		pte_t *pte;
+		struct PageInfo *pp = page_lookup(e->environment, sa, &pte);
+		if (pp != NULL)  continue; // panic("region_alloc: invalid address 0x%08p", sa);
+		if (pte == NULL) panic("region_alloc: out of memory for PT");
+		pp = page_alloc(0);
+		if (pp == NULL)  panic("region_alloc: out of memory for PG");
+		*pte = PTE_ADDR(page2pa(pp)) | PTE_W | PTE_U | PTE_P;
+	}
 }
 
 //
@@ -340,7 +374,11 @@ load_icode(struct Env *e, uint8_t *binary)
 void
 env_create(uint8_t *binary, enum EnvType type)
 {
-	// LAB 3: Your code here.
+	struct Env *e;
+	if (env_alloc(&e, 0) < 0 || e == NULL) 
+		panic("env_create: fatal error when allocating a new env");
+	e->env_type = type;
+	load_icode(e, binary);
 }
 
 //

@@ -29,7 +29,7 @@ static struct Command commands[] = {
 	{ "backtrace", "Display stack backtrace", mon_backtrace},
 	{ "showmappings", "Display the physical page mappings", mon_showmappings },
 	{ "changeperms", "Change permissions of page mappings", mon_changeperms },
-        { "dumpcontents", "Dump contents of a range of memory", mon_dumpcontents },
+    { "dumpcontents", "Dump contents of a range of memory", mon_dumpcontents },
 };
 #define NCOMMANDS (sizeof(commands)/sizeof(commands[0]))
 
@@ -113,8 +113,8 @@ show_mapping(void *vaddr)
 		/* PTE_P ommitted */
 		if (*pte & PTE_W)    cprintf("W ");
 		if (*pte & PTE_U)    cprintf("U ");
-		if (*pte & PTE_PWT)  cprintf("PTW ");
-		if (*pte & PTE_PCD)  cprintf("PCD ");
+		if (*pte & PTE_PWT)  cprintf("WT ");
+		if (*pte & PTE_PCD)  cprintf("CD ");
 		if (*pte & PTE_A)    cprintf("A ");
 		if (*pte & PTE_D)    cprintf("D ");
 		/* PTE_PS ommitted */
