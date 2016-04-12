@@ -33,15 +33,39 @@
   exceptions handle conditions detected by the processor itself in 
   the course of executing instructions.
 
-  there are two sources for external interrupts and two sources for exceptions:
+  there are two sources for external interrupts and two sources for 
+  exceptions:
     Interrupts
         Maskable interrupts, which are signalled via the INTR pin.
-        Nonmaskable interrupts, which are signalled via the NMI (Non-Maskable Interrupt) pin. 
+        Nonmaskable interrupts, which are signalled via the NMI 
+          (Non-Maskable Interrupt) pin. 
     Exceptions
-        Processor detected. These are further classified as faults, traps, and aborts.
-        Programmed. The instructions INTO, INT 3 (break point), INT n, and BOUND can 
-        trigger exceptions. These instructions are often called "software interrupts", 
-        but the processor handles them as exceptions. 
+        Processor detected. These are further classified as faults, 
+          traps, and aborts.
+        Programmed. The instructions INTO, INT 3 (break point), 
+          INT n, and BOUND can trigger exceptions. These instructions 
+          are often called "software interrupts", but the processor 
+          handles them as exceptions. 
+  
+  The classification of Exceptions:
+    Faults
+      The CS and EIP values saved when a fault is reported point 
+      to the instruction causing the fault. 
+    Traps
+      The CS and EIP values stored when the trap is reported point 
+      to the instruction dynamically after the instruction causing 
+      the trap. If a trap is detected during an instruction that 
+      alters program flow, the reported values of CS and EIP reflect 
+      the alteration of program flow. 
+      ++ For example, if a trap is detected in a JMP instruction, the CS 
+      and EIP values pushed onto the stack point to the target of the 
+      JMP, not to the instruction after the JMP. 
+    Aborts
+      An abort is an exception that permits neither precise location of 
+      the instruction causing the exception nor restart of the program 
+      that caused the exception. Aborts are used to report severe errors, 
+      such as hardware errors and inconsistent or illegal values in system 
+      tables. 
  
 * A word on terminology: 
   although the official x86 term is interrupt, xv6 refers to all of these 
