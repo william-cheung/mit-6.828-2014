@@ -11,7 +11,7 @@
   program faults (div by zero, page fault)
   external device interrupts
 
-* system calls, exceptions and interrupts
+* system calls, exceptions and interrupts (from xv6 book)
   system call: a user program can ask for an operating system service. 
   exception: an illegal program action that generates an interrupt. 
     examples of illegal programs actions include dividing by zero, 
@@ -24,7 +24,25 @@
     another example, 
       when the disk has read a block, it generates an interrupt to alert 
       the operating system that the block is ready to be retrieved
+      
+* interrupts and exceptions in "80386 programmer's reference manual"
+    see https://pdos.csail.mit.edu/6.828/2014/readings/i386/c09.htm
+    
+  the difference between interrupts and exceptions is that interrupts are
+  used to handle asynchronous events external to the processor, but 
+  exceptions handle conditions detected by the processor itself in 
+  the course of executing instructions.
 
+  there are two sources for external interrupts and two sources for exceptions:
+    Interrupts
+        Maskable interrupts, which are signalled via the INTR pin.
+        Nonmaskable interrupts, which are signalled via the NMI (Non-Maskable Interrupt) pin. 
+    Exceptions
+        Processor detected. These are further classified as faults, traps, and aborts.
+        Programmed. The instructions INTO, INT 3 (break point), INT n, and BOUND can 
+        trigger exceptions. These instructions are often called "software interrupts", 
+        but the processor handles them as exceptions. 
+ 
 * A word on terminology: 
   although the official x86 term is interrupt, xv6 refers to all of these 
   as traps, largely because it was the term used by the PDP11/40 and 
