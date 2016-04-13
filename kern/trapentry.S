@@ -41,15 +41,28 @@
 	pushl $(num);							\
 	jmp _alltraps
 
-.text
-
 /*
  * Lab 3: Your code here for generating entry points for the different traps.
  */
 
-
+#include "vectors.S"
 
 /*
  * Lab 3: Your code here for _alltraps
  */
+.text
 
+.globl _alltraps
+_alltraps:
+	# Build trap frame.
+	pushl %ds
+	pushl %es
+	pushal 
+	# Set up data segments.
+	movw $GD_KD, %ax
+	movw %ax, %ds
+	movw %ax, %es
+
+	# Call trap(tf), where tf=%esp
+	pushl %esp
+	call trap

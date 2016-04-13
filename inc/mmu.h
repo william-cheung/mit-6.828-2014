@@ -306,6 +306,8 @@ struct Gatedesc {
 	(gate).gd_off_31_16 = (uint32_t) (off) >> 16;		\
 }
 
+#define DPL_USER  0x3
+
 // Pseudo-descriptors used for LGDT, LLDT and LIDT instructions.
 struct Pseudodesc {
 	uint16_t pd_lim;		// Limit
