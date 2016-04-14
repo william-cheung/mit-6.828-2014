@@ -41,17 +41,10 @@
 	pushl $(num);							\
 	jmp _alltraps
 
-/*
- * Lab 3: Your code here for generating entry points for the different traps.
- */
 
 #include "vectors.S"
 
-/*
- * Lab 3: Your code here for _alltraps
- */
 .text
-
 .globl _alltraps
 _alltraps:
 	# Build trap frame.

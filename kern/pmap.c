@@ -520,30 +520,33 @@ static uintptr_t user_mem_check_addr;
 // Returns 0 if the user program can access this range of addresses,
 // and -E_FAULT otherwise.
 //
+
+static inline int
+_user_mem_check(struct Env *env, const void* va, int perm)
+{
+	pte_t *pte = pgdir_walk(env->env_pgdir, va, 0);
+	if (pte == NULL || (*pte & (perm | PTE_P)) != (perm | PTE_P)) {
+		user_mem_check_addr = (uintptr_t) va;
+		return -E_FAULT;
+	}
+	return 0;
+}
+
 int
 user_mem_check(struct Env *env, const void *va, size_t len, int perm)
 {
 	uintptr_t va_begin = (uintptr_t) va, va_end = va_begin + len;
-	if (va_begin >= ULIM) {
-		user_mem_check_addr = va_begin;
-		return -E_FAULT;
-	}
-	if (va_end >= ULIM) {
-		user_mem_check_addr = ULIM;
-		return -E_FAULT;
-	}
 	
-	va_end += PGSIZE; // test one more page
-	for (; va_begin < va_end; va_begin += PGSIZE) {
-		pte_t *pte;
-		page_lookup(env->env_pgdir, (void *) va_begin, &pte);
-		if (pte == NULL || (*pte & (perm | PTE_P)) != (perm | PTE_P)) {
-			user_mem_check_addr = va_begin;
-			return -E_FAULT;
-		}
-	}
+	int ret = _user_mem_check(env, va, perm);
+	if (ret < 0) 
+		return ret;
+	
+	va_begin = ROUNDUP(va_begin, PGSIZE);
+	for (; va_begin < va_end; va_begin += PGSIZE)
+		if ((ret = _user_mem_check(env, (void *) va_begin, perm)) < 0)
+			return ret;
 
-	return 0;
+	return ret;
 }
 
 //
