@@ -30,6 +30,7 @@ static struct Command commands[] = {
 	{ "showmappings", "Display the physical page mappings", mon_showmappings },
 	{ "changeperms", "Change permissions of page mappings", mon_changeperms },
     { "dumpcontents", "Dump contents of a range of memory", mon_dumpcontents },
+	{ "exit", "Exit the kernel monitor", mon_exit },
 };
 #define NCOMMANDS (sizeof(commands)/sizeof(commands[0]))
 
@@ -241,6 +242,13 @@ mon_dumpcontents(int argc, char **argv, struct Trapframe *tf)
 		return usage_exit(usage);
 
 	return 0;	
+}
+
+
+int 
+mon_exit(int argc, char **argv, struct Trapframe *tf)
+{
+	return -1;
 }
 
 
