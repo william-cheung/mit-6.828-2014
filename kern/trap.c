@@ -161,12 +161,12 @@ trap_dispatch(struct Trapframe *tf)
 		return;
 	case T_SYSCALL:
 		tf->tf_regs.reg_eax = syscall(
-			tf->tf_regs.reg_eax, 
-			tf->tf_regs.reg_edx,
-			tf->tf_regs.reg_ecx,
-			tf->tf_regs.reg_ebx,
-			tf->tf_regs.reg_edi,
-			tf->tf_regs.reg_esi
+			tf->tf_regs.reg_eax, // trap no. 
+			tf->tf_regs.reg_edx, // arg1
+			tf->tf_regs.reg_ecx, // arg2
+			tf->tf_regs.reg_ebx, // arg3
+			tf->tf_regs.reg_edi, // arg4
+			tf->tf_regs.reg_esi, // arg5
 		);
 		return;
 	}
