@@ -166,7 +166,7 @@ trap_dispatch(struct Trapframe *tf)
 			tf->tf_regs.reg_ecx, // arg2
 			tf->tf_regs.reg_ebx, // arg3
 			tf->tf_regs.reg_edi, // arg4
-			tf->tf_regs.reg_esi, // arg5
+			tf->tf_regs.reg_esi  // arg5
 		);
 		return;
 	}

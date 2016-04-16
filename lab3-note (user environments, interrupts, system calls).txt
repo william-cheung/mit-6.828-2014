@@ -18,3 +18,19 @@ interrupt vector 14)?
   exception being called, they could put in malicious code on the stack, which the kernel 
   would then read out and execute with kernel privileges.  We instead trigger interrupt 13 
   since the user program attempted to violate its privileges.
+
+Exercise 9. What causes a kernel page fault?
+  libmain takes 2 args ("argc" and "argv"), which are at the bottom of Nomal User Stack
+
+            |    Empty Memory     |
+  USTACKTOP +---------------------+  0xeebfe000
+            |        argv         |
+            +---------------------+  0xeebfdffc
+            |        argc         |
+            +---------------------+  0xeebfdff8
+            |  libmain's ret_addr |
+            +---------------------+ 
+            |                     |
+
+  when we access args[2] passed to libmain in mon_backtrace, there will be a page fault
+

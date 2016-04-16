@@ -10,9 +10,9 @@ print "# handlers\n";
 print ".text\n";
 print ".globl _alltraps\n";
 for(my $i = 0; $i < 256; $i++) {
-    if(!($i == 8 || ($i >= 10 && $i <= 14) || $i == 17)){
-        print "TRAPHANDLER_NOEC(vector$i, $i)\n";
-    } else {
+    if(!($i == 8 || ($i >= 10 && $i <= 14) || $i == 17)) { 
+		print "TRAPHANDLER_NOEC(vector$i, $i)\n";
+	} else {
 		print "TRAPHANDLER(vector$i, $i)\n";
 	}
 }
