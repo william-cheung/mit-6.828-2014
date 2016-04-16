@@ -16,6 +16,7 @@
 * [Lab 3: User Environments](https://github.com/william-cheung/mit-6.828-2014/tree/lab3)
   - Part A: User Environments and Exception Handling
   - Part B: Page Faults, Breakpoints Exceptions, and System Calls
+* Homework: xv6 CPU alarm
 
 My xv6 repo: https://github.com/william-cheung/xv6-public
 
