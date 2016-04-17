@@ -17,7 +17,7 @@
   - Part A: User Environments and Exception Handling
   - Part B: Page Faults, Breakpoints Exceptions, and System Calls
 * [Homework: xv6 CPU alarm](https://github.com/william-cheung/xv6-public/blob/master/trap.c)
-* Homework: Threads and Locking
+* [Homework: Threads and Locking](https://github.com/william-cheung/mit-6.828-2014/blob/lab3/ph.c)
 
 My xv6 repo: https://github.com/william-cheung/xv6-public
 
