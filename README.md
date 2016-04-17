@@ -18,6 +18,10 @@
   - Part B: Page Faults, Breakpoints Exceptions, and System Calls
 * [Homework: xv6 CPU alarm](https://github.com/william-cheung/xv6-public/blob/master/trap.c)
 * [Homework: Threads and Locking](https://github.com/william-cheung/mit-6.828-2014/blob/lab3/ph.c)
+* [Lab 4: Preemptive Multitasking](https://github.com/william-cheung/mit-6.828-2014/tree/lab4)
+  - Part A: Multiprocessor Support and Cooperative Multitasking
+  - Part B: Copy-on-Write Fork
+  - Part C: Preemptive Multitasking and Inter-Process communication (IPC)
 
 My xv6 repo: https://github.com/william-cheung/xv6-public
 
