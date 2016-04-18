@@ -1,0 +1,13 @@
+1. Compare kern/mpentry.S side by side with boot/boot.S. Bearing in mind that 
+   kern/mpentry.S is compiled and linked to run above KERNBASE just like 
+   everything else in the kernel, what is the purpose of macro MPBOOTPHYS? Why 
+   is it necessary in kern/mpentry.S but not in boot/boot.S? In other words, 
+   what could go wrong if it were omitted in kern/mpentry.S?
+   
+   #define MPBOOTPYS(s) ((s) - mpentry_start + MPENTRY_PADDR)
+   MPBOOTPHYS is used to calculate the load address of a symbol
+ 
+   In boot.S, load addresses are identical to link addresses; but in mpentry.S
+   they are not.
+
+
