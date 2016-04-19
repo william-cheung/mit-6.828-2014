@@ -262,9 +262,12 @@ mem_init_mp(void)
 	//             it will fault rather than overwrite another CPU's stack.
 	//             Known as a "guard page".
 	//     Permissions: kernel RW, user NONE
-	//
-	// LAB 4: Your code here:
-
+	int i;
+	for (i = 0; i < NCPU; i++) {
+		intptr_t kstacktop_i = KSTACKTOP - i * (KSTKSIZE + KSTKGAP);
+		boot_map_region(kern_pgdir, kstacktop_i - KSTKSIZE, KSTKSIZE, 
+			PADDR(percpu_kstacks[i]), PTE_W | PTE_P);
+	}
 }
 
 // --------------------------------------------------------------
@@ -426,9 +429,6 @@ boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm
 	size_t i;
 	for (i = 0; i < size; i += PGSIZE) {
 		pte_t *pte = pgdir_walk(pgdir, (void *)(va + i), 1);
-		// what if we don't have as much as 256MB memory ?
-		if (PGNUM(pa + i) >= npages)
-			continue;
 		*pte = (pa + i) | perm | PTE_P;
 	}
 }
@@ -569,7 +569,7 @@ mmio_map_region(physaddr_t pa, size_t size)
 	size = ROUNDUP(size, PGSIZE);
 	va_end = base + size;
 
-	if (!(va_end >= MMIOBASE && va_end < MMIOLIM))
+	if (!(va_end >= MMIOBASE && va_end <= MMIOLIM))
 		panic("mmio_map_region: MMIO space overflow");
 
 	base = va_end;
