@@ -11,3 +11,39 @@
    they are not.
 
 
+2. It seems that using the big kernel lock guarantees that only one CPU can run
+   the kernel code at a time. Why do we still need separate kernel stacks for 
+   each CPU? Describe a scenario in which using a shared kernel stack will go 
+   wrong, even with the protection of the big kernel lock. 
+
+   Consider the following case:
+     Right after an int instruction on CPU 0, another interrupt occures on CPU 1,
+     the hardware pushes some states onto the shared kernel stack for CPU 1 before 
+     the completion of construction of trap frame of CPU 0, then the shared kernel 
+     stack is messed up.    
+
+
+3. In your implementation of env_run() you should have called lcr3(). Before and
+   after the call to lcr3(), your code makes references (at least it should) to the 
+   variable e, the argument to env_run. Upon loading the %cr3 register, the addressing 
+   context used by the MMU is instantly changed. But a virtual address (namely e) has 
+   meaning relative to a given address context--the address context specifies the 
+   physical address to which the virtual address maps. Why can the pointer e be 
+   dereferenced both before and after the addressing switch?
+
+   virtual addresses in the kernel stack space of current CPU are mapped to same 
+   physical address spaces in every environment running on the CPU.
+   
+4. Whenever the kernel switches from one environment to another, it must ensure the 
+   old environment's registers are saved so they can be restored properly later. Why? 
+   Where does this happen?
+
+   When the kernel switches from one environment to another it must ensure the old 
+   environment's registers are saved so they can be restored later because we will 
+   treat this as if it were never interrupted.  
+
+   This happens when we trap from user mode to kernel mode.
+
+   
+
+
