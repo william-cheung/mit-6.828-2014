@@ -64,19 +64,37 @@ _pgfault_upcall:
 	// may find that you have to rearrange your code in non-obvious
 	// ways as registers become unavailable as scratch space.
 	//
-	// LAB 4: Your code here.
 
+	leal -42(%esp), %eax
+	cmpl $UXSTACKTOP, %eax
+	jnz  recursive_fault
+	
+	movl -38(%esp), %eax
+	movl -30(%esp), %edx
+	subl $4, %eax
+	movl %edx, (%eax)
+	movl %eax, -38(%ebp)
+	jmp  restore_regs
+
+recursive_fault:
+	movl -30(%esp), %eax
+	movl %eax, -42(%esp)
+
+restore_regs:
 	// Restore the trap-time registers.  After you do this, you
 	// can no longer modify any general-purpose registers.
-	// LAB 4: Your code here.
+	popl %eax
+	popl %eax
+	popal
 
 	// Restore eflags from the stack.  After you do this, you can
 	// no longer use arithmetic operations or anything else that
 	// modifies eflags.
-	// LAB 4: Your code here.
+	popfl 
+	popfl
 
 	// Switch back to the adjusted trap-time stack.
-	// LAB 4: Your code here.
+	popl %esp
 
 	// Return to re-execute the instruction that faulted.
-	// LAB 4: Your code here.
+	ret

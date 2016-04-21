@@ -333,8 +333,9 @@ page_fault_handler(struct Trapframe *tf)
 	
 	if (curenv->env_pgfault_upcall != NULL) {
 		struct UTrapframe utf;
-		uintptr_t fault_va = rcr2();
-		
+	
+		cprintf("fault va : 0x%08x\n", fault_va);
+
 		utf.utf_fault_va = fault_va;
 		utf.utf_err = tf->tf_err;
 		utf.utf_regs = tf->tf_regs;
@@ -344,21 +345,17 @@ page_fault_handler(struct Trapframe *tf)
 
 		// if tf->tf_esp is already on the user level exception stack
 		if (tf->tf_esp >= UXSTACKTOP - PGSIZE && tf->tf_esp < UXSTACKTOP) {
-			tf->esp -= 4;
-			user_mem_check(curenv, (void *) tf->esp, 4, PTE_U | PTE_W | PTE_P);
-			*((uint32_t *) tf->esp) = 0;
+			tf->tf_esp -= 4;
+			user_mem_check(curenv, (void *) tf->tf_esp, 4, PTE_U | PTE_W | PTE_P);
+			*((uint32_t *) tf->tf_esp) = 0;
 		} else  tf->tf_esp = UXSTACKTOP;
 		
 		tf->tf_esp -= sizeof(struct UTrapframe);
 		user_mem_check(curenv, 
-			(void *) tf->esp, sizeof(struct UTrapframe), PTE_U | PTE_W | PTE_P);
-		*((struct UTrapframe *) tf->esp) = utf;
+			(void *) tf->tf_esp, sizeof(struct UTrapframe), PTE_U | PTE_W | PTE_P);
+		*((struct UTrapframe *) tf->tf_esp) = utf;
 
-		tf->tf_esp -= 4;
-		user_mem_check(curenv, (void *) tf->esp, 4, PTE_U | PTE_W | PTE_P);
-		*((uint32_t *) tf->esp) = tf->esp + 4;
-
-		tf->eip = (uintptr_t) curenv->env_pgfault_upcall;
+		tf->tf_eip = (uintptr_t) curenv->env_pgfault_upcall;
 
 		env_run(curenv);
 	}
