@@ -330,9 +330,39 @@ page_fault_handler(struct Trapframe *tf)
 	//   user_mem_assert() and env_run() are useful here.
 	//   To change what the user environment runs, modify 'curenv->env_tf'
 	//   (the 'tf' variable points at 'curenv->env_tf').
+	
+	if (curenv->env_pgfault_upcall != NULL) {
+		struct UTrapframe utf;
+		uintptr_t fault_va = rcr2();
+		
+		utf.utf_fault_va = fault_va;
+		utf.utf_err = tf->tf_err;
+		utf.utf_regs = tf->tf_regs;
+		utf.utf_eip = tf->tf_eip;
+		utf.utf_eflags = tf->tf_eflags;
+		utf.utf_esp = tf->tf_esp;
 
-	// LAB 4: Your code here.
+		// if tf->tf_esp is already on the user level exception stack
+		if (tf->tf_esp >= UXSTACKTOP - PGSIZE && tf->tf_esp < UXSTACKTOP) {
+			tf->esp -= 4;
+			user_mem_check(curenv, (void *) tf->esp, 4, PTE_U | PTE_W | PTE_P);
+			*((uint32_t *) tf->esp) = 0;
+		} else  tf->tf_esp = UXSTACKTOP;
+		
+		tf->tf_esp -= sizeof(struct UTrapframe);
+		user_mem_check(curenv, 
+			(void *) tf->esp, sizeof(struct UTrapframe), PTE_U | PTE_W | PTE_P);
+		*((struct UTrapframe *) tf->esp) = utf;
 
+		tf->tf_esp -= 4;
+		user_mem_check(curenv, (void *) tf->esp, 4, PTE_U | PTE_W | PTE_P);
+		*((uint32_t *) tf->esp) = tf->esp + 4;
+
+		tf->eip = (uintptr_t) curenv->env_pgfault_upcall;
+
+		env_run(curenv);
+	}
+	
 	// Destroy the environment that caused the fault.
 	cprintf("[%08x] user fault va %08x ip %08x\n",
 		curenv->env_id, fault_va, tf->tf_eip);
