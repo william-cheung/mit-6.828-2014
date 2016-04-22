@@ -1,0 +1,1265 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+-format	./GNUmakefile	/^	git archive --format=tar HEAD | gzip > lab$(LAB)-handin.tar.gz$/;"	m
+ALLOC_ZERO	./kern/pmap.h	/^	ALLOC_ZERO = 1<<0,$/;"	e	enum:__anon6
+ALT	./kern/console.c	219;"	d	file:
+AR	./GNUmakefile	/^AR	:= $(GCCPREFIX)ar$/;"	m
+ARRAYSIZE	./user/testbss.c	5;"	d	file:
+AS	./GNUmakefile	/^AS	:= $(GCCPREFIX)as$/;"	m
+ASM	./lib/string.c	9;"	d	file:
+ASSERT	./kern/lapic.c	25;"	d	file:
+BACKTRACE_RE	./grade-lab1	/^BACKTRACE_RE = r"^ *ebp +f01[0-9a-z]{5} +eip +f0100[0-9a-z]{3} +args +([0-9a-z]+)"$/;"	v
+BCAST	./kern/lapic.c	28;"	d	file:
+BUFLEN	./lib/readline.c	4;"	d	file:
+BUSY	./kern/lapic.c	30;"	d	file:
+C	./kern/console.c	286;"	d	file:
+CAPSLOCK	./kern/console.c	221;"	d	file:
+CC	./GNUmakefile	/^CC	:= $(GCCPREFIX)gcc -pipe$/;"	m
+CFLAGS	./GNUmakefile	/^CFLAGS := $(CFLAGS) $(DEFS) $(LABDEFS) -O1 -fno-builtin -I$(TOP) -MD$/;"	m
+CGA_BASE	./kern/console.h	13;"	d
+CGA_BUF	./kern/console.h	14;"	d
+CHECK	./user/faultregs.c	43;"	d	file:
+CHECK	./user/faultregs.c	65;"	d	file:
+CHECKSUM	./kern/entry.S	/^#define CHECKSUM (-(MULTIBOOT_HEADER_MAGIC + MULTIBOOT_HEADER_FLAGS))$/;"	d
+CMDBUF_SIZE	./kern/monitor.c	16;"	d	file:
+CMDBYTE	./inc/kbdreg.h	60;"	d
+COLORS	./gradelib.py	/^COLORS = {"default": "\\033[0m", "red": "\\033[31m", "green": "\\033[32m"}$/;"	v
+COM1	./kern/console.c	27;"	d	file:
+COM_DLL	./kern/console.c	31;"	d	file:
+COM_DLM	./kern/console.c	32;"	d	file:
+COM_FCR	./kern/console.c	36;"	d	file:
+COM_IER	./kern/console.c	33;"	d	file:
+COM_IER_RDI	./kern/console.c	34;"	d	file:
+COM_IIR	./kern/console.c	35;"	d	file:
+COM_LCR	./kern/console.c	37;"	d	file:
+COM_LCR_DLAB	./kern/console.c	38;"	d	file:
+COM_LCR_WLEN8	./kern/console.c	39;"	d	file:
+COM_LSR	./kern/console.c	44;"	d	file:
+COM_LSR_DATA	./kern/console.c	45;"	d	file:
+COM_LSR_TSRE	./kern/console.c	47;"	d	file:
+COM_LSR_TXRDY	./kern/console.c	46;"	d	file:
+COM_MCR	./kern/console.c	40;"	d	file:
+COM_MCR_DTR	./kern/console.c	42;"	d	file:
+COM_MCR_OUT2	./kern/console.c	43;"	d	file:
+COM_MCR_RTS	./kern/console.c	41;"	d	file:
+COM_RX	./kern/console.c	29;"	d	file:
+COM_TX	./kern/console.c	30;"	d	file:
+CONSBUFSIZE	./kern/console.c	385;"	d	file:
+CPUS	./GNUmakefile	/^CPUS ?= 1$/;"	m
+CPU_HALTED	./kern/cpu.h	/^	CPU_HALTED,$/;"	e	enum:__anon5
+CPU_STARTED	./kern/cpu.h	/^	CPU_STARTED,$/;"	e	enum:__anon5
+CPU_UNUSED	./kern/cpu.h	/^	CPU_UNUSED = 0,$/;"	e	enum:__anon5
+CR0_AM	./inc/mmu.h	86;"	d
+CR0_CD	./inc/mmu.h	88;"	d
+CR0_EM	./inc/mmu.h	81;"	d
+CR0_ET	./inc/mmu.h	83;"	d
+CR0_MP	./inc/mmu.h	80;"	d
+CR0_NE	./inc/mmu.h	84;"	d
+CR0_NW	./inc/mmu.h	87;"	d
+CR0_PE	./inc/mmu.h	79;"	d
+CR0_PG	./inc/mmu.h	89;"	d
+CR0_TS	./inc/mmu.h	82;"	d
+CR0_WP	./inc/mmu.h	85;"	d
+CR4_DE	./inc/mmu.h	94;"	d
+CR4_MCE	./inc/mmu.h	92;"	d
+CR4_PCE	./inc/mmu.h	91;"	d
+CR4_PSE	./inc/mmu.h	93;"	d
+CR4_PVI	./inc/mmu.h	96;"	d
+CR4_TSD	./inc/mmu.h	95;"	d
+CR4_VME	./inc/mmu.h	97;"	d
+CRT_COLS	./kern/console.h	17;"	d
+CRT_ROWS	./kern/console.h	16;"	d
+CRT_SIZE	./kern/console.h	18;"	d
+CTL	./kern/console.c	218;"	d	file:
+CURRENT_TEST	./gradelib.py	/^CURRENT_TEST = None$/;"	v
+Command	./kern/monitor.c	/^struct Command {$/;"	s	file:
+CpuInfo	./kern/cpu.h	/^struct CpuInfo {$/;"	s
+DEASSERT	./kern/lapic.c	26;"	d	file:
+DEBUG_SPINLOCK	./kern/spinlock.h	7;"	d
+DELIVS	./kern/lapic.c	24;"	d	file:
+DEPTH	./user/forktree.c	5;"	d	file:
+DPL_USER	./inc/mmu.h	309;"	d
+E	./grade-lab4	/^def E(s, trim=False):$/;"	f
+E0ESC	./kern/console.c	225;"	d	file:
+ELFHDR	./boot/main.c	33;"	d	file:
+ELF_MAGIC	./inc/elf.h	4;"	d
+ELF_PROG_FLAG_EXEC	./inc/elf.h	52;"	d
+ELF_PROG_FLAG_READ	./inc/elf.h	54;"	d
+ELF_PROG_FLAG_WRITE	./inc/elf.h	53;"	d
+ELF_PROG_LOAD	./inc/elf.h	49;"	d
+ELF_SHN_UNDEF	./inc/elf.h	63;"	d
+ELF_SHT_NULL	./inc/elf.h	57;"	d
+ELF_SHT_PROGBITS	./inc/elf.h	58;"	d
+ELF_SHT_STRTAB	./inc/elf.h	60;"	d
+ELF_SHT_SYMTAB	./inc/elf.h	59;"	d
+ENABLE	./kern/lapic.c	19;"	d	file:
+ENVGENSHIFT	./kern/env.c	22;"	d	file:
+ENVX	./inc/env.h	30;"	d
+ENV_CREATE	./kern/env.h	29;"	d
+ENV_DYING	./inc/env.h	/^	ENV_DYING,$/;"	e	enum:__anon1
+ENV_FREE	./inc/env.h	/^	ENV_FREE = 0,$/;"	e	enum:__anon1
+ENV_NOT_RUNNABLE	./inc/env.h	/^	ENV_NOT_RUNNABLE$/;"	e	enum:__anon1
+ENV_PASTE3	./kern/env.h	27;"	d
+ENV_RUNNABLE	./inc/env.h	/^	ENV_RUNNABLE,$/;"	e	enum:__anon1
+ENV_RUNNING	./inc/env.h	/^	ENV_RUNNING,$/;"	e	enum:__anon1
+ENV_TYPE_USER	./inc/env.h	/^	ENV_TYPE_USER = 0,$/;"	e	enum:EnvType
+EOI	./kern/lapic.c	17;"	d	file:
+ERROR	./kern/lapic.c	39;"	d	file:
+ESR	./kern/lapic.c	20;"	d	file:
+EXTPHYSMEM	./inc/memlayout.h	93;"	d
+E_BAD_ENV	./inc/error.h	/^	E_BAD_ENV	= 2,	\/\/ Environment doesn't exist or otherwise$/;"	e	enum:__anon4
+E_EOF	./inc/error.h	/^	E_EOF		= 9,	\/\/ Unexpected end of file$/;"	e	enum:__anon4
+E_FAULT	./inc/error.h	/^	E_FAULT		= 6,	\/\/ Memory fault$/;"	e	enum:__anon4
+E_INVAL	./inc/error.h	/^	E_INVAL		= 3,	\/\/ Invalid parameter$/;"	e	enum:__anon4
+E_IPC_NOT_RECV	./inc/error.h	/^	E_IPC_NOT_RECV	= 8,	\/\/ Attempt to send to env that is not recving$/;"	e	enum:__anon4
+E_NO_FREE_ENV	./inc/error.h	/^	E_NO_FREE_ENV	= 5,	\/\/ Attempt to create a new environment beyond$/;"	e	enum:__anon4
+E_NO_MEM	./inc/error.h	/^	E_NO_MEM	= 4,	\/\/ Request failed due to memory shortage$/;"	e	enum:__anon4
+E_NO_SYS	./inc/error.h	/^	E_NO_SYS	= 7,	\/\/ Unimplemented system call$/;"	e	enum:__anon4
+E_UNSPECIFIED	./inc/error.h	/^	E_UNSPECIFIED	= 1,	\/\/ Unspecified or unknown problem$/;"	e	enum:__anon4
+Eipdebuginfo	./kern/kdebug.h	/^struct Eipdebuginfo {$/;"	s
+Elf	./inc/elf.h	/^struct Elf {$/;"	s
+Env	./inc/env.h	/^struct Env {$/;"	s
+EnvType	./inc/env.h	/^enum EnvType {$/;"	g
+FEC_PR	./inc/mmu.h	123;"	d
+FEC_U	./inc/mmu.h	125;"	d
+FEC_WR	./inc/mmu.h	124;"	d
+FIXED	./kern/lapic.c	31;"	d	file:
+FL_AC	./inc/mmu.h	117;"	d
+FL_AF	./inc/mmu.h	102;"	d
+FL_CF	./inc/mmu.h	100;"	d
+FL_DF	./inc/mmu.h	107;"	d
+FL_ID	./inc/mmu.h	120;"	d
+FL_IF	./inc/mmu.h	106;"	d
+FL_IOPL_0	./inc/mmu.h	110;"	d
+FL_IOPL_1	./inc/mmu.h	111;"	d
+FL_IOPL_2	./inc/mmu.h	112;"	d
+FL_IOPL_3	./inc/mmu.h	113;"	d
+FL_IOPL_MASK	./inc/mmu.h	109;"	d
+FL_NT	./inc/mmu.h	114;"	d
+FL_OF	./inc/mmu.h	108;"	d
+FL_PF	./inc/mmu.h	101;"	d
+FL_RF	./inc/mmu.h	115;"	d
+FL_SF	./inc/mmu.h	104;"	d
+FL_TF	./inc/mmu.h	105;"	d
+FL_VIF	./inc/mmu.h	118;"	d
+FL_VIP	./inc/mmu.h	119;"	d
+FL_VM	./inc/mmu.h	116;"	d
+FL_ZF	./inc/mmu.h	103;"	d
+GCCPREFIX	./GNUmakefile	/^GCCPREFIX := $(shell if i386-jos-elf-objdump -i 2>&1 | grep '^elf32-i386$$' >\/dev\/null 2>&1; \\$/;"	m
+GCC_LIB	./GNUmakefile	/^GCC_LIB := $(shell $(CC) $(CFLAGS) -print-libgcc-file-name)$/;"	m
+GDBClient	./gradelib.py	/^class GDBClient(object):$/;"	c
+GDBPORT	./GNUmakefile	/^GDBPORT	:= $(shell expr `id -u` % 5000 + 25000)$/;"	m
+GD_KD	./inc/memlayout.h	16;"	d
+GD_KT	./inc/memlayout.h	15;"	d
+GD_TSS0	./inc/memlayout.h	19;"	d
+GD_UD	./inc/memlayout.h	18;"	d
+GD_UT	./inc/memlayout.h	17;"	d
+Gatedesc	./inc/mmu.h	/^struct Gatedesc {$/;"	s
+ICRHI	./kern/lapic.c	32;"	d	file:
+ICRLO	./kern/lapic.c	21;"	d	file:
+ID	./kern/lapic.c	14;"	d	file:
+IMAGES	./GNUmakefile	/^IMAGES = $(OBJDIR)\/kern\/kernel.img$/;"	m
+INIT	./kern/lapic.c	22;"	d	file:
+IOPHYSMEM	./inc/memlayout.h	92;"	d
+IO_PIC1	./kern/picirq.h	12;"	d
+IO_PIC2	./kern/picirq.h	13;"	d
+IO_RTC	./kern/kclock.h	9;"	d
+IO_RTC	./kern/lapic.c	137;"	d	file:
+IRQ_ERROR	./inc/trap.h	40;"	d
+IRQ_IDE	./inc/trap.h	39;"	d
+IRQ_KBD	./inc/trap.h	36;"	d
+IRQ_OFFSET	./inc/trap.h	32;"	d
+IRQ_SERIAL	./inc/trap.h	37;"	d
+IRQ_SLAVE	./kern/picirq.h	15;"	d
+IRQ_SPURIOUS	./inc/trap.h	38;"	d
+IRQ_TIMER	./inc/trap.h	35;"	d
+JOS_INC_ASSERT_H	./inc/assert.h	4;"	d
+JOS_INC_CPU_H	./kern/cpu.h	3;"	d
+JOS_INC_ELF_H	./inc/elf.h	2;"	d
+JOS_INC_ENV_H	./inc/env.h	4;"	d
+JOS_INC_ERROR_H	./inc/error.h	4;"	d
+JOS_INC_LIB_H	./inc/lib.h	8;"	d
+JOS_INC_MEMLAYOUT_H	./inc/memlayout.h	2;"	d
+JOS_INC_MMU_H	./inc/mmu.h	2;"	d
+JOS_INC_SPINLOCK_H	./kern/spinlock.h	2;"	d
+JOS_INC_STDARG_H	./inc/stdarg.h	4;"	d
+JOS_INC_STDIO_H	./inc/stdio.h	2;"	d
+JOS_INC_STRING_H	./inc/string.h	2;"	d
+JOS_INC_SYSCALL_H	./inc/syscall.h	2;"	d
+JOS_INC_TRAP_H	./inc/trap.h	2;"	d
+JOS_INC_TYPES_H	./inc/types.h	2;"	d
+JOS_INC_X86_H	./inc/x86.h	2;"	d
+JOS_KBDREG_H	./inc/kbdreg.h	2;"	d
+JOS_KERN_ENV_H	./kern/env.h	4;"	d
+JOS_KERN_KCLOCK_H	./kern/kclock.h	4;"	d
+JOS_KERN_KDEBUG_H	./kern/kdebug.h	2;"	d
+JOS_KERN_MONITOR_H	./kern/monitor.h	2;"	d
+JOS_KERN_PICIRQ_H	./kern/picirq.h	4;"	d
+JOS_KERN_PMAP_H	./kern/pmap.h	4;"	d
+JOS_KERN_SCHED_H	./kern/sched.h	4;"	d
+JOS_KERN_SYSCALL_H	./kern/syscall.h	2;"	d
+JOS_KERN_TRAP_H	./kern/trap.h	4;"	d
+JOS_STAB_H	./inc/stab.h	2;"	d
+KADDR	./kern/pmap.h	38;"	d
+KBCMDP	./inc/kbdreg.h	29;"	d
+KBC_AUXDISABLE	./inc/kbdreg.h	32;"	d
+KBC_AUXECHO	./inc/kbdreg.h	36;"	d
+KBC_AUXENABLE	./inc/kbdreg.h	33;"	d
+KBC_AUXTEST	./inc/kbdreg.h	34;"	d
+KBC_AUXWRITE	./inc/kbdreg.h	37;"	d
+KBC_DISABLE	./inc/kbdreg.h	66;"	d
+KBC_ECHO	./inc/kbdreg.h	71;"	d
+KBC_ENABLE	./inc/kbdreg.h	67;"	d
+KBC_KBDDISABLE	./inc/kbdreg.h	40;"	d
+KBC_KBDECHO	./inc/kbdreg.h	35;"	d
+KBC_KBDENABLE	./inc/kbdreg.h	41;"	d
+KBC_KBDTEST	./inc/kbdreg.h	39;"	d
+KBC_MODEIND	./inc/kbdreg.h	70;"	d
+KBC_PULSE0	./inc/kbdreg.h	42;"	d
+KBC_PULSE1	./inc/kbdreg.h	43;"	d
+KBC_PULSE2	./inc/kbdreg.h	44;"	d
+KBC_PULSE3	./inc/kbdreg.h	45;"	d
+KBC_RAMREAD	./inc/kbdreg.h	30;"	d
+KBC_RAMWRITE	./inc/kbdreg.h	31;"	d
+KBC_RESEND	./inc/kbdreg.h	64;"	d
+KBC_RESET	./inc/kbdreg.h	63;"	d
+KBC_SELFTEST	./inc/kbdreg.h	38;"	d
+KBC_SETDEFAULT	./inc/kbdreg.h	65;"	d
+KBC_SETTABLE	./inc/kbdreg.h	69;"	d
+KBC_TYPEMATIC	./inc/kbdreg.h	68;"	d
+KBDATAP	./inc/kbdreg.h	47;"	d
+KBOUTP	./inc/kbdreg.h	48;"	d
+KBR_ACK	./inc/kbdreg.h	76;"	d
+KBR_BREAK	./inc/kbdreg.h	79;"	d
+KBR_ECHO	./inc/kbdreg.h	81;"	d
+KBR_EXTENDED	./inc/kbdreg.h	74;"	d
+KBR_FAILURE	./inc/kbdreg.h	78;"	d
+KBR_OVERRUN	./inc/kbdreg.h	77;"	d
+KBR_RESEND	./inc/kbdreg.h	75;"	d
+KBR_RSTDONE	./inc/kbdreg.h	80;"	d
+KBSTATP	./inc/kbdreg.h	19;"	d
+KBS_DIB	./inc/kbdreg.h	20;"	d
+KBS_IBF	./inc/kbdreg.h	21;"	d
+KBS_NOSEC	./inc/kbdreg.h	24;"	d
+KBS_OCMD	./inc/kbdreg.h	23;"	d
+KBS_PERR	./inc/kbdreg.h	27;"	d
+KBS_RERR	./inc/kbdreg.h	26;"	d
+KBS_TERR	./inc/kbdreg.h	25;"	d
+KBS_WARM	./inc/kbdreg.h	22;"	d
+KC8_CPU	./inc/kbdreg.h	57;"	d
+KC8_IGNSEC	./inc/kbdreg.h	56;"	d
+KC8_KDISABLE	./inc/kbdreg.h	55;"	d
+KC8_KENABLE	./inc/kbdreg.h	59;"	d
+KC8_MDISABLE	./inc/kbdreg.h	54;"	d
+KC8_MENABLE	./inc/kbdreg.h	58;"	d
+KC8_TRANS	./inc/kbdreg.h	53;"	d
+KERNBASE	./inc/memlayout.h	87;"	d
+KERN_CFLAGS	./GNUmakefile	/^KERN_CFLAGS := $(CFLAGS) -DJOS_KERNEL -gstabs$/;"	m
+KEY_DEL	./inc/kbdreg.h	14;"	d
+KEY_DN	./inc/kbdreg.h	8;"	d
+KEY_END	./inc/kbdreg.h	6;"	d
+KEY_HOME	./inc/kbdreg.h	5;"	d
+KEY_INS	./inc/kbdreg.h	13;"	d
+KEY_LF	./inc/kbdreg.h	9;"	d
+KEY_PGDN	./inc/kbdreg.h	12;"	d
+KEY_PGUP	./inc/kbdreg.h	11;"	d
+KEY_RT	./inc/kbdreg.h	10;"	d
+KEY_UP	./inc/kbdreg.h	7;"	d
+KSTACKTOP	./inc/memlayout.h	96;"	d
+KSTKGAP	./inc/memlayout.h	98;"	d
+KSTKSIZE	./inc/memlayout.h	97;"	d
+K_LDCMDBYTE	./inc/kbdreg.h	51;"	d
+K_RDCMDBYTE	./inc/kbdreg.h	50;"	d
+LAB	./conf/lab.mk	/^LAB=4$/;"	m
+LABSETUP	./GNUmakefile	/^LABSETUP ?= .\/$/;"	m
+LD	./GNUmakefile	/^LD	:= $(GCCPREFIX)ld$/;"	m
+LDFLAGS	./GNUmakefile	/^LDFLAGS := -m elf_i386$/;"	m
+LEVEL	./kern/lapic.c	27;"	d	file:
+LINT0	./kern/lapic.c	37;"	d	file:
+LINT1	./kern/lapic.c	38;"	d	file:
+LOAD_REGS	./user/faultregs.c	23;"	d	file:
+LOG2NENV	./inc/env.h	28;"	d
+MAKE_TIMESTAMP	./gradelib.py	/^MAKE_TIMESTAMP = 0$/;"	v
+MASKED	./kern/lapic.c	40;"	d	file:
+MAX	./inc/types.h	49;"	d
+MAXARGS	./homework/hw2-shell/sh.c	13;"	d	file:
+MAXARGS	./kern/monitor.c	258;"	d	file:
+MAXERROR	./inc/error.h	/^	MAXERROR$/;"	e	enum:__anon4
+MAX_IRQS	./kern/picirq.h	9;"	d
+MC_NVRAM_SIZE	./kern/kclock.h	12;"	d
+MC_NVRAM_START	./kern/kclock.h	11;"	d
+MIN	./inc/types.h	43;"	d
+MMIOBASE	./inc/memlayout.h	102;"	d
+MMIOLIM	./inc/memlayout.h	101;"	d
+MONO_BASE	./kern/console.h	11;"	d
+MONO_BUF	./kern/console.h	12;"	d
+MON_CMD_DECL	./kern/monitor.h	14;"	d
+MON_CMD_DECL	./kern/monitor.h	29;"	d
+MPBOOTPHYS	./kern/mpentry.S	/^#define MPBOOTPHYS(s) ((s) - mpentry_start + MPENTRY_PADDR)$/;"	d
+MPBUS	./kern/mpconfig.c	67;"	d	file:
+MPENTRY_PADDR	./inc/memlayout.h	142;"	d
+MPIOAPIC	./kern/mpconfig.c	68;"	d	file:
+MPIOINTR	./kern/mpconfig.c	69;"	d	file:
+MPLINTR	./kern/mpconfig.c	70;"	d	file:
+MPPROC	./kern/mpconfig.c	66;"	d	file:
+MPPROC_BOOT	./kern/mpconfig.c	63;"	d	file:
+MULTIBOOT_HEADER_FLAGS	./kern/entry.S	/^#define MULTIBOOT_HEADER_FLAGS (0)$/;"	d
+MULTIBOOT_HEADER_MAGIC	./kern/entry.S	/^#define MULTIBOOT_HEADER_MAGIC (0x1BADB002)$/;"	d
+NATIVE_CFLAGS	./GNUmakefile	/^NATIVE_CFLAGS := $(CFLAGS) $(DEFS) $(LABDEFS) -I$(TOP) -MD -Wall$/;"	m
+NBUCKET	./ph.c	9;"	d	file:
+NCC	./GNUmakefile	/^NCC	:= gcc $(CC_VER) -pipe$/;"	m
+NCOMMANDS	./kern/monitor.c	35;"	d	file:
+NCPU	./kern/cpu.h	11;"	d
+NENV	./inc/env.h	29;"	d
+NKEYS	./ph.c	10;"	d	file:
+NM	./GNUmakefile	/^NM	:= $(GCCPREFIX)nm$/;"	m
+NO	./kern/console.c	215;"	d	file:
+NPDENTRIES	./inc/mmu.h	45;"	d
+NPTENTRIES	./inc/mmu.h	46;"	d
+NSYSCALLS	./inc/syscall.h	/^	NSYSCALLS$/;"	e	enum:__anon3
+NULL	./inc/stdio.h	7;"	d
+NULL	./inc/types.h	5;"	d
+NUMLOCK	./kern/console.c	222;"	d	file:
+NVRAM_BASEHI	./kern/kclock.h	16;"	d
+NVRAM_BASELO	./kern/kclock.h	15;"	d
+NVRAM_CENTURY	./kern/kclock.h	27;"	d
+NVRAM_EXTHI	./kern/kclock.h	20;"	d
+NVRAM_EXTLO	./kern/kclock.h	19;"	d
+NVRAM_PEXTHI	./kern/kclock.h	24;"	d
+NVRAM_PEXTLO	./kern/kclock.h	23;"	d
+N_BCOMM	./inc/stab.h	37;"	d
+N_BINCL	./inc/stab.h	29;"	d
+N_BSLINE	./inc/stab.h	25;"	d
+N_DSLINE	./inc/stab.h	24;"	d
+N_ECOML	./inc/stab.h	39;"	d
+N_ECOMM	./inc/stab.h	38;"	d
+N_EINCL	./inc/stab.h	32;"	d
+N_ENTRY	./inc/stab.h	33;"	d
+N_EXCL	./inc/stab.h	35;"	d
+N_FNAME	./inc/stab.h	16;"	d
+N_FUN	./inc/stab.h	17;"	d
+N_GSYM	./inc/stab.h	15;"	d
+N_LBRAC	./inc/stab.h	34;"	d
+N_LCSYM	./inc/stab.h	19;"	d
+N_LENG	./inc/stab.h	40;"	d
+N_LSYM	./inc/stab.h	28;"	d
+N_MAIN	./inc/stab.h	20;"	d
+N_PC	./inc/stab.h	21;"	d
+N_PSYM	./inc/stab.h	31;"	d
+N_RBRAC	./inc/stab.h	36;"	d
+N_RSYM	./inc/stab.h	22;"	d
+N_SLINE	./inc/stab.h	23;"	d
+N_SO	./inc/stab.h	27;"	d
+N_SOL	./inc/stab.h	30;"	d
+N_SSYM	./inc/stab.h	26;"	d
+N_STSYM	./inc/stab.h	18;"	d
+OBJCOPY	./GNUmakefile	/^OBJCOPY	:= $(GCCPREFIX)objcopy$/;"	m
+OBJDIR	./GNUmakefile	/^OBJDIR := obj$/;"	m
+OBJDIRS	./GNUmakefile	/^OBJDIRS :=$/;"	m
+OBJDUMP	./GNUmakefile	/^OBJDUMP	:= $(GCCPREFIX)objdump$/;"	m
+OTHERS	./kern/lapic.c	29;"	d	file:
+O_ACCMODE	./inc/lib.h	86;"	d
+O_CREAT	./inc/lib.h	88;"	d
+O_EXCL	./inc/lib.h	90;"	d
+O_MKDIR	./inc/lib.h	91;"	d
+O_RDONLY	./inc/lib.h	83;"	d
+O_RDWR	./inc/lib.h	85;"	d
+O_TRUNC	./inc/lib.h	89;"	d
+O_WRONLY	./inc/lib.h	84;"	d
+PACKAGEDATE	./conf/lab.mk	/^PACKAGEDATE=Wed Oct 8 09:40:26 EDT 2014$/;"	m
+PADDR	./kern/pmap.h	26;"	d
+PATH	./homework/hw2-shell/sh.c	/^char * PATH[] = {$/;"	v
+PCINT	./kern/lapic.c	36;"	d	file:
+PDX	./inc/mmu.h	33;"	d
+PDXSHIFT	./inc/mmu.h	55;"	d
+PERIODIC	./kern/lapic.c	35;"	d	file:
+PERL	./GNUmakefile	/^PERL	:= perl$/;"	m
+PFTEMP	./inc/memlayout.h	137;"	d
+PGADDR	./inc/mmu.h	42;"	d
+PGNUM	./inc/mmu.h	30;"	d
+PGOFF	./inc/mmu.h	39;"	d
+PGSHIFT	./inc/mmu.h	49;"	d
+PGSIZE	./inc/mmu.h	48;"	d
+PTE_A	./inc/mmu.h	63;"	d
+PTE_ADDR	./inc/mmu.h	76;"	d
+PTE_AVAIL	./inc/mmu.h	70;"	d
+PTE_COW	./lib/fork.c	8;"	d	file:
+PTE_D	./inc/mmu.h	64;"	d
+PTE_G	./inc/mmu.h	66;"	d
+PTE_P	./inc/mmu.h	58;"	d
+PTE_PCD	./inc/mmu.h	62;"	d
+PTE_PS	./inc/mmu.h	65;"	d
+PTE_PWT	./inc/mmu.h	61;"	d
+PTE_SHARE	./inc/lib.h	76;"	d
+PTE_SYSCALL	./inc/mmu.h	73;"	d
+PTE_U	./inc/mmu.h	60;"	d
+PTE_W	./inc/mmu.h	59;"	d
+PTSHIFT	./inc/mmu.h	52;"	d
+PTSIZE	./inc/mmu.h	51;"	d
+PTX	./inc/mmu.h	36;"	d
+PTXSHIFT	./inc/mmu.h	54;"	d
+PageInfo	./inc/memlayout.h	/^struct PageInfo {$/;"	s
+Proghdr	./inc/elf.h	/^struct Proghdr {$/;"	s
+Pseudodesc	./inc/mmu.h	/^struct Pseudodesc {$/;"	s
+PushRegs	./inc/trap.h	/^struct PushRegs {$/;"	s
+QEMU	./GNUmakefile	/^QEMU := $(shell if which qemu > \/dev\/null; \\$/;"	m
+QEMU	./gradelib.py	/^class QEMU(object):$/;"	c
+QEMUOPTS	./GNUmakefile	/^QEMUOPTS = -hda $(OBJDIR)\/kern\/kernel.img -serial mon:stdio -gdb tcp::$(GDBPORT)$/;"	m
+RELOC	./kern/entry.S	/^#define	RELOC(x) ((x) - KERNBASE)$/;"	d
+RELOC	./kern/mpentry.S	/^#define RELOC(x) ((x) - KERNBASE)$/;"	d
+ROUNDDOWN	./inc/types.h	58;"	d
+ROUNDUP	./inc/types.h	64;"	d
+Runner	./gradelib.py	/^class Runner():$/;"	c
+SAVE_REGS	./user/faultregs.c	13;"	d	file:
+SCROLLLOCK	./kern/console.c	223;"	d	file:
+SECTSIZE	./boot/main.c	32;"	d	file:
+SEG	./inc/mmu.h	142;"	d
+SEG	./inc/mmu.h	172;"	d
+SEG16	./inc/mmu.h	176;"	d
+SEG_FAULT	./inc/mmu.h	170;"	d
+SEG_NULL	./inc/mmu.h	139;"	d
+SEG_NULL	./inc/mmu.h	168;"	d
+SETCALLGATE	./inc/mmu.h	296;"	d
+SETGATE	./inc/mmu.h	282;"	d
+SHIFT	./kern/console.c	217;"	d	file:
+SOL	./ph.c	8;"	d	file:
+SRL	./kern/entry.S	/^#define SRL(val, shamt)		(((val) >> (shamt)) & ~(-1 << (32 - (shamt))))$/;"	d
+STARTUP	./kern/lapic.c	23;"	d	file:
+STA_A	./inc/mmu.h	189;"	d
+STA_C	./inc/mmu.h	186;"	d
+STA_E	./inc/mmu.h	185;"	d
+STA_R	./inc/mmu.h	188;"	d
+STA_W	./inc/mmu.h	187;"	d
+STA_X	./inc/mmu.h	184;"	d
+STS_CG16	./inc/mmu.h	195;"	d
+STS_CG32	./inc/mmu.h	201;"	d
+STS_IG16	./inc/mmu.h	197;"	d
+STS_IG32	./inc/mmu.h	202;"	d
+STS_LDT	./inc/mmu.h	193;"	d
+STS_T16A	./inc/mmu.h	192;"	d
+STS_T16B	./inc/mmu.h	194;"	d
+STS_T32A	./inc/mmu.h	199;"	d
+STS_T32B	./inc/mmu.h	200;"	d
+STS_TG	./inc/mmu.h	196;"	d
+STS_TG16	./inc/mmu.h	198;"	d
+STS_TG32	./inc/mmu.h	203;"	d
+SVR	./kern/lapic.c	18;"	d	file:
+SYS_cgetc	./inc/syscall.h	/^	SYS_cgetc,$/;"	e	enum:__anon3
+SYS_cputs	./inc/syscall.h	/^	SYS_cputs = 0,$/;"	e	enum:__anon3
+SYS_env_destroy	./inc/syscall.h	/^	SYS_env_destroy,$/;"	e	enum:__anon3
+SYS_env_set_pgfault_upcall	./inc/syscall.h	/^	SYS_env_set_pgfault_upcall,$/;"	e	enum:__anon3
+SYS_env_set_status	./inc/syscall.h	/^	SYS_env_set_status,$/;"	e	enum:__anon3
+SYS_exofork	./inc/syscall.h	/^	SYS_exofork,$/;"	e	enum:__anon3
+SYS_getenvid	./inc/syscall.h	/^	SYS_getenvid,$/;"	e	enum:__anon3
+SYS_ipc_recv	./inc/syscall.h	/^	SYS_ipc_recv,$/;"	e	enum:__anon3
+SYS_ipc_try_send	./inc/syscall.h	/^	SYS_ipc_try_send,$/;"	e	enum:__anon3
+SYS_page_alloc	./inc/syscall.h	/^	SYS_page_alloc,$/;"	e	enum:__anon3
+SYS_page_map	./inc/syscall.h	/^	SYS_page_map,$/;"	e	enum:__anon3
+SYS_page_unmap	./inc/syscall.h	/^	SYS_page_unmap,$/;"	e	enum:__anon3
+SYS_yield	./inc/syscall.h	/^	SYS_yield,$/;"	e	enum:__anon3
+Secthdr	./inc/elf.h	/^struct Secthdr {$/;"	s
+Segdesc	./inc/mmu.h	/^struct Segdesc {$/;"	s
+Stab	./inc/stab.h	/^struct Stab {$/;"	s
+TAR	./GNUmakefile	/^TAR	:= gtar$/;"	m
+TCCR	./kern/lapic.c	42;"	d	file:
+TDCR	./kern/lapic.c	43;"	d	file:
+TEMP_ADDR	./user/sendpage.c	9;"	d	file:
+TEMP_ADDR_CHILD	./user/sendpage.c	10;"	d	file:
+TESTS	./gradelib.py	/^TESTS = []$/;"	v
+TICR	./kern/lapic.c	41;"	d	file:
+TIMER	./kern/lapic.c	33;"	d	file:
+TOP	./GNUmakefile	/^TOP = .$/;"	m
+TPR	./kern/lapic.c	16;"	d	file:
+TRAPHANDLER	./kern/trapentry.S	/^#define TRAPHANDLER(name, num)						\\$/;"	d
+TRAPHANDLER_NOEC	./kern/trapentry.S	/^#define TRAPHANDLER_NOEC(name, num)					\\$/;"	d
+T_ALIGN	./inc/trap.h	23;"	d
+T_BOUND	./inc/trap.h	11;"	d
+T_BRKPT	./inc/trap.h	9;"	d
+T_DBLFLT	./inc/trap.h	14;"	d
+T_DEBUG	./inc/trap.h	7;"	d
+T_DEFAULT	./inc/trap.h	30;"	d
+T_DEVICE	./inc/trap.h	13;"	d
+T_DIVIDE	./inc/trap.h	6;"	d
+T_FPERR	./inc/trap.h	22;"	d
+T_GPFLT	./inc/trap.h	19;"	d
+T_ILLOP	./inc/trap.h	12;"	d
+T_MCHK	./inc/trap.h	24;"	d
+T_NMI	./inc/trap.h	8;"	d
+T_OFLOW	./inc/trap.h	10;"	d
+T_PGFLT	./inc/trap.h	20;"	d
+T_SEGNP	./inc/trap.h	17;"	d
+T_SIMDERR	./inc/trap.h	25;"	d
+T_STACK	./inc/trap.h	18;"	d
+T_SYSCALL	./inc/trap.h	29;"	d
+T_TSS	./inc/trap.h	16;"	d
+Taskstate	./inc/mmu.h	/^struct Taskstate {$/;"	s
+TerminateTest	./gradelib.py	/^class TerminateTest(Exception):$/;"	c
+Trapframe	./inc/trap.h	/^struct Trapframe {$/;"	s
+UENVS	./inc/memlayout.h	116;"	d
+ULDFLAGS	./GNUmakefile	/^ULDFLAGS := -T user\/user.ld$/;"	m
+ULIM	./inc/memlayout.h	104;"	d
+UPAGES	./inc/memlayout.h	114;"	d
+USED	./inc/lib.h	21;"	d
+USER_CFLAGS	./GNUmakefile	/^USER_CFLAGS := $(CFLAGS) -DJOS_USER -gstabs$/;"	m
+USTABDATA	./inc/memlayout.h	139;"	d
+USTACKTOP	./inc/memlayout.h	128;"	d
+UTEMP	./inc/memlayout.h	134;"	d
+UTEXT	./inc/memlayout.h	131;"	d
+UTOP	./inc/memlayout.h	123;"	d
+UTrapframe	./inc/trap.h	/^struct UTrapframe {$/;"	s
+UVPT	./inc/memlayout.h	112;"	d
+UXSTACKTOP	./inc/memlayout.h	125;"	d
+UserStabData	./kern/kdebug.c	/^struct UserStabData {$/;"	s	file:
+V	./conf/env.mk	/^V = @$/;"	m
+VER	./kern/lapic.c	15;"	d	file:
+WEBSUB	./GNUmakefile	/^WEBSUB = https:\/\/ccutler.scripts.mit.edu\/6.828\/handin.py$/;"	m
+WHITESPACE	./kern/monitor.c	257;"	d	file:
+X1	./kern/lapic.c	34;"	d	file:
+_CONSOLE_H_	./kern/console.h	4;"	d
+_GDBPORT	./gradelib.py	/^    _GDBPORT = None$/;"	v	class:QEMU
+__all__	./gradelib.py	/^__all__ = []$/;"	v
+__init__	./gradelib.py	/^    def __init__(self, *default_monitors):$/;"	m	class:Runner
+__init__	./gradelib.py	/^    def __init__(self, *make_args):$/;"	m	class:QEMU
+__init__	./gradelib.py	/^    def __init__(self, port, timeout=15):$/;"	m	class:GDBClient
+__monitor_start	./gradelib.py	/^    def __monitor_start(self, output):$/;"	m	class:Runner	file:
+__react	./gradelib.py	/^    def __react(self, reactors, timeout):$/;"	m	class:Runner	file:
+__send	./gradelib.py	/^    def __send(self, cmd):$/;"	m	class:GDBClient	file:
+__send_break	./gradelib.py	/^    def __send_break(self):$/;"	m	class:GDBClient	file:
+__spin_initlock	./kern/spinlock.c	/^__spin_initlock(struct spinlock *lk, char *name)$/;"	f
+_alltraps	./kern/trapentry.S	/^_alltraps:$/;"	l
+_kaddr	./kern/pmap.h	/^_kaddr(const char *file, int line, physaddr_t pa)$/;"	f
+_paddr	./kern/pmap.h	/^_paddr(const char *file, int line, void *kva)$/;"	f
+_panic	./kern/init.c	/^_panic(const char *file, int line, const char *fmt,...)$/;"	f
+_panic	./lib/panic.c	/^_panic(const char *file, int line, const char *fmt, ...)$/;"	f
+_pgfault_handler	./lib/pgfault.c	/^void (*_pgfault_handler)(struct UTrapframe *utf);$/;"	v
+_pgfault_upcall	./lib/pfentry.S	/^_pgfault_upcall:$/;"	l
+_start	./kern/entry.S	/^_start = RELOC(entry)$/;"	d
+_start	./lib/entry.S	/^_start:$/;"	l
+_user_mem_check	./kern/pmap.c	/^_user_mem_check(struct Env *env, const void* va, int perm)$/;"	f	file:
+_warn	./kern/init.c	/^_warn(const char *file, int line, const char *fmt,...)$/;"	f
+addr_6845	./kern/console.c	/^static unsigned addr_6845;$/;"	v	file:
+after	./user/faultregs.c	/^static struct regs before, during, after;$/;"	v	typeref:struct:	file:
+apicid	./kern/mpconfig.c	/^	uint8_t apicid;                 \/\/ local APIC id$/;"	m	struct:mpproc	file:
+args_exist	./lib/entry.S	/^args_exist:$/;"	l
+argv	./homework/hw2-shell/sh.c	/^  char *argv[MAXARGS];   \/\/ arguments to the command to be exec-ed$/;"	m	struct:execcmd	file:
+assert	./inc/assert.h	14;"	d
+assert_equal	./gradelib.py	/^def assert_equal(got, expect, msg=""):$/;"	f
+assert_lines_match	./gradelib.py	/^def assert_lines_match(text, *regexps, **kw):$/;"	f
+assert_lines_match_kw	./gradelib.py	/^    def assert_lines_match_kw(no=[]):$/;"	f	function:assert_lines_match
+backtrace	./kern/monitor.h	/^MON_CMD_DECL(backtrace);$/;"	v
+before	./user/faultregs.c	/^static struct regs before, during, after;$/;"	v	typeref:struct:regs	file:
+bigarray	./user/testbss.c	/^uint32_t bigarray[ARRAYSIZE];$/;"	v
+binaryname	./lib/libmain.c	/^const char *binaryname = "<unknown>";$/;"	v
+bool	./inc/types.h	/^typedef _Bool bool;$/;"	t
+boot_alloc	./kern/pmap.c	/^boot_alloc(uint32_t n)$/;"	f	file:
+boot_aps	./kern/init.c	/^boot_aps(void)$/;"	f	file:
+boot_map_region	./kern/pmap.c	/^boot_map_region(pde_t *pgdir, uintptr_t va, size_t size, physaddr_t pa, int perm)$/;"	f	file:
+bootcpu	./kern/mpconfig.c	/^struct CpuInfo *bootcpu;$/;"	v	typeref:struct:CpuInfo
+bootmain	./boot/main.c	/^bootmain(void)$/;"	f
+bootstack	./kern/entry.S	/^bootstack:$/;"	l
+bootstacktop	./kern/entry.S	/^bootstacktop:$/;"	l
+breakpoint	./gradelib.py	/^    def breakpoint(self, addr):$/;"	m	class:GDBClient
+breakpoint	./inc/x86.h	/^breakpoint(void)$/;"	f
+buf	./kern/console.c	/^	uint8_t buf[CONSBUFSIZE];$/;"	m	struct:__anon7	file:
+buf	./lib/printf.c	/^	char buf[256];$/;"	m	struct:printbuf	file:
+buf	./lib/printfmt.c	/^	char *buf;$/;"	m	struct:sprintbuf	file:
+buf	./lib/readline.c	/^static char buf[BUFLEN];$/;"	v	file:
+call_on_line	./gradelib.py	/^def call_on_line(regexp, callback):$/;"	f
+cga_init	./kern/console.c	/^cga_init(void)$/;"	f	file:
+cga_putc	./kern/console.c	/^cga_putc(int c)$/;"	f	file:
+changeperms	./kern/monitor.h	/^MON_CMD_DECL(changeperms);$/;"	v
+charcode	./kern/console.c	/^static uint8_t *charcode[4] = {$/;"	v	file:
+check_kern_pgdir	./kern/pmap.c	/^check_kern_pgdir(void)$/;"	f	file:
+check_page	./kern/pmap.c	/^check_page(void)$/;"	f	file:
+check_page_alloc	./kern/pmap.c	/^check_page_alloc(void)$/;"	f	file:
+check_page_free_list	./kern/pmap.c	/^check_page_free_list(bool only_low_memory)$/;"	f	file:
+check_page_installed_pgdir	./kern/pmap.c	/^check_page_installed_pgdir(void)$/;"	f	file:
+check_regs	./user/faultregs.c	/^check_regs(struct regs* a, const char *an, struct regs* b, const char *bn,$/;"	f	file:
+check_va2pa	./kern/pmap.c	/^check_va2pa(pde_t *pgdir, uintptr_t va)$/;"	f	file:
+checksum	./kern/mpconfig.c	/^	uint8_t checksum;               \/\/ all bytes must add up to 0$/;"	m	struct:mp	file:
+checksum	./kern/mpconfig.c	/^	uint8_t checksum;               \/\/ all bytes must add up to 0$/;"	m	struct:mpconf	file:
+close	./gradelib.py	/^    def close(self):$/;"	m	class:GDBClient
+cmd	./homework/hw2-shell/sh.c	/^  struct cmd *cmd;   \/\/ the command to be run (e.g., an execcmd)$/;"	m	struct:redircmd	typeref:struct:redircmd::cmd	file:
+cmd	./homework/hw2-shell/sh.c	/^struct cmd {$/;"	s	file:
+cnt	./lib/printf.c	/^	int cnt;	\/\/ total bytes printed so far$/;"	m	struct:printbuf	file:
+cnt	./lib/printfmt.c	/^	int cnt;$/;"	m	struct:sprintbuf	file:
+color	./gradelib.py	/^def color(name, text):$/;"	f
+commands	./kern/monitor.c	/^static struct Command commands[] = {$/;"	v	typeref:struct:Command	file:
+cons	./kern/console.c	/^} cons;$/;"	v	typeref:struct:__anon7	file:
+cons_getc	./kern/console.c	/^cons_getc(void)$/;"	f
+cons_init	./kern/console.c	/^cons_init(void)$/;"	f
+cons_intr	./kern/console.c	/^cons_intr(int (*proc)(void))$/;"	f	file:
+cons_putc	./kern/console.c	/^cons_putc(int c)$/;"	f	file:
+cont	./gradelib.py	/^    def cont(self):$/;"	m	class:GDBClient
+counter	./user/stresssched.c	/^volatile int counter;$/;"	v
+cprintf	./kern/printf.c	/^cprintf(const char *fmt, ...)$/;"	f
+cprintf	./lib/printf.c	/^cprintf(const char *fmt, ...)$/;"	f
+cpu	./kern/spinlock.h	/^	struct CpuInfo *cpu;   \/\/ The CPU holding the lock.$/;"	m	struct:spinlock	typeref:struct:spinlock::CpuInfo
+cpu_env	./kern/cpu.h	/^	struct Env *cpu_env;            \/\/ The currently-running environment.$/;"	m	struct:CpuInfo	typeref:struct:CpuInfo::Env
+cpu_id	./kern/cpu.h	/^	uint8_t cpu_id;                 \/\/ Local APIC ID; index into cpus[] below$/;"	m	struct:CpuInfo
+cpu_status	./kern/cpu.h	/^	volatile unsigned cpu_status;   \/\/ The status of the CPU$/;"	m	struct:CpuInfo
+cpu_ts	./kern/cpu.h	/^	struct Taskstate cpu_ts;        \/\/ Used by x86 to find stack for interrupt$/;"	m	struct:CpuInfo	typeref:struct:CpuInfo::Taskstate
+cpuid	./inc/x86.h	/^cpuid(uint32_t info, uint32_t *eaxp, uint32_t *ebxp, uint32_t *ecxp, uint32_t *edxp)$/;"	f
+cpunum	./kern/lapic.c	/^cpunum(void)$/;"	f
+cpus	./kern/mpconfig.c	/^struct CpuInfo cpus[NCPU];$/;"	v	typeref:struct:CpuInfo
+cputchar	./kern/console.c	/^cputchar(int c)$/;"	f
+cputchar	./lib/console.c	/^cputchar(int ch)$/;"	f
+crt_buf	./kern/console.c	/^static uint16_t *crt_buf;$/;"	v	file:
+crt_pos	./kern/console.c	/^static uint16_t crt_pos;$/;"	v	file:
+ctlmap	./kern/console.c	/^static uint8_t ctlmap[256] =$/;"	v	file:
+curenv	./kern/env.h	10;"	d
+debuginfo_eip	./kern/kdebug.c	/^debuginfo_eip(uintptr_t addr, struct Eipdebuginfo *info)$/;"	f
+delay	./kern/console.c	/^delay(void)$/;"	f	file:
+desc	./kern/monitor.c	/^	const char *desc;$/;"	m	struct:Command	file:
+didinit	./kern/picirq.c	/^static bool didinit;$/;"	v	file:
+done	./ph.c	/^volatile int done;$/;"	v
+dumbfork	./user/dumbfork.c	/^dumbfork(void)$/;"	f
+dump_contents_p	./kern/monitor.c	/^dump_contents_p(physaddr_t pa1, physaddr_t pa2) $/;"	f	file:
+dump_contents_v	./kern/monitor.c	/^dump_contents_v(void* va1, void* va2) $/;"	f	file:
+dumpcontents	./kern/monitor.h	/^MON_CMD_DECL(dumpcontents);$/;"	v
+duppage	./lib/fork.c	/^duppage(envid_t envid, unsigned pn)$/;"	f	file:
+duppage	./user/dumbfork.c	/^duppage(envid_t dstenv, void *addr)$/;"	f
+during	./user/faultregs.c	/^static struct regs before, during, after;$/;"	v	typeref:struct:	file:
+e_ehsize	./inc/elf.h	/^	uint16_t e_ehsize;$/;"	m	struct:Elf
+e_elf	./inc/elf.h	/^	uint8_t e_elf[12];$/;"	m	struct:Elf
+e_entry	./inc/elf.h	/^	uint32_t e_entry;$/;"	m	struct:Elf
+e_flags	./inc/elf.h	/^	uint32_t e_flags;$/;"	m	struct:Elf
+e_machine	./inc/elf.h	/^	uint16_t e_machine;$/;"	m	struct:Elf
+e_magic	./inc/elf.h	/^	uint32_t e_magic;	\/\/ must equal ELF_MAGIC$/;"	m	struct:Elf
+e_phentsize	./inc/elf.h	/^	uint16_t e_phentsize;$/;"	m	struct:Elf
+e_phnum	./inc/elf.h	/^	uint16_t e_phnum;$/;"	m	struct:Elf
+e_phoff	./inc/elf.h	/^	uint32_t e_phoff;$/;"	m	struct:Elf
+e_shentsize	./inc/elf.h	/^	uint16_t e_shentsize;$/;"	m	struct:Elf
+e_shnum	./inc/elf.h	/^	uint16_t e_shnum;$/;"	m	struct:Elf
+e_shoff	./inc/elf.h	/^	uint32_t e_shoff;$/;"	m	struct:Elf
+e_shstrndx	./inc/elf.h	/^	uint16_t e_shstrndx;$/;"	m	struct:Elf
+e_type	./inc/elf.h	/^	uint16_t e_type;$/;"	m	struct:Elf
+e_version	./inc/elf.h	/^	uint32_t e_version;$/;"	m	struct:Elf
+ebuf	./lib/printfmt.c	/^	char *ebuf;$/;"	m	struct:sprintbuf	file:
+eflags	./user/faultregs.c	/^	uint32_t eflags;$/;"	m	struct:regs	file:
+eip	./user/faultregs.c	/^	uintptr_t eip;$/;"	m	struct:regs	file:
+eip_file	./kern/kdebug.h	/^	const char *eip_file;		\/\/ Source code filename for EIP$/;"	m	struct:Eipdebuginfo
+eip_fn_addr	./kern/kdebug.h	/^	uintptr_t eip_fn_addr;		\/\/ Address of start of function$/;"	m	struct:Eipdebuginfo
+eip_fn_name	./kern/kdebug.h	/^	const char *eip_fn_name;	\/\/ Name of function containing EIP$/;"	m	struct:Eipdebuginfo
+eip_fn_namelen	./kern/kdebug.h	/^	int eip_fn_namelen;		\/\/ Length of function name$/;"	m	struct:Eipdebuginfo
+eip_fn_narg	./kern/kdebug.h	/^	int eip_fn_narg;		\/\/ Number of function arguments$/;"	m	struct:Eipdebuginfo
+eip_line	./kern/kdebug.h	/^	int eip_line;			\/\/ Source code linenumber for EIP$/;"	m	struct:Eipdebuginfo
+end_part	./gradelib.py	/^def end_part(name):$/;"	f
+entries	./kern/mpconfig.c	/^	uint8_t entries[0];             \/\/ table entries$/;"	m	struct:mpconf	file:
+entry	./kern/entry.S	/^entry:$/;"	l
+entry	./kern/mpconfig.c	/^	uint16_t entry;                 \/\/ entry count$/;"	m	struct:mpconf	file:
+entry	./ph.c	/^struct entry {$/;"	s	file:
+entry_pgdir	./kern/entrypgdir.c	/^pde_t entry_pgdir[NPDENTRIES] = {$/;"	v
+entry_pgtable	./kern/entrypgdir.c	/^pte_t entry_pgtable[NPTENTRIES] = {$/;"	v
+entry_pgtable	./kern/entrypgdir.c	/^pte_t entry_pgtable[NPTENTRIES];$/;"	v
+env_alloc	./kern/env.c	/^env_alloc(struct Env **newenv_store, envid_t parent_id)$/;"	f
+env_cpunum	./inc/env.h	/^	int env_cpunum;			\/\/ The CPU that the env is running on$/;"	m	struct:Env
+env_create	./kern/env.c	/^env_create(uint8_t *binary, enum EnvType type)$/;"	f
+env_destroy	./kern/env.c	/^env_destroy(struct Env *e)$/;"	f
+env_free	./kern/env.c	/^env_free(struct Env *e)$/;"	f
+env_free_list	./kern/env.c	/^static struct Env *env_free_list;	\/\/ Free environment list$/;"	v	typeref:struct:Env	file:
+env_id	./inc/env.h	/^	envid_t env_id;			\/\/ Unique environment identifier$/;"	m	struct:Env
+env_init	./kern/env.c	/^env_init(void)$/;"	f
+env_init_percpu	./kern/env.c	/^env_init_percpu(void)$/;"	f
+env_ipc_dstva	./inc/env.h	/^	void *env_ipc_dstva;		\/\/ VA at which to map received page$/;"	m	struct:Env
+env_ipc_from	./inc/env.h	/^	envid_t env_ipc_from;		\/\/ envid of the sender$/;"	m	struct:Env
+env_ipc_perm	./inc/env.h	/^	int env_ipc_perm;		\/\/ Perm of page mapping received$/;"	m	struct:Env
+env_ipc_recving	./inc/env.h	/^	bool env_ipc_recving;		\/\/ Env is blocked receiving$/;"	m	struct:Env
+env_ipc_value	./inc/env.h	/^	uint32_t env_ipc_value;		\/\/ Data value sent to us$/;"	m	struct:Env
+env_link	./inc/env.h	/^	struct Env *env_link;		\/\/ Next free Env$/;"	m	struct:Env	typeref:struct:Env::Env
+env_parent_id	./inc/env.h	/^	envid_t env_parent_id;		\/\/ env_id of this env's parent$/;"	m	struct:Env
+env_pgdir	./inc/env.h	/^	pde_t *env_pgdir;		\/\/ Kernel virtual address of page dir$/;"	m	struct:Env
+env_pgfault_upcall	./inc/env.h	/^	void *env_pgfault_upcall;	\/\/ Page fault upcall entry point$/;"	m	struct:Env
+env_pop_tf	./kern/env.c	/^env_pop_tf(struct Trapframe *tf)$/;"	f
+env_run	./kern/env.c	/^env_run(struct Env *e)$/;"	f
+env_runs	./inc/env.h	/^	uint32_t env_runs;		\/\/ Number of times environment has run$/;"	m	struct:Env
+env_setup_vm	./kern/env.c	/^env_setup_vm(struct Env *e)$/;"	f	file:
+env_status	./inc/env.h	/^	unsigned env_status;		\/\/ Status of the environment$/;"	m	struct:Env
+env_tf	./inc/env.h	/^	struct Trapframe env_tf;	\/\/ Saved registers$/;"	m	struct:Env	typeref:struct:Env::Trapframe
+env_type	./inc/env.h	/^	enum EnvType env_type;		\/\/ Indicates special system environments$/;"	m	struct:Env	typeref:enum:Env::EnvType
+envid2env	./kern/env.c	/^envid2env(envid_t envid, struct Env **env_store, bool checkperm)$/;"	f
+envid_t	./inc/env.h	/^typedef int32_t envid_t;$/;"	t
+envs	./kern/env.c	/^struct Env *envs = NULL;		\/\/ All environments$/;"	v	typeref:struct:Env
+error_string	./lib/printfmt.c	/^static const char * const error_string[MAXERROR] =$/;"	v	file:
+esp	./user/faultregs.c	/^	uintptr_t esp;$/;"	m	struct:regs	file:
+execcmd	./homework/hw2-shell/sh.c	/^execcmd(void)$/;"	f
+execcmd	./homework/hw2-shell/sh.c	/^struct execcmd {$/;"	s	file:
+exit	./kern/monitor.h	/^MON_CMD_DECL(exit);$/;"	v
+exit	./lib/exit.c	/^exit(void)$/;"	f
+false	./inc/types.h	/^enum { false, true };$/;"	e	enum:__anon2
+fd	./homework/hw2-shell/sh.c	/^  int fd;            \/\/ the file descriptor number to use for the file$/;"	m	struct:redircmd	file:
+feature	./kern/mpconfig.c	/^	uint32_t feature;               \/\/ feature flags from CPUID instruction$/;"	m	struct:mpproc	file:
+file	./homework/hw2-shell/sh.c	/^  char *file;        \/\/ the input\/output file$/;"	m	struct:redircmd	file:
+fileno	./gradelib.py	/^    def fileno(self):$/;"	f
+fileno	./gradelib.py	/^    def fileno(self):$/;"	m	class:GDBClient
+flags	./kern/mpconfig.c	/^	uint8_t flags;                  \/\/ CPU flags$/;"	m	struct:mpproc	file:
+fork	./lib/fork.c	/^fork(void)$/;"	f
+fork1	./homework/hw2-shell/sh.c	/^fork1(void)$/;"	f
+forkchild	./user/forktree.c	/^forkchild(const char *cur, char branch)$/;"	f
+forktree	./user/forktree.c	/^forktree(const char *cur)$/;"	f
+func	./kern/monitor.c	/^	int (*func)(int argc, char** argv, struct Trapframe* tf);$/;"	m	struct:Command	file:
+gd_args	./inc/mmu.h	/^	unsigned gd_args : 5;        \/\/ # args, 0 for interrupt\/trap gates$/;"	m	struct:Gatedesc
+gd_dpl	./inc/mmu.h	/^	unsigned gd_dpl : 2;         \/\/ descriptor(meaning new) privilege level$/;"	m	struct:Gatedesc
+gd_off_15_0	./inc/mmu.h	/^	unsigned gd_off_15_0 : 16;   \/\/ low 16 bits of offset in segment$/;"	m	struct:Gatedesc
+gd_off_31_16	./inc/mmu.h	/^	unsigned gd_off_31_16 : 16;  \/\/ high bits of offset in segment$/;"	m	struct:Gatedesc
+gd_p	./inc/mmu.h	/^	unsigned gd_p : 1;           \/\/ Present$/;"	m	struct:Gatedesc
+gd_rsv1	./inc/mmu.h	/^	unsigned gd_rsv1 : 3;        \/\/ reserved(should be zero I guess)$/;"	m	struct:Gatedesc
+gd_s	./inc/mmu.h	/^	unsigned gd_s : 1;           \/\/ must be 0 (system)$/;"	m	struct:Gatedesc
+gd_sel	./inc/mmu.h	/^	unsigned gd_sel : 16;        \/\/ segment selector$/;"	m	struct:Gatedesc
+gd_type	./inc/mmu.h	/^	unsigned gd_type : 4;        \/\/ type(STS_{TG,IG32,TG32})$/;"	m	struct:Gatedesc
+gdt	./boot/boot.S	/^gdt:$/;"	l
+gdt	./kern/env.c	/^struct Segdesc gdt[NCPU + 5] =$/;"	v	typeref:struct:Segdesc
+gdt	./kern/mpentry.S	/^gdt:$/;"	l
+gdt_pd	./kern/env.c	/^struct Pseudodesc gdt_pd = {$/;"	v	typeref:struct:Pseudodesc
+gdtdesc	./boot/boot.S	/^gdtdesc:$/;"	l
+gdtdesc	./kern/mpentry.S	/^gdtdesc:$/;"	l
+get	./ph.c	/^get(int key)$/;"	f	file:
+get_caller_pcs	./kern/spinlock.c	/^get_caller_pcs(uint32_t pcs[])$/;"	f	file:
+get_current_test	./gradelib.py	/^def get_current_test():$/;"	f
+get_gdb_port	./gradelib.py	/^    def get_gdb_port():$/;"	f
+getchar	./kern/console.c	/^getchar(void)$/;"	f
+getchar	./lib/console.c	/^getchar(void)$/;"	f
+getcmd	./homework/hw2-shell/sh.c	/^getcmd(char *buf, int nbuf)$/;"	f
+getint	./lib/printfmt.c	/^getint(va_list *ap, int lflag)$/;"	f	file:
+gettoken	./homework/hw2-shell/sh.c	/^gettoken(char **ps, char *es, char **q, char **eq)$/;"	f
+getuint	./lib/printfmt.c	/^getuint(va_list *ap, int lflag)$/;"	f	file:
+handle_output	./gradelib.py	/^        def handle_output(output):$/;"	f	function:call_on_line.setup_call_on_line
+handle_read	./gradelib.py	/^    def handle_read(self):$/;"	f
+handle_read	./gradelib.py	/^    def handle_read(self):$/;"	m	class:GDBClient
+handler	./user/faultalloc.c	/^handler(struct UTrapframe *utf)$/;"	f
+handler	./user/faultallocbad.c	/^handler(struct UTrapframe *utf)$/;"	f
+handler	./user/faultdie.c	/^handler(struct UTrapframe *utf)$/;"	f
+hello	./user/buggyhello2.c	/^const char *hello = "hello, world\\n";$/;"	v
+help	./kern/monitor.h	/^MON_CMD_DECL(help);$/;"	v
+holding	./kern/spinlock.c	/^holding(struct spinlock *lock)$/;"	f	file:
+i386_detect_memory	./kern/pmap.c	/^i386_detect_memory(void)$/;"	f	file:
+i386_init	./kern/init.c	/^i386_init(void)$/;"	f
+idt	./kern/trap.c	/^struct Gatedesc idt[256] = { { 0 } };$/;"	v	typeref:struct:Gatedesc
+idt_pd	./kern/trap.c	/^struct Pseudodesc idt_pd = {$/;"	v	typeref:struct:Pseudodesc
+idx	./lib/printf.c	/^	int idx;	\/\/ current buffer index$/;"	m	struct:printbuf	file:
+imcrp	./kern/mpconfig.c	/^	uint8_t imcrp;$/;"	m	struct:mp	file:
+inb	./inc/x86.h	/^inb(int port)$/;"	f
+inl	./inc/x86.h	/^inl(int port)$/;"	f
+insb	./inc/x86.h	/^insb(int port, void *addr, int cnt)$/;"	f
+insert	./ph.c	/^insert(int key, int value, struct entry **p, struct entry *n)$/;"	f	file:
+insl	./inc/x86.h	/^insl(int port, void *addr, int cnt)$/;"	f
+insw	./inc/x86.h	/^insw(int port, void *addr, int cnt)$/;"	f
+int16_t	./inc/types.h	/^typedef short int16_t;$/;"	t
+int32_t	./inc/types.h	/^typedef int int32_t;$/;"	t
+int64_t	./inc/types.h	/^typedef long long int64_t;$/;"	t
+int8_t	./inc/types.h	/^typedef __signed char int8_t;$/;"	t
+intptr_t	./inc/types.h	/^typedef int32_t intptr_t;$/;"	t
+invlpg	./inc/x86.h	/^invlpg(void *addr)$/;"	f
+inw	./inc/x86.h	/^inw(int port)$/;"	f
+ipc_find_env	./lib/ipc.c	/^ipc_find_env(enum EnvType type)$/;"	f
+ipc_recv	./lib/ipc.c	/^ipc_recv(envid_t *from_env_store, void *pg, int *perm_store)$/;"	f
+ipc_send	./lib/ipc.c	/^ipc_send(envid_t to_env, uint32_t val, void *pg, int perm)$/;"	f
+irq_mask_8259A	./kern/picirq.c	/^uint16_t irq_mask_8259A = 0xFFFF & ~(1<<IRQ_SLAVE);$/;"	v
+irq_setmask_8259A	./kern/picirq.c	/^irq_setmask_8259A(uint16_t mask)$/;"	f
+iscons	./kern/console.c	/^iscons(int fdnum)$/;"	f
+ismp	./kern/mpconfig.c	/^int ismp;$/;"	v
+kbd_init	./kern/console.c	/^kbd_init(void)$/;"	f	file:
+kbd_intr	./kern/console.c	/^kbd_intr(void)$/;"	f
+kbd_proc_data	./kern/console.c	/^kbd_proc_data(void)$/;"	f	file:
+kern_pgdir	./kern/pmap.c	/^pde_t *kern_pgdir;		\/\/ Kernel's initial page directory$/;"	v
+kernel_lock	./kern/spinlock.c	/^struct spinlock kernel_lock = {$/;"	v	typeref:struct:spinlock
+kerninfo	./kern/monitor.h	/^MON_CMD_DECL(kerninfo);$/;"	v
+key	./ph.c	/^	int key;$/;"	m	struct:entry	file:
+keys	./ph.c	/^int keys[NKEYS];$/;"	v
+kill	./gradelib.py	/^    def kill(self):$/;"	f
+lapic	./kern/lapic.c	/^volatile uint32_t *lapic;$/;"	v
+lapic_eoi	./kern/lapic.c	/^lapic_eoi(void)$/;"	f
+lapic_init	./kern/lapic.c	/^lapic_init(void)$/;"	f
+lapic_ipi	./kern/lapic.c	/^lapic_ipi(int vector)$/;"	f
+lapic_startap	./kern/lapic.c	/^lapic_startap(uint8_t apicid, uint32_t addr)$/;"	f
+lapicaddr	./kern/lapic.c	/^physaddr_t lapicaddr;        \/\/ Initialized in mpconfig.c$/;"	v
+lapicaddr	./kern/mpconfig.c	/^	physaddr_t lapicaddr;           \/\/ address of local APIC$/;"	m	struct:mpconf	file:
+lapicw	./kern/lapic.c	/^lapicw(int index, int value)$/;"	f	file:
+last_tf	./kern/trap.c	/^static struct Trapframe *last_tf;$/;"	v	typeref:struct:Trapframe	file:
+lcr0	./inc/x86.h	/^lcr0(uint32_t val)$/;"	f
+lcr3	./inc/x86.h	/^lcr3(uint32_t val)$/;"	f
+lcr4	./inc/x86.h	/^lcr4(uint32_t val)$/;"	f
+left	./homework/hw2-shell/sh.c	/^  struct cmd *left;  \/\/ left side of pipe$/;"	m	struct:pipecmd	typeref:struct:pipecmd::cmd	file:
+length	./kern/mpconfig.c	/^	uint16_t length;                \/\/ total table length$/;"	m	struct:mpconf	file:
+length	./kern/mpconfig.c	/^	uint8_t length;                 \/\/ 1$/;"	m	struct:mp	file:
+lgdt	./inc/x86.h	/^lgdt(void *p)$/;"	f
+libmain	./lib/libmain.c	/^libmain(int argc, char **argv)$/;"	f
+lidt	./inc/x86.h	/^lidt(void *p)$/;"	f
+lldt	./inc/x86.h	/^lldt(uint16_t sel)$/;"	f
+load_icode	./kern/env.c	/^load_icode(struct Env *e, uint8_t *binary)$/;"	f	file:
+lock_kernel	./kern/spinlock.h	/^lock_kernel(void)$/;"	f
+locked	./kern/spinlock.h	/^	unsigned locked;       \/\/ Is the lock held?$/;"	m	struct:spinlock
+locks	./ph.c	/^pthread_mutex_t locks[NBUCKET];$/;"	v
+lpt_putc	./kern/console.c	/^lpt_putc(int c)$/;"	f	file:
+ltr	./inc/x86.h	/^ltr(uint16_t sel)$/;"	f
+main	./homework/hw2-shell/sh.c	/^main(void)$/;"	f
+main	./ph.c	/^main(int argc, char *argv[])$/;"	f
+make	./gradelib.py	/^def make(*target):$/;"	f
+match	./gradelib.py	/^    def match(self, *args, **kwargs):$/;"	m	class:Runner
+maybe_unlink	./gradelib.py	/^def maybe_unlink(*paths):$/;"	f
+mc146818_read	./kern/kclock.c	/^mc146818_read(unsigned reg)$/;"	f
+mc146818_write	./kern/kclock.c	/^mc146818_write(unsigned reg, unsigned datum)$/;"	f
+mem_init	./kern/pmap.c	/^mem_init(void)$/;"	f
+mem_init_mp	./kern/pmap.c	/^mem_init_mp(void)$/;"	f	file:
+memcmp	./lib/string.c	/^memcmp(const void *v1, const void *v2, size_t n)$/;"	f
+memcpy	./lib/string.c	/^memcpy(void *dst, const void *src, size_t n)$/;"	f
+memfind	./lib/string.c	/^memfind(const void *s, int c, size_t n)$/;"	f
+memmove	./lib/string.c	/^memmove(void *dst, const void *src, size_t n)$/;"	f
+memset	./lib/string.c	/^memset(void *v, int c, size_t n)$/;"	f
+microdelay	./kern/lapic.c	/^microdelay(int us)$/;"	f	file:
+mkcopy	./homework/hw2-shell/sh.c	/^*mkcopy(char *s, char *es)$/;"	f
+mmio_map_region	./kern/pmap.c	/^mmio_map_region(physaddr_t pa, size_t size)$/;"	f
+mode	./homework/hw2-shell/sh.c	/^  int mode;          \/\/ the mode to open the file with$/;"	m	struct:redircmd	file:
+mon_backtrace	./kern/monitor.c	/^mon_backtrace(int argc, char **argv, struct Trapframe *tf)$/;"	f
+mon_changeperms	./kern/monitor.c	/^mon_changeperms(int argc, char** argv, struct Trapframe *tf) $/;"	f
+mon_dumpcontents	./kern/monitor.c	/^mon_dumpcontents(int argc, char **argv, struct Trapframe *tf) $/;"	f
+mon_exit	./kern/monitor.c	/^mon_exit(int argc, char **argv, struct Trapframe *tf)$/;"	f
+mon_help	./kern/monitor.c	/^mon_help(int argc, char **argv, struct Trapframe *tf)$/;"	f
+mon_kerninfo	./kern/monitor.c	/^mon_kerninfo(int argc, char **argv, struct Trapframe *tf)$/;"	f
+mon_showmappings	./kern/monitor.c	/^mon_showmappings(int argc, char** argv, struct Trapframe *tf) $/;"	f
+monitor	./kern/monitor.c	/^monitor(struct Trapframe *tf)$/;"	f
+mp	./kern/mpconfig.c	/^struct mp {             \/\/ floating pointer [MP 4.1]$/;"	s	file:
+mp_init	./kern/mpconfig.c	/^mp_init(void)$/;"	f
+mp_main	./kern/init.c	/^mp_main(void)$/;"	f
+mpconf	./kern/mpconfig.c	/^struct mpconf {         \/\/ configuration table header [MP 4.2]$/;"	s	file:
+mpconfig	./kern/mpconfig.c	/^mpconfig(struct mp **pmp)$/;"	f	file:
+mpentry_end	./kern/mpentry.S	/^mpentry_end:$/;"	l
+mpentry_kstack	./kern/init.c	/^void *mpentry_kstack;$/;"	v
+mpentry_start	./kern/mpentry.S	/^mpentry_start:$/;"	l
+mpproc	./kern/mpconfig.c	/^struct mpproc {         \/\/ processor table entry [MP 4.3.1]$/;"	s	file:
+mpsearch	./kern/mpconfig.c	/^mpsearch(void)$/;"	f	file:
+mpsearch1	./kern/mpconfig.c	/^mpsearch1(physaddr_t a, int len)$/;"	f	file:
+myexecv	./homework/hw2-shell/sh.c	/^myexecv(char**argv) $/;"	f
+n_desc	./inc/stab.h	/^	uint16_t n_desc;        \/\/ description field$/;"	m	struct:Stab
+n_other	./inc/stab.h	/^	uint8_t n_other;        \/\/ misc info (usually empty)$/;"	m	struct:Stab
+n_strx	./inc/stab.h	/^	uint32_t n_strx;	\/\/ index into string table of name$/;"	m	struct:Stab
+n_type	./inc/stab.h	/^	uint8_t n_type;         \/\/ type of symbol$/;"	m	struct:Stab
+n_value	./inc/stab.h	/^	uintptr_t n_value;	\/\/ value of symbol$/;"	m	struct:Stab
+name	./kern/monitor.c	/^	const char *name;$/;"	m	struct:Command	file:
+name	./kern/spinlock.h	/^	char *name;            \/\/ Name of lock.$/;"	m	struct:spinlock
+name	./kern/trapentry.S	/^	name:								\\$/;"	l
+name	./kern/trapentry.S	/^	name:			\/* function starts here *\/		\\$/;"	l
+ncpu	./kern/mpconfig.c	/^int ncpu;$/;"	v
+next	./ph.c	/^	struct entry *next;$/;"	m	struct:entry	typeref:struct:entry::entry	file:
+normalmap	./kern/console.c	/^static uint8_t normalmap[256] =$/;"	v	file:
+now	./ph.c	/^now()$/;"	f
+npages	./kern/pmap.c	/^size_t npages;			\/\/ Amount of physical memory (in pages)$/;"	v
+npages_basemem	./kern/pmap.c	/^static size_t npages_basemem;	\/\/ Amount of base memory (in pages)$/;"	v	file:
+nthread	./ph.c	/^int nthread = 1;$/;"	v
+nvram_read	./kern/pmap.c	/^nvram_read(int r)$/;"	f	file:
+oemlength	./kern/mpconfig.c	/^	uint16_t oemlength;             \/\/ OEM table length$/;"	m	struct:mpconf	file:
+oemtable	./kern/mpconfig.c	/^	physaddr_t oemtable;            \/\/ OEM table pointer$/;"	m	struct:mpconf	file:
+off_t	./inc/types.h	/^typedef int32_t off_t;$/;"	t
+offsetof	./inc/types.h	71;"	d
+outb	./inc/x86.h	/^outb(int port, uint8_t data)$/;"	f
+outl	./inc/x86.h	/^outl(int port, uint32_t data)$/;"	f
+outsb	./inc/x86.h	/^outsb(int port, const void *addr, int cnt)$/;"	f
+outsl	./inc/x86.h	/^outsl(int port, const void *addr, int cnt)$/;"	f
+outsw	./inc/x86.h	/^outsw(int port, const void *addr, int cnt)$/;"	f
+outw	./inc/x86.h	/^outw(int port, uint16_t data)$/;"	f
+p_align	./inc/elf.h	/^	uint32_t p_align;$/;"	m	struct:Proghdr
+p_filesz	./inc/elf.h	/^	uint32_t p_filesz;$/;"	m	struct:Proghdr
+p_flags	./inc/elf.h	/^	uint32_t p_flags;$/;"	m	struct:Proghdr
+p_memsz	./inc/elf.h	/^	uint32_t p_memsz;$/;"	m	struct:Proghdr
+p_offset	./inc/elf.h	/^	uint32_t p_offset;$/;"	m	struct:Proghdr
+p_pa	./inc/elf.h	/^	uint32_t p_pa;$/;"	m	struct:Proghdr
+p_type	./inc/elf.h	/^	uint32_t p_type;$/;"	m	struct:Proghdr
+p_va	./inc/elf.h	/^	uint32_t p_va;$/;"	m	struct:Proghdr
+pa2page	./kern/pmap.h	/^pa2page(physaddr_t pa)$/;"	f
+page2kva	./kern/pmap.h	/^page2kva(struct PageInfo *pp)$/;"	f
+page2pa	./kern/pmap.h	/^page2pa(struct PageInfo *pp)$/;"	f
+page_alloc	./kern/pmap.c	/^page_alloc(int alloc_flags)$/;"	f
+page_decref	./kern/pmap.c	/^page_decref(struct PageInfo* pp)$/;"	f
+page_fault_handler	./kern/trap.c	/^page_fault_handler(struct Trapframe *tf)$/;"	f
+page_free	./kern/pmap.c	/^page_free(struct PageInfo *pp)$/;"	f
+page_free_list	./kern/pmap.c	/^static struct PageInfo *page_free_list;	\/\/ Free list of physical pages$/;"	v	typeref:struct:PageInfo	file:
+page_init	./kern/pmap.c	/^page_init(void)$/;"	f
+page_insert	./kern/pmap.c	/^page_insert(pde_t *pgdir, struct PageInfo *pp, void *va, int perm)$/;"	f
+page_lookup	./kern/pmap.c	/^page_lookup(pde_t *pgdir, void *va, pte_t **pte_store)$/;"	f
+page_remove	./kern/pmap.c	/^page_remove(pde_t *pgdir, void *va)$/;"	f
+pages	./kern/pmap.c	/^struct PageInfo *pages;		\/\/ Physical page state array$/;"	v	typeref:struct:PageInfo
+panic	./inc/assert.h	12;"	d
+panicstr	./kern/init.c	/^const char *panicstr;$/;"	v
+parsecmd	./homework/hw2-shell/sh.c	/^parsecmd(char *s)$/;"	f
+parseexec	./homework/hw2-shell/sh.c	/^parseexec(char **ps, char *es)$/;"	f
+parseline	./homework/hw2-shell/sh.c	/^parseline(char **ps, char *es)$/;"	f
+parsepipe	./homework/hw2-shell/sh.c	/^parsepipe(char **ps, char *es)$/;"	f
+parseredirs	./homework/hw2-shell/sh.c	/^parseredirs(struct cmd *cmd, char **ps, char *es)$/;"	f
+pcs	./kern/spinlock.h	/^	uintptr_t pcs[10];     \/\/ The call stack (an array of program counters)$/;"	m	struct:spinlock
+pd_base	./inc/mmu.h	/^	uint32_t pd_base;		\/\/ Base address$/;"	m	struct:Pseudodesc
+pd_lim	./inc/mmu.h	/^	uint16_t pd_lim;		\/\/ Limit$/;"	m	struct:Pseudodesc
+pde_t	./inc/memlayout.h	/^typedef uint32_t pde_t;$/;"	t
+peek	./homework/hw2-shell/sh.c	/^peek(char **ps, char *es, char *toks)$/;"	f
+percpu_kstacks	./kern/mpconfig.c	/^unsigned char percpu_kstacks[NCPU][KSTKSIZE]$/;"	v
+pgdir_walk	./kern/pmap.c	/^pgdir_walk(pde_t *pgdir, const void *va, int create)$/;"	f
+pgfault	./lib/fork.c	/^pgfault(struct UTrapframe *utf)$/;"	f	file:
+pgfault	./user/faultregs.c	/^pgfault(struct UTrapframe *utf)$/;"	f	file:
+physaddr	./kern/mpconfig.c	/^	physaddr_t physaddr;            \/\/ phys addr of MP config table$/;"	m	struct:mp	file:
+physaddr_t	./inc/types.h	/^typedef uint32_t physaddr_t;$/;"	t
+pic_init	./kern/picirq.c	/^pic_init(void)$/;"	f
+pipecmd	./homework/hw2-shell/sh.c	/^pipecmd(struct cmd *left, struct cmd *right)$/;"	f
+pipecmd	./homework/hw2-shell/sh.c	/^struct pipecmd {$/;"	s	file:
+post_make	./gradelib.py	/^def post_make():$/;"	f
+pp_link	./inc/memlayout.h	/^	struct PageInfo *pp_link;$/;"	m	struct:PageInfo	typeref:struct:PageInfo::PageInfo
+pp_ref	./inc/memlayout.h	/^	uint16_t pp_ref;$/;"	m	struct:PageInfo
+ppn_t	./inc/types.h	/^typedef uint32_t ppn_t;$/;"	t
+pre_make	./gradelib.py	/^def pre_make():$/;"	f
+primeproc	./user/primes.c	/^primeproc(void)$/;"	f
+print	./ph.c	/^print(void)$/;"	f	file:
+print_regs	./kern/trap.c	/^print_regs(struct PushRegs *regs)$/;"	f
+print_trapframe	./kern/trap.c	/^print_trapframe(struct Trapframe *tf)$/;"	f
+printbuf	./lib/printf.c	/^struct printbuf {$/;"	s	file:
+printfmt	./lib/printfmt.c	/^printfmt(void (*putch)(int, void*), void *putdat, const char *fmt, ...)$/;"	f
+printnum	./lib/printfmt.c	/^printnum(void (*putch)(int, void*), void *putdat,$/;"	f	file:
+product	./kern/mpconfig.c	/^	uint8_t product[20];            \/\/ product id$/;"	m	struct:mpconf	file:
+protcseg	./boot/boot.S	/^protcseg:$/;"	l
+pte_t	./inc/memlayout.h	/^typedef uint32_t pte_t;$/;"	t
+put	./ph.c	/^put(int key, int value)$/;"	f	file:
+putch	./kern/printf.c	/^putch(int ch, int *cnt)$/;"	f	file:
+putch	./lib/printf.c	/^putch(int ch, struct printbuf *b)$/;"	f	file:
+r	./grade-lab1	/^r = Runner(save("jos.out"),$/;"	v
+r	./grade-lab2	/^r = Runner(save("jos.out"),$/;"	v
+r	./grade-lab3	/^r = Runner(save("jos.out"),$/;"	v
+r	./grade-lab4	/^r = Runner(save("jos.out"),$/;"	v
+rcr0	./inc/x86.h	/^rcr0(void)$/;"	f
+rcr2	./inc/x86.h	/^rcr2(void)$/;"	f
+rcr3	./inc/x86.h	/^rcr3(void)$/;"	f
+rcr4	./inc/x86.h	/^rcr4(void)$/;"	f
+read_ebp	./inc/x86.h	/^read_ebp(void)$/;"	f
+read_eflags	./inc/x86.h	/^read_eflags(void)$/;"	f
+read_esp	./inc/x86.h	/^read_esp(void)$/;"	f
+read_tsc	./inc/x86.h	/^read_tsc(void)$/;"	f
+readdeps	./mergedep.pl	/^sub readdeps {$/;"	s
+readline	./lib/readline.c	/^readline(const char *prompt)$/;"	f
+readsect	./boot/main.c	/^readsect(void *dst, uint32_t offset)$/;"	f
+readseg	./boot/main.c	/^readseg(uint32_t pa, uint32_t count, uint32_t offset)$/;"	f
+redircmd	./homework/hw2-shell/sh.c	/^redircmd(struct cmd *subcmd, char *file, int type)$/;"	f
+redircmd	./homework/hw2-shell/sh.c	/^struct redircmd {$/;"	s	file:
+reg_eax	./inc/trap.h	/^	uint32_t reg_eax;$/;"	m	struct:PushRegs
+reg_ebp	./inc/trap.h	/^	uint32_t reg_ebp;$/;"	m	struct:PushRegs
+reg_ebx	./inc/trap.h	/^	uint32_t reg_ebx;$/;"	m	struct:PushRegs
+reg_ecx	./inc/trap.h	/^	uint32_t reg_ecx;$/;"	m	struct:PushRegs
+reg_edi	./inc/trap.h	/^	uint32_t reg_edi;$/;"	m	struct:PushRegs
+reg_edx	./inc/trap.h	/^	uint32_t reg_edx;$/;"	m	struct:PushRegs
+reg_esi	./inc/trap.h	/^	uint32_t reg_esi;$/;"	m	struct:PushRegs
+reg_oesp	./inc/trap.h	/^	uint32_t reg_oesp;		\/* Useless *\/$/;"	m	struct:PushRegs
+region_alloc	./kern/env.c	/^region_alloc(struct Env *e, void *va, size_t len)$/;"	f	file:
+register_test	./gradelib.py	/^    def register_test(fn, title=title):$/;"	f	function:test
+regs	./user/faultregs.c	/^	struct PushRegs regs;$/;"	m	struct:regs	typeref:struct:regs::PushRegs	file:
+regs	./user/faultregs.c	/^struct regs$/;"	s	file:
+relocated	./kern/entry.S	/^relocated:$/;"	l
+reserved	./kern/mpconfig.c	/^	uint8_t reserved;$/;"	m	struct:mpconf	file:
+reserved	./kern/mpconfig.c	/^	uint8_t reserved[3];$/;"	m	struct:mp	file:
+reserved	./kern/mpconfig.c	/^	uint8_t reserved[8];$/;"	m	struct:mpproc	file:
+reset_fs	./gradelib.py	/^def reset_fs():$/;"	f
+right	./homework/hw2-shell/sh.c	/^  struct cmd *right; \/\/ right side of pipe$/;"	m	struct:pipecmd	typeref:struct:pipecmd::cmd	file:
+rpos	./kern/console.c	/^	uint32_t rpos;$/;"	m	struct:__anon7	file:
+run_qemu	./gradelib.py	/^    def run_qemu(self, *monitors, **kw):$/;"	m	class:Runner
+run_qemu_kw	./gradelib.py	/^        def run_qemu_kw(target_base="qemu", make_args=[], timeout=30):$/;"	f	function:Runner.run_qemu
+run_test	./gradelib.py	/^        def run_test():$/;"	f	function:test.register_test
+run_tests	./gradelib.py	/^def run_tests():$/;"	f
+runcmd	./homework/hw2-shell/sh.c	/^runcmd(struct cmd *cmd)$/;"	f
+runcmd	./kern/monitor.c	/^runcmd(char *buf, struct Trapframe *tf)$/;"	f	file:
+save	./gradelib.py	/^def save(path):$/;"	f
+save_on_finish	./gradelib.py	/^    def save_on_finish(fail):$/;"	f	function:save
+sched_halt	./kern/sched.c	/^sched_halt(void)$/;"	f
+sched_yield	./kern/sched.c	/^sched_yield(void)$/;"	f
+sd_avl	./inc/mmu.h	/^	unsigned sd_avl : 1;        \/\/ Unused (available for software use)$/;"	m	struct:Segdesc
+sd_base_15_0	./inc/mmu.h	/^	unsigned sd_base_15_0 : 16; \/\/ Low bits of segment base address$/;"	m	struct:Segdesc
+sd_base_23_16	./inc/mmu.h	/^	unsigned sd_base_23_16 : 8; \/\/ Middle bits of segment base address$/;"	m	struct:Segdesc
+sd_base_31_24	./inc/mmu.h	/^	unsigned sd_base_31_24 : 8; \/\/ High bits of segment base address$/;"	m	struct:Segdesc
+sd_db	./inc/mmu.h	/^	unsigned sd_db : 1;         \/\/ 0 = 16-bit segment, 1 = 32-bit segment$/;"	m	struct:Segdesc
+sd_dpl	./inc/mmu.h	/^	unsigned sd_dpl : 2;        \/\/ Descriptor Privilege Level$/;"	m	struct:Segdesc
+sd_g	./inc/mmu.h	/^	unsigned sd_g : 1;          \/\/ Granularity: limit scaled by 4K when set$/;"	m	struct:Segdesc
+sd_lim_15_0	./inc/mmu.h	/^	unsigned sd_lim_15_0 : 16;  \/\/ Low bits of segment limit$/;"	m	struct:Segdesc
+sd_lim_19_16	./inc/mmu.h	/^	unsigned sd_lim_19_16 : 4;  \/\/ High bits of segment limit$/;"	m	struct:Segdesc
+sd_p	./inc/mmu.h	/^	unsigned sd_p : 1;          \/\/ Present$/;"	m	struct:Segdesc
+sd_rsv1	./inc/mmu.h	/^	unsigned sd_rsv1 : 1;       \/\/ Reserved$/;"	m	struct:Segdesc
+sd_s	./inc/mmu.h	/^	unsigned sd_s : 1;          \/\/ 0 = system, 1 = application$/;"	m	struct:Segdesc
+sd_type	./inc/mmu.h	/^	unsigned sd_type : 4;       \/\/ Segment type (see STS_ constants)$/;"	m	struct:Segdesc
+serial_exists	./kern/console.c	/^static bool serial_exists;$/;"	v	file:
+serial_init	./kern/console.c	/^serial_init(void)$/;"	f	file:
+serial_intr	./kern/console.c	/^serial_intr(void)$/;"	f
+serial_proc_data	./kern/console.c	/^serial_proc_data(void)$/;"	f	file:
+serial_putc	./kern/console.c	/^serial_putc(int c)$/;"	f	file:
+set_pgfault_handler	./lib/pgfault.c	/^set_pgfault_handler(void (*handler)(struct UTrapframe *utf))$/;"	f
+setup_breakpoint	./gradelib.py	/^    def setup_breakpoint(runner):$/;"	f	function:stop_breakpoint
+setup_call_on_line	./gradelib.py	/^    def setup_call_on_line(runner):$/;"	f	function:call_on_line
+setup_save	./gradelib.py	/^    def setup_save(runner):$/;"	f	function:save
+sfork	./lib/fork.c	/^sfork(void)$/;"	f
+sh_addr	./inc/elf.h	/^	uint32_t sh_addr;$/;"	m	struct:Secthdr
+sh_addralign	./inc/elf.h	/^	uint32_t sh_addralign;$/;"	m	struct:Secthdr
+sh_entsize	./inc/elf.h	/^	uint32_t sh_entsize;$/;"	m	struct:Secthdr
+sh_flags	./inc/elf.h	/^	uint32_t sh_flags;$/;"	m	struct:Secthdr
+sh_info	./inc/elf.h	/^	uint32_t sh_info;$/;"	m	struct:Secthdr
+sh_link	./inc/elf.h	/^	uint32_t sh_link;$/;"	m	struct:Secthdr
+sh_name	./inc/elf.h	/^	uint32_t sh_name;$/;"	m	struct:Secthdr
+sh_offset	./inc/elf.h	/^	uint32_t sh_offset;$/;"	m	struct:Secthdr
+sh_size	./inc/elf.h	/^	uint32_t sh_size;$/;"	m	struct:Secthdr
+sh_type	./inc/elf.h	/^	uint32_t sh_type;$/;"	m	struct:Secthdr
+shiftcode	./kern/console.c	/^static uint8_t shiftcode[256] =$/;"	v	file:
+shiftmap	./kern/console.c	/^static uint8_t shiftmap[256] =$/;"	v	file:
+show_command	./gradelib.py	/^def show_command(cmd):$/;"	f
+show_mapping	./kern/monitor.c	/^show_mapping(void *vaddr)$/;"	f	file:
+show_part	./gradelib.py	/^    def show_part():$/;"	f	function:end_part
+showmappings	./kern/monitor.h	/^MON_CMD_DECL(showmappings);$/;"	v
+signature	./kern/mpconfig.c	/^	uint8_t signature[4];           \/\/ "PCMP"$/;"	m	struct:mpconf	file:
+signature	./kern/mpconfig.c	/^	uint8_t signature[4];           \/\/ "_MP_"$/;"	m	struct:mp	file:
+signature	./kern/mpconfig.c	/^	uint8_t signature[4];           \/\/ CPU signature$/;"	m	struct:mpproc	file:
+size_t	./inc/types.h	/^typedef uint32_t size_t;$/;"	t
+snprintf	./lib/printfmt.c	/^snprintf(char *buf, int n, const char *fmt, ...)$/;"	f
+specrev	./kern/mpconfig.c	/^	uint8_t specrev;                \/\/ [14]$/;"	m	struct:mp	file:
+spin	./boot/boot.S	/^spin:$/;"	l
+spin	./kern/entry.S	/^spin:	jmp	spin$/;"	l
+spin	./kern/mpentry.S	/^spin:$/;"	l
+spin_initlock	./kern/spinlock.h	26;"	d
+spin_lock	./kern/spinlock.c	/^spin_lock(struct spinlock *lk)$/;"	f
+spin_unlock	./kern/spinlock.c	/^spin_unlock(struct spinlock *lk)$/;"	f
+spinlock	./kern/spinlock.h	/^struct spinlock {$/;"	s
+sprintbuf	./lib/printfmt.c	/^struct sprintbuf {$/;"	s	file:
+sprintputch	./lib/printfmt.c	/^sprintputch(int ch, struct sprintbuf *b)$/;"	f	file:
+ssize_t	./inc/types.h	/^typedef int32_t ssize_t;$/;"	t
+stab_binsearch	./kern/kdebug.c	/^stab_binsearch(const struct Stab *stabs, int *region_left, int *region_right,$/;"	f	file:
+stab_end	./kern/kdebug.c	/^	const struct Stab *stab_end;$/;"	m	struct:UserStabData	typeref:struct:UserStabData::Stab	file:
+stabs	./kern/kdebug.c	/^	const struct Stab *stabs;$/;"	m	struct:UserStabData	typeref:struct:UserStabData::Stab	file:
+stabstr	./kern/kdebug.c	/^	const char *stabstr;$/;"	m	struct:UserStabData	file:
+stabstr_end	./kern/kdebug.c	/^	const char *stabstr_end;$/;"	m	struct:UserStabData	file:
+start	./boot/boot.S	/^start:$/;"	l
+start32	./kern/mpentry.S	/^start32:$/;"	l
+static_assert	./inc/assert.h	18;"	d
+stop	./gradelib.py	/^    def stop(line):$/;"	f	function:stop_on_line
+stop_breakpoint	./gradelib.py	/^def stop_breakpoint(addr):$/;"	f
+stop_on_line	./gradelib.py	/^def stop_on_line(regexp):$/;"	f
+str1	./user/sendpage.c	/^const char *str1 = "hello child environment! how are you?";$/;"	v
+str2	./user/sendpage.c	/^const char *str2 = "hello parent environment! I'm good.";$/;"	v
+str2addr	./kern/monitor.c	/^str2addr(char *str, void **result) {$/;"	f	file:
+str2perm	./kern/monitor.c	/^str2perm(const char* s) {$/;"	f	file:
+strcat	./lib/string.c	/^strcat(char *dst, const char *src)$/;"	f
+strchr	./lib/string.c	/^strchr(const char *s, char c)$/;"	f
+strcmp	./lib/string.c	/^strcmp(const char *p, const char *q)$/;"	f
+strcpy	./lib/string.c	/^strcpy(char *dst, const char *src)$/;"	f
+strfind	./lib/string.c	/^strfind(const char *s, char c)$/;"	f
+strlcpy	./lib/string.c	/^strlcpy(char *dst, const char *src, size_t size)$/;"	f
+strlen	./lib/string.c	/^strlen(const char *s)$/;"	f
+strncmp	./lib/string.c	/^strncmp(const char *p, const char *q, size_t n)$/;"	f
+strncpy	./lib/string.c	/^strncpy(char *dst, const char *src, size_t size) {$/;"	f
+strnlen	./lib/string.c	/^strnlen(const char *s, size_t size)$/;"	f
+strtol	./lib/string.c	/^strtol(const char *s, char **endptr, int base)$/;"	f
+sum	./kern/mpconfig.c	/^sum(void *addr, int len)$/;"	f	file:
+symbols	./homework/hw2-shell/sh.c	/^char symbols[] = "<|>";$/;"	v
+sys_cgetc	./kern/syscall.c	/^sys_cgetc(void)$/;"	f	file:
+sys_cgetc	./lib/syscall.c	/^sys_cgetc(void)$/;"	f
+sys_cputs	./kern/syscall.c	/^sys_cputs(const char *s, size_t len)$/;"	f	file:
+sys_cputs	./lib/syscall.c	/^sys_cputs(const char *s, size_t len)$/;"	f
+sys_env_destroy	./kern/syscall.c	/^sys_env_destroy(envid_t envid)$/;"	f	file:
+sys_env_destroy	./lib/syscall.c	/^sys_env_destroy(envid_t envid)$/;"	f
+sys_env_set_pgfault_upcall	./kern/syscall.c	/^sys_env_set_pgfault_upcall(envid_t envid, void *func)$/;"	f	file:
+sys_env_set_pgfault_upcall	./lib/syscall.c	/^sys_env_set_pgfault_upcall(envid_t envid, void *upcall)$/;"	f
+sys_env_set_status	./kern/syscall.c	/^sys_env_set_status(envid_t envid, int status)$/;"	f	file:
+sys_env_set_status	./lib/syscall.c	/^sys_env_set_status(envid_t envid, int status)$/;"	f
+sys_exofork	./inc/lib.h	/^sys_exofork(void)$/;"	f
+sys_exofork	./kern/syscall.c	/^sys_exofork(void)$/;"	f	file:
+sys_getenvid	./kern/syscall.c	/^sys_getenvid(void)$/;"	f	file:
+sys_getenvid	./lib/syscall.c	/^sys_getenvid(void)$/;"	f
+sys_ipc_recv	./kern/syscall.c	/^sys_ipc_recv(void *dstva)$/;"	f	file:
+sys_ipc_recv	./lib/syscall.c	/^sys_ipc_recv(void *dstva)$/;"	f
+sys_ipc_try_send	./kern/syscall.c	/^sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, unsigned perm)$/;"	f	file:
+sys_ipc_try_send	./lib/syscall.c	/^sys_ipc_try_send(envid_t envid, uint32_t value, void *srcva, int perm)$/;"	f
+sys_page_alloc	./kern/syscall.c	/^sys_page_alloc(envid_t envid, void *va, int perm)$/;"	f	file:
+sys_page_alloc	./lib/syscall.c	/^sys_page_alloc(envid_t envid, void *va, int perm)$/;"	f
+sys_page_map	./kern/syscall.c	/^sys_page_map(envid_t srcenvid, void *srcva,$/;"	f	file:
+sys_page_map	./lib/syscall.c	/^sys_page_map(envid_t srcenv, void *srcva, envid_t dstenv, void *dstva, int perm)$/;"	f
+sys_page_unmap	./kern/syscall.c	/^sys_page_unmap(envid_t envid, void *va)$/;"	f	file:
+sys_page_unmap	./lib/syscall.c	/^sys_page_unmap(envid_t envid, void *va)$/;"	f
+sys_yield	./kern/syscall.c	/^sys_yield(void)$/;"	f	file:
+sys_yield	./lib/syscall.c	/^sys_yield(void)$/;"	f
+syscall	./kern/syscall.c	/^syscall(uint32_t syscallno, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t a4, uint32_t a5)$/;"	f
+syscall	./lib/syscall.c	/^syscall(int num, int check, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t a4, uint32_t a5)$/;"	f	file:
+table	./ph.c	/^struct entry *table[NBUCKET];$/;"	v	typeref:struct:entry
+test	./gradelib.py	/^def test(points, title=None, parent=None):$/;"	f
+test_backtrace_arguments	./grade-lab1	/^def test_backtrace_arguments():$/;"	f
+test_backtrace_count	./grade-lab1	/^def test_backtrace_count():$/;"	f
+test_backtrace_lines	./grade-lab1	/^def test_backtrace_lines():$/;"	f
+test_backtrace_symbols	./grade-lab1	/^def test_backtrace_symbols():$/;"	f
+test_badsegment	./grade-lab3	/^def test_badsegment():$/;"	f
+test_breakpoint	./grade-lab3	/^def test_breakpoint():$/;"	f
+test_buggyhello	./grade-lab3	/^def test_buggyhello():$/;"	f
+test_buggyhello2	./grade-lab3	/^def test_buggyhello2():$/;"	f
+test_check_kern_pgdir	./grade-lab2	/^def test_check_kern_pgdir():$/;"	f
+test_check_page	./grade-lab2	/^def test_check_page():$/;"	f
+test_check_page_alloc	./grade-lab2	/^def test_check_page_alloc():$/;"	f
+test_check_page_installed_pgdir	./grade-lab2	/^def test_check_page_installed_pgdir():$/;"	f
+test_divzero	./grade-lab3	/^def test_divzero():$/;"	f
+test_dumbfork	./grade-lab4	/^def test_dumbfork():$/;"	f
+test_evilhello	./grade-lab3	/^def test_evilhello():$/;"	f
+test_faultalloc	./grade-lab4	/^def test_faultalloc():$/;"	f
+test_faultallocbad	./grade-lab4	/^def test_faultallocbad():$/;"	f
+test_faultbadhandler	./grade-lab4	/^def test_faultbadhandler():$/;"	f
+test_faultdie	./grade-lab4	/^def test_faultdie():$/;"	f
+test_faultevilhandler	./grade-lab4	/^def test_faultevilhandler():$/;"	f
+test_faultnostack	./grade-lab4	/^def test_faultnostack():$/;"	f
+test_faultread	./grade-lab3	/^def test_faultread():$/;"	f
+test_faultread	./grade-lab4	/^def test_faultread():$/;"	f
+test_faultreadkernel	./grade-lab3	/^def test_faultreadkernel():$/;"	f
+test_faultregs	./grade-lab4	/^def test_faultregs():$/;"	f
+test_faultwrite	./grade-lab3	/^def test_faultwrite():$/;"	f
+test_faultwrite	./grade-lab4	/^def test_faultwrite():$/;"	f
+test_faultwritekernel	./grade-lab3	/^def test_faultwritekernel():$/;"	f
+test_forktree	./grade-lab4	/^def test_forktree():$/;"	f
+test_hello	./grade-lab3	/^def test_hello():$/;"	f
+test_jos	./grade-lab1	/^def test_jos():$/;"	f
+test_jos	./grade-lab2	/^def test_jos():$/;"	f
+test_pingpong	./grade-lab4	/^def test_pingpong():$/;"	f
+test_primes	./grade-lab4	/^def test_primes():$/;"	f
+test_printf	./grade-lab1	/^def test_printf():$/;"	f
+test_sendpage	./grade-lab4	/^def test_sendpage():$/;"	f
+test_softint	./grade-lab3	/^def test_softint():$/;"	f
+test_spin	./grade-lab4	/^def test_spin():$/;"	f
+test_stresssched	./grade-lab4	/^def test_stresssched():$/;"	f
+test_testbss	./grade-lab3	/^def test_testbss():$/;"	f
+tf_cs	./inc/trap.h	/^	uint16_t tf_cs;$/;"	m	struct:Trapframe
+tf_ds	./inc/trap.h	/^	uint16_t tf_ds;$/;"	m	struct:Trapframe
+tf_eflags	./inc/trap.h	/^	uint32_t tf_eflags;$/;"	m	struct:Trapframe
+tf_eip	./inc/trap.h	/^	uintptr_t tf_eip;$/;"	m	struct:Trapframe
+tf_err	./inc/trap.h	/^	uint32_t tf_err;$/;"	m	struct:Trapframe
+tf_es	./inc/trap.h	/^	uint16_t tf_es;$/;"	m	struct:Trapframe
+tf_esp	./inc/trap.h	/^	uintptr_t tf_esp;$/;"	m	struct:Trapframe
+tf_padding1	./inc/trap.h	/^	uint16_t tf_padding1;$/;"	m	struct:Trapframe
+tf_padding2	./inc/trap.h	/^	uint16_t tf_padding2;$/;"	m	struct:Trapframe
+tf_padding3	./inc/trap.h	/^	uint16_t tf_padding3;$/;"	m	struct:Trapframe
+tf_padding4	./inc/trap.h	/^	uint16_t tf_padding4;$/;"	m	struct:Trapframe
+tf_regs	./inc/trap.h	/^	struct PushRegs tf_regs;$/;"	m	struct:Trapframe	typeref:struct:Trapframe::PushRegs
+tf_ss	./inc/trap.h	/^	uint16_t tf_ss;$/;"	m	struct:Trapframe
+tf_trapno	./inc/trap.h	/^	uint32_t tf_trapno;$/;"	m	struct:Trapframe
+thiscpu	./kern/cpu.h	38;"	d
+thisenv	./lib/libmain.c	/^const volatile struct Env *thisenv;$/;"	v	typeref:struct:Env
+thread	./ph.c	/^thread(void *xa)$/;"	f	file:
+tlb_invalidate	./kern/pmap.c	/^tlb_invalidate(pde_t *pgdir, void *va)$/;"	f
+tlbflush	./inc/x86.h	/^tlbflush(void)$/;"	f
+togglecode	./kern/console.c	/^static uint8_t togglecode[256] =$/;"	v	file:
+trap	./homework/hw4-lazy-page-allocation.c	/^trap(struct trapframe *tf)$/;"	f
+trap	./kern/trap.c	/^trap(struct Trapframe *tf)$/;"	f
+trap_dispatch	./kern/trap.c	/^trap_dispatch(struct Trapframe *tf)$/;"	f	file:
+trap_init	./kern/trap.c	/^trap_init(void)$/;"	f
+trap_init_percpu	./kern/trap.c	/^trap_init_percpu(void)$/;"	f
+trapname	./kern/trap.c	/^static const char *trapname(int trapno)$/;"	f	file:
+true	./inc/types.h	/^enum { false, true };$/;"	e	enum:__anon2
+ts	./kern/trap.c	/^static struct Taskstate ts;$/;"	v	typeref:struct:Taskstate	file:
+ts_cr3	./inc/mmu.h	/^	physaddr_t ts_cr3;	\/\/ Page directory base$/;"	m	struct:Taskstate
+ts_cs	./inc/mmu.h	/^	uint16_t ts_cs;$/;"	m	struct:Taskstate
+ts_ds	./inc/mmu.h	/^	uint16_t ts_ds;$/;"	m	struct:Taskstate
+ts_eax	./inc/mmu.h	/^	uint32_t ts_eax;	\/\/ More saved state (registers)$/;"	m	struct:Taskstate
+ts_ebp	./inc/mmu.h	/^	uintptr_t ts_ebp;$/;"	m	struct:Taskstate
+ts_ebx	./inc/mmu.h	/^	uint32_t ts_ebx;$/;"	m	struct:Taskstate
+ts_ecx	./inc/mmu.h	/^	uint32_t ts_ecx;$/;"	m	struct:Taskstate
+ts_edi	./inc/mmu.h	/^	uint32_t ts_edi;$/;"	m	struct:Taskstate
+ts_edx	./inc/mmu.h	/^	uint32_t ts_edx;$/;"	m	struct:Taskstate
+ts_eflags	./inc/mmu.h	/^	uint32_t ts_eflags;$/;"	m	struct:Taskstate
+ts_eip	./inc/mmu.h	/^	uintptr_t ts_eip;	\/\/ Saved state from last task switch$/;"	m	struct:Taskstate
+ts_es	./inc/mmu.h	/^	uint16_t ts_es;		\/\/ Even more saved state (segment selectors)$/;"	m	struct:Taskstate
+ts_esi	./inc/mmu.h	/^	uint32_t ts_esi;$/;"	m	struct:Taskstate
+ts_esp	./inc/mmu.h	/^	uintptr_t ts_esp;$/;"	m	struct:Taskstate
+ts_esp0	./inc/mmu.h	/^	uintptr_t ts_esp0;	\/\/ Stack pointers and segment selectors$/;"	m	struct:Taskstate
+ts_esp1	./inc/mmu.h	/^	uintptr_t ts_esp1;$/;"	m	struct:Taskstate
+ts_esp2	./inc/mmu.h	/^	uintptr_t ts_esp2;$/;"	m	struct:Taskstate
+ts_fs	./inc/mmu.h	/^	uint16_t ts_fs;$/;"	m	struct:Taskstate
+ts_gs	./inc/mmu.h	/^	uint16_t ts_gs;$/;"	m	struct:Taskstate
+ts_iomb	./inc/mmu.h	/^	uint16_t ts_iomb;	\/\/ I\/O map base address$/;"	m	struct:Taskstate
+ts_ldt	./inc/mmu.h	/^	uint16_t ts_ldt;$/;"	m	struct:Taskstate
+ts_link	./inc/mmu.h	/^	uint32_t ts_link;	\/\/ Old ts selector$/;"	m	struct:Taskstate
+ts_padding1	./inc/mmu.h	/^	uint16_t ts_padding1;$/;"	m	struct:Taskstate
+ts_padding10	./inc/mmu.h	/^	uint16_t ts_padding10;$/;"	m	struct:Taskstate
+ts_padding2	./inc/mmu.h	/^	uint16_t ts_padding2;$/;"	m	struct:Taskstate
+ts_padding3	./inc/mmu.h	/^	uint16_t ts_padding3;$/;"	m	struct:Taskstate
+ts_padding4	./inc/mmu.h	/^	uint16_t ts_padding4;$/;"	m	struct:Taskstate
+ts_padding5	./inc/mmu.h	/^	uint16_t ts_padding5;$/;"	m	struct:Taskstate
+ts_padding6	./inc/mmu.h	/^	uint16_t ts_padding6;$/;"	m	struct:Taskstate
+ts_padding7	./inc/mmu.h	/^	uint16_t ts_padding7;$/;"	m	struct:Taskstate
+ts_padding8	./inc/mmu.h	/^	uint16_t ts_padding8;$/;"	m	struct:Taskstate
+ts_padding9	./inc/mmu.h	/^	uint16_t ts_padding9;$/;"	m	struct:Taskstate
+ts_ss	./inc/mmu.h	/^	uint16_t ts_ss;$/;"	m	struct:Taskstate
+ts_ss0	./inc/mmu.h	/^	uint16_t ts_ss0;	\/\/   after an increase in privilege level$/;"	m	struct:Taskstate
+ts_ss1	./inc/mmu.h	/^	uint16_t ts_ss1;$/;"	m	struct:Taskstate
+ts_ss2	./inc/mmu.h	/^	uint16_t ts_ss2;$/;"	m	struct:Taskstate
+ts_t	./inc/mmu.h	/^	uint16_t ts_t;		\/\/ Trap on task switch$/;"	m	struct:Taskstate
+type	./homework/hw2-shell/sh.c	/^  int type;              \/\/ ' '$/;"	m	struct:execcmd	file:
+type	./homework/hw2-shell/sh.c	/^  int type;          \/\/  ' ' (exec), | (pipe), '<' or '>' for redirection$/;"	m	struct:cmd	file:
+type	./homework/hw2-shell/sh.c	/^  int type;          \/\/ < or > $/;"	m	struct:redircmd	file:
+type	./homework/hw2-shell/sh.c	/^  int type;          \/\/ |$/;"	m	struct:pipecmd	file:
+type	./kern/mpconfig.c	/^	uint8_t type;                   \/\/ MP system config type$/;"	m	struct:mp	file:
+type	./kern/mpconfig.c	/^	uint8_t type;                   \/\/ entry type (0)$/;"	m	struct:mpproc	file:
+uint16_t	./inc/types.h	/^typedef unsigned short uint16_t;$/;"	t
+uint32_t	./inc/types.h	/^typedef unsigned int uint32_t;$/;"	t
+uint64_t	./inc/types.h	/^typedef unsigned long long uint64_t;$/;"	t
+uint8_t	./inc/types.h	/^typedef unsigned char uint8_t;$/;"	t
+uintptr_t	./inc/types.h	/^typedef uint32_t uintptr_t;$/;"	t
+umain	./user/badsegment.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/breakpoint.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/buggyhello.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/buggyhello2.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/divzero.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/dumbfork.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/evilhello.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/fairness.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultalloc.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultallocbad.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultbadhandler.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultdie.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultevilhandler.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultnostack.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultread.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultreadkernel.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultregs.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultwrite.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/faultwritekernel.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/forktree.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/hello.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/idle.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/pingpong.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/pingpongs.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/primes.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/sendpage.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/softint.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/spin.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/stresssched.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/testbss.c	/^umain(int argc, char **argv)$/;"	f
+umain	./user/yield.c	/^umain(int argc, char **argv)$/;"	f
+unlock_kernel	./kern/spinlock.h	/^unlock_kernel(void)$/;"	f
+usage_exit	./kern/monitor.c	/^usage_exit(const char *usage) $/;"	f	file:
+user_mem_assert	./kern/pmap.c	/^user_mem_assert(struct Env *env, const void *va, size_t len, int perm)$/;"	f
+user_mem_check	./kern/pmap.c	/^user_mem_check(struct Env *env, const void *va, size_t len, int perm)$/;"	f
+user_mem_check_addr	./kern/pmap.c	/^static uintptr_t user_mem_check_addr;$/;"	v	file:
+user_test	./gradelib.py	/^    def user_test(self, binary, *monitors, **kw):$/;"	m	class:Runner
+utf_eflags	./inc/trap.h	/^	uint32_t utf_eflags;$/;"	m	struct:UTrapframe
+utf_eip	./inc/trap.h	/^	uintptr_t utf_eip;$/;"	m	struct:UTrapframe
+utf_err	./inc/trap.h	/^	uint32_t utf_err;$/;"	m	struct:UTrapframe
+utf_esp	./inc/trap.h	/^	uintptr_t utf_esp;$/;"	m	struct:UTrapframe
+utf_fault_va	./inc/trap.h	/^	uint32_t utf_fault_va;	\/* va for T_PGFLT, 0 otherwise *\/$/;"	m	struct:UTrapframe
+utf_regs	./inc/trap.h	/^	struct PushRegs utf_regs;$/;"	m	struct:UTrapframe	typeref:struct:UTrapframe::PushRegs
+va_arg	./inc/stdarg.h	10;"	d
+va_end	./inc/stdarg.h	12;"	d
+va_list	./inc/stdarg.h	/^typedef __builtin_va_list va_list;$/;"	t
+va_start	./inc/stdarg.h	8;"	d
+val	./user/pingpongs.c	/^uint32_t val;$/;"	v
+value	./ph.c	/^	int value;$/;"	m	struct:entry	file:
+vcprintf	./kern/printf.c	/^vcprintf(const char *fmt, va_list ap)$/;"	f
+vcprintf	./lib/printf.c	/^vcprintf(const char *fmt, va_list ap)$/;"	f
+vectors	./kern/vectors.S	/^vectors:$/;"	l
+version	./kern/mpconfig.c	/^	uint8_t version;                \/\/ [14]$/;"	m	struct:mpconf	file:
+version	./kern/mpconfig.c	/^	uint8_t version;                \/\/ local APIC version$/;"	m	struct:mpproc	file:
+vprintfmt	./lib/printfmt.c	/^vprintfmt(void (*putch)(int, void*), void *putdat, const char *fmt, va_list ap)$/;"	f
+vsnprintf	./lib/printfmt.c	/^vsnprintf(char *buf, int n, const char *fmt, va_list ap)$/;"	f
+wait	./gradelib.py	/^    def wait(self):$/;"	f
+waitdisk	./boot/main.c	/^waitdisk(void)$/;"	f
+warn	./inc/assert.h	11;"	d
+whitespace	./homework/hw2-shell/sh.c	/^char whitespace[] = " \\t\\r\\n\\v";$/;"	v
+wpos	./kern/console.c	/^	uint32_t wpos;$/;"	m	struct:__anon7	file:
+write_eflags	./inc/x86.h	/^write_eflags(uint32_t eflags)$/;"	f
+xchecksum	./kern/mpconfig.c	/^	uint8_t xchecksum;              \/\/ extended table checksum$/;"	m	struct:mpconf	file:
+xchg	./inc/x86.h	/^xchg(volatile uint32_t *addr, uint32_t newval)$/;"	f
+xlength	./kern/mpconfig.c	/^	uint16_t xlength;               \/\/ extended table length$/;"	m	struct:mpconf	file:
+zero	./user/divzero.c	/^int zero;$/;"	v
