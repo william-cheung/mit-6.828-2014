@@ -213,6 +213,8 @@ dump_contents_v(void* va1, void* va2)
 			cprintf("\n");
 		}
 	}
+	if (count != 0)
+		cprintf("\n");
 }
 
 static void

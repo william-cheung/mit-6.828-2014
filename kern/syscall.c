@@ -239,7 +239,7 @@ sys_page_map(envid_t srcenvid, void *srcva,
 	
 	if ((perm & (PTE_U | PTE_P)) != (PTE_U | PTE_P) || (perm & ~PTE_SYSCALL) != 0)
 		return -E_INVAL;
-	
+
 	if ((pp = page_lookup(srcenv->env_pgdir, srcva, &pte)) == NULL)
 		return -E_INVAL;
 
