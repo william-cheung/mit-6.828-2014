@@ -44,6 +44,20 @@
 
    This happens when we trap from user mode to kernel mode.
 
+Notes on a bug in forktree:
+	When using page_walk(pgdir, va, 1) in page_lookup (in kern/pmap.c), we encounter
+	a bug when a process forked by another process access _pgfault_handler in the 'call' 
+	instruction in pfentry.S
+	It becomes right after we change page_walk(pgdir, va, 1) to page_walk(pgdir, va, 0)
+	in page_lookup and some related code in region_alloc in kern/env.c
+
+	See commit 4336b8f
+
+
+   
+
+ 
+
    
 
 
