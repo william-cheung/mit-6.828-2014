@@ -298,14 +298,13 @@ region_alloc(struct Env *e, void *va, size_t len)
 		struct PageInfo *pp = page_lookup(e->env_pgdir, sa, &pte);
 		if (pp != NULL)  
 			continue; // panic("region_alloc: invalid address 0x%08p", sa);
-		if (pte == NULL) 
-			panic("region_alloc: out of memory for PT");
 		
 		pp = page_alloc(0);
 		if (pp == NULL)  
 			panic("region_alloc: out of memory for PG");
 		
-		*pte = PTE_ADDR(page2pa(pp)) | PTE_W | PTE_U | PTE_P;
+		if (page_insert(e->env_pgdir, pp, sa, PTE_W | PTE_U | PTE_P) < 0)
+			panic("region_alloc: out of memory for PT");
 	}
 }
 

@@ -18,14 +18,14 @@ pgfault(struct UTrapframe *utf)
 	void *addr = (void *) utf->utf_fault_va;
 	void *fault_va = ROUNDDOWN(addr, PGSIZE);
 	uint32_t err = utf->utf_err;
+	uint32_t perm = PTE_U | PTE_P | PTE_COW;
 	int r;
-	cprintf("pgfault in env %08x\n", sys_getenvid());
 	// Check that the faulting access was (1) a write, and (2) to a
 	// copy-on-write page.  If not, panic.
 	// Hint:
 	//   Use the read-only page table mappings at uvpt
 	//   (see <inc/memlayout.h>).
-	if (!(err & FEC_WR) || !(uvpt[PGNUM(addr)] & PTE_COW))
+	if (!(err & FEC_WR) || (uvpt[PGNUM(fault_va)] & perm) != perm)
 		panic("invalid faulting access");
 
 	// Allocate a new page, map it at a temporary location (PFTEMP),
@@ -57,19 +57,18 @@ static int
 duppage(envid_t envid, unsigned pn)
 {
 	void *addr = (void *) (pn * PGSIZE);
-	cprintf("dup addr 0x%08x\n", addr);
 	uint32_t perm = PTE_U | PTE_P;
 	int r;
 
 	if (uvpt[pn] & (PTE_W | PTE_COW)) 
 		perm |= PTE_COW;
-
+	
 	if ((r = sys_page_map(0, addr, envid, addr, perm)) < 0)
 		panic("sys_page_map: %e", r);
 	
 	if (!(perm & PTE_COW))
 		return 0;
-
+	
 	if ((r = sys_page_map(0, addr, 0, addr, perm)) < 0)
 		panic("sys_page_map: %e", r);
 	
@@ -110,7 +109,6 @@ fork(void)
 		return 0;
 	}
 	
-	cprintf("fork 0x%08x\n", envid);
 	end_addr = (uint8_t *) (UXSTACKTOP - PGSIZE);
 	for (addr = 0; addr < end_addr; addr += PGSIZE) {	
 		if ((uvpd[PDX(addr)] & PTE_P) && (uvpt[PGNUM(addr)] & PTE_P))

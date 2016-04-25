@@ -350,8 +350,6 @@ page_fault_handler(struct Trapframe *tf)
 			tf->tf_esp = UXSTACKTOP;
 		
 		tf->tf_esp -= sizeof(utf);
-		cprintf("fault_eip:0x%08x\n", tf->tf_eip);
-		cprintf("fault_va:0x%08x, fault_esp:0x%08x\n", fault_va, tf->tf_esp);
 		user_mem_assert(curenv, (void *) tf->tf_esp, sizeof(utf), PTE_U|PTE_W|PTE_P);
 		*((struct UTrapframe *) tf->tf_esp) = utf;
 
