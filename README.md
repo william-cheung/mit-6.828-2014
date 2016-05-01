@@ -23,6 +23,7 @@
   - Part B: Copy-on-Write Fork
   - Part C: Preemptive Multitasking and Inter-Process communication (IPC)
 * [Homework: User-level threads](https://github.com/william-cheung/xv6-public/blob/master/uthread_switch.S)
+* [Homework: Barriers](https://github.com/william-cheung/mit-6.828-2014/blob/lab4/barrier.c)
 
 My xv6 repo: https://github.com/william-cheung/xv6-public
 
