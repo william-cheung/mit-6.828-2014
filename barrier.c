@@ -35,29 +35,29 @@ barrier()
 
   // Wait for other threads to exit the last round
   while (bstate.nthread_exited < nthread)  
-	pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
+    pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
 
   bstate.nthread++;
   while (bstate.nthread < nthread) {  // The real barrier
     is_last_reached = 0;
-	pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
+    pthread_cond_wait(&bstate.barrier_cond, &bstate.barrier_mutex);
   }
   
   if (is_last_reached) { 
     // We are the last to reach the barrier in a round
     bstate.round++;
     bstate.nthread_exited = 0;
-	// Wake up all threads waiting for the condition:
-	//     bstate.nthread == nthread
-  	pthread_cond_broadcast(&bstate.barrier_cond);
+    // Wake up all threads waiting for the condition:
+    //     bstate.nthread == nthread
+    pthread_cond_broadcast(&bstate.barrier_cond);
   }
   
   if (++bstate.nthread_exited == nthread) {
-  	// We are the last to exit current barrier round
-	bstate.nthread = 0;
-	// Wake up all threads waiting for the condition:
-	//     bstate.nthread_exited == nthread
-  	pthread_cond_broadcast(&bstate.barrier_cond);
+    // We are the last to exit current barrier round
+    bstate.nthread = 0;
+    // Wake up all threads waiting for the condition:
+    //     bstate.nthread_exited == nthread
+    pthread_cond_broadcast(&bstate.barrier_cond);
   }
   
   pthread_mutex_unlock(&bstate.barrier_mutex);
