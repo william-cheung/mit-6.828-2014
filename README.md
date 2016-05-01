@@ -22,7 +22,7 @@
   - Part A: Multiprocessor Support and Cooperative Multitasking
   - Part B: Copy-on-Write Fork
   - Part C: Preemptive Multitasking and Inter-Process communication (IPC)
-* Homework: User-level threads
+* [Homework: User-level threads](https://github.com/william-cheung/xv6-public/blob/master/uthread_switch.S)
 
 My xv6 repo: https://github.com/william-cheung/xv6-public
 
