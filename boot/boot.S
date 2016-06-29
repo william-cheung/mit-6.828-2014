@@ -25,10 +25,12 @@ start:
   #   For backwards compatibility with the earliest PCs, physical
   #   address line 20 is tied low, so that addresses higher than
   #   1MB wrap around to zero by default.  This code undoes this.
+  # See http://www.brokenthorn.com/Resources/OSDev7.html for desc 
+  # of port 0x64
 seta20.1:
   inb     $0x64,%al               # Wait for not busy
   testb   $0x2,%al
-  jnz     seta20.1
+  jnz     seta20.1                # if busy, goto seta20.1 
 
   movb    $0xd1,%al               # 0xd1 -> port 0x64
   outb    %al,$0x64

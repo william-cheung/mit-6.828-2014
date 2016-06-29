@@ -49,7 +49,7 @@ i386_init(void)
 	pic_init();
 
 	// Acquire the big kernel lock before waking up APs
-	// Your code here:
+	lock_kernel();	
 
 	// Starting non-boot CPUs
 	boot_aps();
@@ -93,7 +93,7 @@ boot_aps(void)
 	for (c = cpus; c < cpus + ncpu; c++) {
 		if (c == cpus + cpunum())  // We've started already.
 			continue;
-
+		
 		// Tell mpentry.S what stack to use 
 		mpentry_kstack = percpu_kstacks[c - cpus] + KSTKSIZE;
 		// Start the CPU at mpentry_start
@@ -121,10 +121,12 @@ mp_main(void)
 	// to start running processes on this CPU.  But make sure that
 	// only one CPU can enter the scheduler at a time!
 	//
-	// Your code here:
+	lock_kernel();
+
+	sched_yield();
 
 	// Remove this after you finish Exercise 4
-	for (;;);
+	// for (;;);
 }
 
 /*
