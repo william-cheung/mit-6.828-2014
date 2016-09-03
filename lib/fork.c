@@ -60,7 +60,14 @@ duppage(envid_t envid, unsigned pn)
 	uint32_t perm = PTE_U | PTE_P;
 	int r;
 
-	if (uvpt[pn] & (PTE_W | PTE_COW)) 
+	if (uvpt[pn] & PTE_SHARE) {  // Lab 5
+        perm = uvpt[pn] & PTE_SYSCALL;
+    	if ((r = sys_page_map(0, addr, envid, addr, perm)) < 0)
+		    panic("sys_page_map: %e", r);
+        return 0;
+    }
+    
+    if (uvpt[pn] & (PTE_W | PTE_COW)) 
 		perm |= PTE_COW;
 	
 	if ((r = sys_page_map(0, addr, envid, addr, perm)) < 0)
