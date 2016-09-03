@@ -26,7 +26,7 @@
 * [Homework: Barriers](https://github.com/william-cheung/mit-6.828-2014/blob/lab4/barrier.c)
 * [Homework: bigger files for xv6 (fs.c:bmap())](https://github.com/william-cheung/xv6-public/blob/master/fs.c)
 * [Lab 5: File system, Spawn and Shell](https://github.com/william-cheung/mit-6.828-2014/tree/lab5)
-* [Homework: xv6 log]
+* [Homework: xv6 log](https://github.com/william-cheung/xv6-public/blob/master/log.c)
 
 My xv6 repo: https://github.com/william-cheung/xv6-public
 
