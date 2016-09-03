@@ -54,7 +54,7 @@ again:
 			// If not, dup 'fd' onto file descriptor 0,
 			// then close the original 'fd'.
             
-            if ((fd = open(t, O_RDONLY)) < 0) {
+                        if ((fd = open(t, O_RDONLY)) < 0) {
 				cprintf("open %s for read: %e", t, fd);
 				exit();
 			}
