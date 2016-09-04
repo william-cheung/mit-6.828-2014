@@ -1,0 +1,47 @@
+1. Write a short (3-5 word) comment next to each non-zero value on the stack 
+   explaining what is. Which part of the stack printout is actually the stack?
+   
+   after call _start or call entry:
+	
+	(gdb) info reg
+		eax            0x0	0
+		ecx            0x0	0
+		edx            0x1f0	496
+		ebx            0x10074	65652
+		esp            0x7bcc	0x7bcc
+		ebp            0x7bf8	0x7bf8
+		esi            0x10074	65652
+		edi            0x0	0
+		eip            0x10000c	0x10000c
+		eflags         0x46	[ PF ZF ]
+		cs             0x8	8
+		ss             0x10	16
+		ds             0x10	16
+		es             0x10	16
+		fs             0x0	0
+		gs             0x0	0
+
+	(gdb) x/24x $esp
+		0x7bcc:	0x00007db7	0x00000000	0x00000000	0x00000000
+		        | return eip of entry(_start)
+		0x7bdc:	0x00000000	0x00000000	0x00000000	0x00000000
+		0x7bec:	0x00000000	0x00000000	0x00000000	0x00000000
+		        ebx             esi             edi             ebp         contents of regs before call bootmain
+		0x7bfc:	0x00007c4d	0x8ec031fa	0x8ec08ed8	0xa864e4d0
+		        | bootmain's return address                                 stack starts at 0x7c00
+		0x7c0c:	0xb0fa7502	0xe464e6d1	0x7502a864	0xe6dfb0fa
+		0x7c1c:	0x16010f60	0x200f7c78	0xc88366c0	0xc0220f01
+   	
+
+    Where in bootasm.S is the stack pointer initialized?
+      movl $start, %esp ; %esp = 0x7c00
+
+    Single step through the call to bootmain; what is on the stack now?
+      bootmain's return address: 0x00007c4d
+ 
+    What do the first assembly instructions of bootmain do to the stack? Look for bootmain in bootblock.asm.
+      pushl %ebp
+
+    Look in bootmain in bootblock.asm for the call that changes eip to 0x10000c. What does that call do to the stack?
+      push the return address of entry onto stack
+     

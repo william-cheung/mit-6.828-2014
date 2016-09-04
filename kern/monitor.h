@@ -11,9 +11,21 @@ struct Trapframe;
 // (NULL if none).
 void monitor(struct Trapframe *tf);
 
-// Functions implementing monitor commands.
-int mon_help(int argc, char **argv, struct Trapframe *tf);
-int mon_kerninfo(int argc, char **argv, struct Trapframe *tf);
-int mon_backtrace(int argc, char **argv, struct Trapframe *tf);
+#define MON_CMD_DECL(name) \
+	int mon_##name(int argc, char **argv, struct Trapframe *tf)
+
+// Declare functions implementing monitor commands.
+
+MON_CMD_DECL(help);
+MON_CMD_DECL(kerninfo);
+MON_CMD_DECL(backtrace);
+
+MON_CMD_DECL(showmappings);
+MON_CMD_DECL(changeperms);
+MON_CMD_DECL(dumpcontents);
+
+MON_CMD_DECL(exit);
+
+#undef MON_CMD_DECL
 
 #endif	// !JOS_KERN_MONITOR_H

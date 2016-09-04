@@ -9,7 +9,7 @@
 static void
 putch(int ch, int *cnt)
 {
-	cputchar(ch);
+	cputchar(ch); // lib/stdio.c
 	*cnt++;
 }
 
@@ -17,7 +17,7 @@ int
 vcprintf(const char *fmt, va_list ap)
 {
 	int cnt = 0;
-
+	// lib/printfmt.c
 	vprintfmt((void*)putch, &cnt, fmt, ap);
 	return cnt;
 }
