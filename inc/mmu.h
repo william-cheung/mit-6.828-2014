@@ -55,9 +55,9 @@
 #define PDXSHIFT	22		// offset of PDX in a linear address
 
 // Page table/directory entry flags.
-#define PTE_P		0x001	// Present
+#define PTE_P		0x001	// Present, page is resident in memory and not swapped out
 #define PTE_W		0x002	// Writeable
-#define PTE_U		0x004	// User
+#define PTE_U		0x004	// User, set if the page is accessible from user space
 #define PTE_PWT		0x008	// Write-Through
 #define PTE_PCD		0x010	// Cache-Disable
 #define PTE_A		0x020	// Accessed
@@ -81,7 +81,7 @@
 #define CR0_EM		0x00000004	// Emulation
 #define CR0_TS		0x00000008	// Task Switched
 #define CR0_ET		0x00000010	// Extension Type
-#define CR0_NE		0x00000020	// Numeric Errror
+#define CR0_NE		0x00000020	// Numeric Error
 #define CR0_WP		0x00010000	// Write Protect
 #define CR0_AM		0x00040000	// Alignment Mask
 #define CR0_NW		0x20000000	// Not Writethrough
@@ -305,6 +305,8 @@ struct Gatedesc {
 	(gate).gd_p = 1;					\
 	(gate).gd_off_31_16 = (uint32_t) (off) >> 16;		\
 }
+
+#define DPL_USER  0x3
 
 // Pseudo-descriptors used for LGDT, LLDT and LIDT instructions.
 struct Pseudodesc {
