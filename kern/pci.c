@@ -194,9 +194,17 @@ pci_bridge_attach(struct pci_func *pcif)
 static int
 pci_nic_attach(struct pci_func *pcif) 
 {
+    int i;
     pci_func_enable(pcif);
     e1000_memreg_vaddr = mmio_map_region(pcif->reg_base[0], pcif->reg_size[0]);
     cprintf("E1000 Status: %08x\n", E1000_REG32_LVAL(E1000_STATUS));
+    e1000_tx_init();
+
+    for (i = 0; i < 20; i++) {
+        if (e1000_try_send("Hello World!", 12) < 0)
+            cprintf("Failed to send the %d-th packet.\n", i);
+    }
+
     return 1;
 }
 
