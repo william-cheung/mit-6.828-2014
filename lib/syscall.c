@@ -122,3 +122,9 @@ sys_time_msec(void)
 {
 	return (unsigned int) syscall(SYS_time_msec, 0, 0, 0, 0, 0, 0);
 }
+
+int 
+sys_nic_try_send(void *pkt, size_t len)
+{
+	return syscall(SYS_nic_try_send, (uint32_t)pkt, len, 0, 0, 0, 0);
+}
