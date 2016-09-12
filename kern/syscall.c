@@ -13,6 +13,8 @@
 #include <kern/sched.h>
 #include <kern/time.h>
 
+#include <kern/e1000.h>
+
 // Print a string to the system console.
 // The string is exactly 'len' characters long.
 // Destroys the environment on memory errors.
@@ -422,7 +424,21 @@ sys_ipc_recv(void *dstva)
 static int
 sys_time_msec(void)
 {
-    return time_msec();
+	return time_msec();
+}
+
+// Transmit packets from user space
+// Return 0 on success
+// Return < 0 on error. Errors are:
+//   -E_INVAL if the address passed from user space is invalid.
+//   -E_TX_FULL if no free tx descriptor available.
+static int
+sys_nic_try_send(void *data, size_t len) 
+{
+	if (data >= (void *) UTOP || (char *)data + len > (char *) UTOP)
+		return -E_INVAL;
+
+	return e1000_transmit(data, len);		
 }
 
 // Dispatches to the correct kernel function, passing the arguments.
@@ -465,6 +481,8 @@ syscall(uint32_t syscallno, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t a4, 
         return sys_env_set_trapframe(a1, (void *) a2);
     case SYS_time_msec:
         return sys_time_msec();
+	case SYS_nic_try_send:
+		return sys_nic_try_send((void *)a1, a2);
 	default:
 		return -E_INVAL;
 	}

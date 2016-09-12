@@ -201,7 +201,7 @@ pci_nic_attach(struct pci_func *pcif)
     e1000_tx_init();
 
     for (i = 0; i < 20; i++) {
-        if (e1000_try_send("Hello World!", 12) < 0)
+        if (e1000_transmit("Hello World!", 12) < 0)
             cprintf("Failed to send the %d-th packet.\n", i);
     }
 

@@ -25,6 +25,11 @@ enum {
 	E_FILE_EXISTS	,	// File already exists
 	E_NOT_EXEC	,	// File not a valid executable
 	E_NOT_SUPP	,	// Operation not supported
+	
+	// Network driver error codes
+	E_PKT_TOO_LONG	,	// Packet too long 
+	E_TX_FULL	,	// TX queue is full
+	E_RX_FULL	, 	// RX queue is full	
 
 	MAXERROR
 };

@@ -68,17 +68,16 @@ struct e1000_tx_desc {
 
 
 
+
 volatile uint8_t *e1000_memreg_vaddr;   /* weak symbol */  
 
 #define E1000_REG_LVAL(type, offset) (*(type *)(e1000_memreg_vaddr + (offset)))
 #define E1000_REG32_LVAL(offset) E1000_REG_LVAL(uint32_t, offset)
 #define E1000_REG64_LVAL(offset) E1000_REG_LVAL(uint64_t, offset)
 
-
-
 #define ETHERNET_PACKET_SIZE  1518 
 
 extern void e1000_tx_init(void);
-extern int  e1000_try_send(void *packet, size_t len);
+extern int  e1000_transmit(void *data, size_t len);
 
 #endif	// JOS_KERN_E1000_H
