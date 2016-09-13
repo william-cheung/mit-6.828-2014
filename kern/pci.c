@@ -196,8 +196,13 @@ pci_e1000_attach(struct pci_func *pcif)
 {
     pci_func_enable(pcif);
     e1000_memreg_vaddr = mmio_map_region(pcif->reg_base[0], pcif->reg_size[0]);
-    //cprintf("e1000_memreg_vaddr: %08x\n", e1000_memreg_vaddr);
+    
+    cprintf("e1000_memreg_vaddr: %08x\n", e1000_memreg_vaddr);
+    assert(E1000_REG(E1000_STATUS) == 0x80080783); 
+    cprintf("E1000 Status: %08x\n", E1000_REG(E1000_STATUS));
+ 
     e1000_tx_init();
+    e1000_rx_init();
 
     return 1;
 }
