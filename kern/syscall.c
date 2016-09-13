@@ -433,12 +433,12 @@ sys_time_msec(void)
 //   -E_INVAL if the address passed from user space is invalid.
 //   -E_TX_FULL if no free tx descriptor available.
 static int
-sys_nic_try_send(void *data, size_t len) 
+sys_nic_try_send(const void *data, size_t len) 
 {
-	if (data >= (void *) UTOP || (char *)data + len > (char *) UTOP)
-		return -E_INVAL;
-
-	return e1000_transmit(data, len);		
+    if (data >= (void *)UTOP || (char *)data + len > (char *)UTOP)
+        return -E_INVAL;
+    
+    return e1000_transmit(data, len);		
 }
 
 // Dispatches to the correct kernel function, passing the arguments.

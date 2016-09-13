@@ -124,7 +124,7 @@ sys_time_msec(void)
 }
 
 int 
-sys_nic_try_send(void *pkt, size_t len)
+sys_nic_try_send(const void *data, size_t len)
 {
-	return syscall(SYS_nic_try_send, (uint32_t)pkt, len, 0, 0, 0, 0);
+	return syscall(SYS_nic_try_send, 0, (uint32_t)data, len, 0, 0, 0);
 }

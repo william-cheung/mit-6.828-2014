@@ -17,7 +17,7 @@ static uint32_t pci_conf1_data_ioport = 0x0cfc;
 
 // Forward declarations
 static int pci_bridge_attach(struct pci_func *pcif);
-static int pci_nic_attach(struct pci_func *pcif); 
+static int pci_e1000_attach(struct pci_func *pcif); 
 
 // PCI driver table
 struct pci_driver {
@@ -34,7 +34,7 @@ struct pci_driver pci_attach_class[] = {
 // pci_attach_vendor matches the vendor ID and device ID of a PCI device. key1
 // and key2 should be the vendor ID and device ID respectively
 struct pci_driver pci_attach_vendor[] = {
-    { PCI_VENDOR_82540EM, PCI_PRODUCT_82540EM, &pci_nic_attach },
+    { PCI_VENDOR_82540EM, PCI_PRODUCT_82540EM, &pci_e1000_attach },
 	{ 0, 0, 0 },
 };
 
@@ -192,17 +192,12 @@ pci_bridge_attach(struct pci_func *pcif)
 
 
 static int
-pci_nic_attach(struct pci_func *pcif) 
+pci_e1000_attach(struct pci_func *pcif) 
 {
-    int i, r;
     pci_func_enable(pcif);
     e1000_memreg_vaddr = mmio_map_region(pcif->reg_base[0], pcif->reg_size[0]);
+    //cprintf("e1000_memreg_vaddr: %08x\n", e1000_memreg_vaddr);
     e1000_tx_init();
-
-    for (i = 0; i < 20; i++) {
-        if ((r = e1000_transmit("Hello World!", 12)) < 0)
-            cprintf("Failed to send the %d-th packet: %e\n", i, r);
-    }
 
     return 1;
 }
