@@ -437,8 +437,7 @@ static int
 sys_nic_try_send(const void *data, size_t len) 
 {
     if (data >= (void *)UTOP || (char *)data + len > (char *)UTOP)
-        return -E_INVAL;
-    
+        return -E_INVAL;    
     return e1000_transmit(data, len);		
 }
 
@@ -453,7 +452,6 @@ sys_nic_recv(void *buff, size_t size)
 {
     if (buff >= (void *)UTOP || (char *)buff + size > (char *)UTOP)
         return -E_INVAL;
-    cprintf("buff %08x, size %d\n", buff, size); 
     return e1000_receive(buff, size);
 }
 

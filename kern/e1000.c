@@ -33,7 +33,7 @@ e1000_tx_init(void)
     for (i = 0; i < NTXDESC; i++) 
         tx_queue[i].buff_addr = PADDR(tx_buffs[i]);
     
-    // Initialize transmit descriptor array (a.k.a. transmit queue)
+    // Initialize regs of transmit descriptor ring (a.k.a. transmit queue)
     E1000_REG(E1000_TDBAL) = PADDR(tx_queue); 
     E1000_REG(E1000_TDBAH) = 0;
     E1000_REG(E1000_TDLEN) = sizeof(tx_queue);
@@ -60,18 +60,27 @@ e1000_rx_init(void)
     for (i = 0; i < NRXDESC; i++)
         rx_queue[i].buff_addr = PADDR(rx_buffs[i]);
     
-    // MAC: 52:54:00:12:34:56
+    // configure the Receive Adress Registers with the card's 
+    // own MAC address ( 52:54:00:12:34:56 ) in order to accept
+    // packets addressed to the card
     E1000_REG(E1000_RAL0)  = 0x12005452;
     E1000_REG(E1000_RAH0)  = 0x80005634;   
-
+    
+    // initialize regs of receive descriptor ring
     E1000_REG(E1000_RDBAL) = PADDR(rx_queue); 
     E1000_REG(E1000_RDBAH) = 0;
     E1000_REG(E1000_RDLEN) = sizeof(rx_queue);
     E1000_REG(E1000_RDH)   = 0;
-    E1000_REG(E1000_RDT)   = NRXDESC;
- 
+    E1000_REG(E1000_RDT)   = NRXDESC - 1;
+    
+    // enable receive
     E1000_REG(E1000_RCTL) |= E1000_RCTL_EN;
+    
+    // configure e1000 to strip the Ethernet CRC
     E1000_REG(E1000_RCTL) |= E1000_RCTL_SECRC;
+    
+    E1000_REG(E1000_RCTL) |= E1000_RCTL_LBM_MAC;
+    //E1000_REG(E1000_RCTL) |= E1000_RCTL_BAM;
     //E1000_REG(E1000_RCTL) |= E1000_RCTL_SZ_2048;
     
     return 0;
@@ -85,7 +94,8 @@ e1000_transmit(const void *data, size_t len)
     if (len > TX_PKT_BUFF_SIZE)
         return -E_PKT_TOO_LONG;	
 
-    if ((tx_queue[tail].cmd & E1000_TXD_CMD_RS) && !(tx_queue[tail].sta & E1000_TXD_STA_DD))
+    if ((tx_queue[tail].cmd & E1000_TXD_CMD_RS) 
+        && !(tx_queue[tail].sta & E1000_TXD_STA_DD))
         return -E_TX_FULL;
 
     memcpy(tx_buffs[tail], data, len);
@@ -101,26 +111,23 @@ e1000_transmit(const void *data, size_t len)
 int 
 e1000_receive(void *buff, size_t size)
 {
-    uint32_t tail = E1000_REG(E1000_RDT) % NRXDESC;
+    uint32_t tail = E1000_REG(E1000_RDT);
+    uint32_t next = (tail + 1) % NRXDESC;
     int len;
 
-    if (!(rx_queue[tail].sta & E1000_RXD_STA_DD))
+    if (!(rx_queue[next].sta & E1000_RXD_STA_DD))
         return -E_RX_EMPTY;
-
-    if (size < rx_queue[tail].length)
+ 
+    len = rx_queue[next].length;
+    if (size < len)
         return -E_PKT_TOO_LONG;
     
-    cprintf("e1000 receive: ");
-    len = rx_queue[tail].length;
-    cprintf("len %d\n", len);
-    cprintf("copy data from %08x to %08x\n", rx_buffs[tail], buff);
-    //memcpy(buff, rx_buffs[tail], len);
-    memcpy(buff, "Hello World!", 12);
-    cprintf("end copy\n");
-    rx_queue[tail].sta &= ~(E1000_RXD_STA_DD | E1000_RXD_STA_EOP);
-    cprintf("end receive\n");
+    //cprintf("e1000: copy data from %08x to %08x, len %d\n", 
+    //    rx_buffs[next], buff, len);
+    
+    memcpy(buff, rx_buffs[next], len);
+    rx_queue[next].sta &= ~E1000_RXD_STA_DD;
 
-    E1000_REG(E1000_RDT) = (tail + 1) % NRXDESC;
-
-    return 0; //len;
+    E1000_REG(E1000_RDT) = next;
+    return len;
 }
