@@ -78,11 +78,7 @@ e1000_rx_init(void)
     
     // configure e1000 to strip the Ethernet CRC
     E1000_REG(E1000_RCTL) |= E1000_RCTL_SECRC;
-    
-    E1000_REG(E1000_RCTL) |= E1000_RCTL_LBM_MAC;
-    //E1000_REG(E1000_RCTL) |= E1000_RCTL_BAM;
-    //E1000_REG(E1000_RCTL) |= E1000_RCTL_SZ_2048;
-    
+     
     return 0;
 }
 
@@ -121,10 +117,7 @@ e1000_receive(void *buff, size_t size)
     len = rx_queue[next].length;
     if (size < len)
         return -E_PKT_TOO_LONG;
-    
-    //cprintf("e1000: copy data from %08x to %08x, len %d\n", 
-    //    rx_buffs[next], buff, len);
-    
+   
     memcpy(buff, rx_buffs[next], len);
     rx_queue[next].sta &= ~E1000_RXD_STA_DD;
 

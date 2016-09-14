@@ -20,9 +20,9 @@ MON_CMD_DECL(help);
 MON_CMD_DECL(kerninfo);
 MON_CMD_DECL(backtrace);
 
-MON_CMD_DECL(showmappings);
-MON_CMD_DECL(changeperms);
-MON_CMD_DECL(dumpcontents);
+MON_CMD_DECL(showmap);
+MON_CMD_DECL(chperm);
+MON_CMD_DECL(memdump);
 
 MON_CMD_DECL(exit);
 

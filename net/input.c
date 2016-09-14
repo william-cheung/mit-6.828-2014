@@ -12,10 +12,12 @@ input(envid_t ns_envid)
 
     binaryname = "ns_input";
 
+    // the corresponding page frame is an COW page after fork, we must allocate 
+    // our own address space before entering kernel mode (sys_nic_recv)
+    memcpy(nsipcbuf.pkt.jp_data, "copy page on write", 1);
+
 	while (1) {
         // read a packet from the device driver
-        memcpy(nsipcbuf.pkt.jp_data, "load page\0", 10);
-        //cprintf("%s\n", nsipcbuf.pkt.jp_data);
         while ((r = sys_nic_recv(nsipcbuf.pkt.jp_data, bufsiz)) == -E_RX_EMPTY)
             sys_yield();
         if (r < 0)

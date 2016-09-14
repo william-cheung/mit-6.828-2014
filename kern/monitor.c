@@ -27,9 +27,9 @@ static struct Command commands[] = {
 	{ "help", "Display this list of commands",  mon_help },
 	{ "kerninfo", "Display information about the kernel", mon_kerninfo },
 	{ "backtrace", "Display stack backtrace", mon_backtrace},
-	{ "showmappings", "Display the physical page mappings", mon_showmappings },
-	{ "changeperms", "Change permissions of page mappings", mon_changeperms },
-    { "dumpcontents", "Dump contents of a range of memory", mon_dumpcontents },
+	{ "showmap", "Display the physical page mappings", mon_showmap },
+	{ "chperm", "Change permissions of page mappings", mon_chperm },
+    { "memdump", "Dump contents of a range of memory", mon_memdump },
 	{ "exit", "Exit the kernel monitor", mon_exit },
 };
 #define NCOMMANDS (sizeof(commands)/sizeof(commands[0]))
@@ -127,9 +127,9 @@ show_mapping(void *vaddr)
 }
 
 int
-mon_showmappings(int argc, char** argv, struct Trapframe *tf) 
+mon_showmap(int argc, char** argv, struct Trapframe *tf) 
 {	
-	const char *usage = "Usage: showmappings vaddr1 [vaddr2]\n";
+	const char *usage = "Usage: showmap vaddr1 [vaddr2]\n";
 	void *vaddr1, *vaddr2;
 
 	if (argc < 2 || argc > 3) 	
@@ -163,9 +163,9 @@ str2perm(const char* s) {
 }
 
 int 
-mon_changeperms(int argc, char** argv, struct Trapframe *tf) 
+mon_chperm(int argc, char** argv, struct Trapframe *tf) 
 {
-	const char *usage = "Usage: changeperms vaddr (W|U)+\n";
+	const char *usage = "Usage: chperm vaddr (W|U)+\n";
 	void *vaddr;
 	pte_t *pte;
 	int perms = PTE_P;
@@ -195,7 +195,7 @@ mon_changeperms(int argc, char** argv, struct Trapframe *tf)
 }
 
 static void 
-dump_contents_v(void* va1, void* va2) 
+memdump_v(void* va1, void* va2) 
 {
 	typedef unsigned char byte;
 
@@ -218,17 +218,17 @@ dump_contents_v(void* va1, void* va2)
 }
 
 static void
-dump_contents_p(physaddr_t pa1, physaddr_t pa2) 
+memdump_p(physaddr_t pa1, physaddr_t pa2) 
 {
-	//panic("dump_contents_p is not implemented");	
-	dump_contents_v(KADDR(pa1), KADDR(pa2));
+	//panic("memdump_p is not implemented");	
+	memdump_v(KADDR(pa1), KADDR(pa2));
 }
 
 int 
-mon_dumpcontents(int argc, char **argv, struct Trapframe *tf) 
+mon_memdump(int argc, char **argv, struct Trapframe *tf) 
 {
-	const char *usage = "Usage: dumpcontents v vaddr1 vaddr2\n"
-	                    "       dumpcontents p paddr1 paddr2\n";
+	const char *usage = "Usage: memdump v vaddr1 vaddr2\n"
+	                    "       memdump p paddr1 paddr2\n";
 	void *addr1, *addr2;
 	if (argc != 4)
 		return usage_exit(usage);
@@ -237,9 +237,9 @@ mon_dumpcontents(int argc, char **argv, struct Trapframe *tf)
 		return usage_exit(usage);	
 
 	if (argv[1][0] == 'v' && argv[1][1] == '\0') 
-		dump_contents_v(addr1, addr2);
+		memdump_v(addr1, addr2);
 	else if (argv[1][0] == 'p' && argv[1][1] == '\0')
-		dump_contents_p((physaddr_t)addr1, (physaddr_t)addr2); 
+		memdump_p((physaddr_t)addr1, (physaddr_t)addr2); 
 	else 
 		return usage_exit(usage);
 

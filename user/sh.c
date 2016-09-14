@@ -1,3 +1,4 @@
+#include <inc/x86.h>
 #include <inc/lib.h>
 
 #define BUFSIZ 1024		/* Find the buffer overrun bug! */
@@ -315,7 +316,14 @@ umain(int argc, char **argv)
 			printf("# %s\n", buf);
 		if (debug)
 			cprintf("BEFORE FORK\n");
-		if ((r = fork()) < 0)
+		
+        
+        if (strcmp(buf, "exit") == 0) {
+            breakpoint(); // enter kernel monitor
+            continue;
+        }
+        
+        if ((r = fork()) < 0)
 			panic("fork: %e", r);
 		if (debug)
 			cprintf("FORK: %d\n", r);
