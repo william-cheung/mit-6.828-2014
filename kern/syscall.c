@@ -430,7 +430,8 @@ sys_time_msec(void)
 // Transmit packets from user space
 // Return 0 on success
 // Return < 0 on error. Errors are:
-//   -E_INVAL if the address passed from user space is invalid.
+//   -E_INVAL if the address space passed from user space is invalid.
+//   -E_PKT_TOO_LONG if len > tx packet buffer size.
 //   -E_TX_FULL if no free tx descriptor available.
 static int
 sys_nic_try_send(const void *data, size_t len) 
@@ -439,6 +440,21 @@ sys_nic_try_send(const void *data, size_t len)
         return -E_INVAL;
     
     return e1000_transmit(data, len);		
+}
+
+// Receive a packet form NIC
+// If success, return the packet size
+// Return < 0 on error. Errors are:
+//   -E_INVAL if the address space passed from user space is invalid.
+//   -E_PKT_TOO_LONG if size < packet size.
+//   -E_RX_EMPTY if no packets available in the rx queue.
+static int
+sys_nic_recv(void *buff, size_t size) 
+{
+    if (buff >= (void *)UTOP || (char *)buff + size > (char *)UTOP)
+        return -E_INVAL;
+    cprintf("buff %08x, size %d\n", buff, size); 
+    return e1000_receive(buff, size);
 }
 
 // Dispatches to the correct kernel function, passing the arguments.
@@ -483,6 +499,8 @@ syscall(uint32_t syscallno, uint32_t a1, uint32_t a2, uint32_t a3, uint32_t a4, 
         return sys_time_msec();
 	case SYS_nic_try_send:
 		return sys_nic_try_send((void *)a1, a2);
+    case SYS_nic_recv:
+        return sys_nic_recv((void *)a1, a2);
 	default:
 		return -E_INVAL;
 	}

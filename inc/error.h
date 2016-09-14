@@ -29,7 +29,7 @@ enum {
 	// Network driver error codes
 	E_PKT_TOO_LONG	,	// Packet too long 
 	E_TX_FULL	,	// TX queue is full
-	E_RX_FULL	, 	// RX queue is full	
+	E_RX_EMPTY	, 	// RX queue is empty	
 
 	MAXERROR
 };

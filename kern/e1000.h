@@ -98,5 +98,6 @@ volatile uint32_t *e1000_memreg_vaddr;   /* weak symbol, initialized in pci.c */
 int e1000_tx_init(void);
 int e1000_rx_init(void);
 int e1000_transmit(const void *data, size_t len);
+int e1000_receive(void *buff, size_t size);
 
 #endif	// JOS_KERN_E1000_H

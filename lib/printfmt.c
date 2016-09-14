@@ -38,7 +38,7 @@ static const char * const error_string[MAXERROR] =
 
 	[E_PKT_TOO_LONG] = "packet is too long",
 	[E_TX_FULL]      = "tx queue is full",
-	[E_RX_FULL]      = "rx queue is full",		 
+	[E_RX_EMPTY]     = "rx queue is empty",		 
 };
 
 /*

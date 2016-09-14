@@ -128,3 +128,9 @@ sys_nic_try_send(const void *data, size_t len)
 {
 	return syscall(SYS_nic_try_send, 0, (uint32_t)data, len, 0, 0, 0);
 }
+
+int 
+sys_nic_recv(void *buff, size_t size) 
+{
+    return syscall(SYS_nic_recv, 0, (uint32_t)buff, size, 0, 0, 0);
+}

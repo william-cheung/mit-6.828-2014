@@ -68,13 +68,11 @@ e1000_rx_init(void)
     E1000_REG(E1000_RDBAH) = 0;
     E1000_REG(E1000_RDLEN) = sizeof(rx_queue);
     E1000_REG(E1000_RDH)   = 0;
-    E1000_REG(E1000_RDT)   = 0;
-
-    E1000_REG(E1000_RCTL)  = 0;   
+    E1000_REG(E1000_RDT)   = NRXDESC;
+ 
     E1000_REG(E1000_RCTL) |= E1000_RCTL_EN;
-    E1000_REG(E1000_RCTL) |= E1000_RCTL_LBM_NO;
     E1000_REG(E1000_RCTL) |= E1000_RCTL_SECRC;
-    E1000_REG(E1000_RCTL) |= E1000_RCTL_SZ_2048;
+    //E1000_REG(E1000_RCTL) |= E1000_RCTL_SZ_2048;
     
     return 0;
 }
@@ -98,4 +96,31 @@ e1000_transmit(const void *data, size_t len)
     E1000_REG(E1000_TDT) = (tail + 1) % NTXDESC;
    
     return 0;
+}
+
+int 
+e1000_receive(void *buff, size_t size)
+{
+    uint32_t tail = E1000_REG(E1000_RDT) % NRXDESC;
+    int len;
+
+    if (!(rx_queue[tail].sta & E1000_RXD_STA_DD))
+        return -E_RX_EMPTY;
+
+    if (size < rx_queue[tail].length)
+        return -E_PKT_TOO_LONG;
+    
+    cprintf("e1000 receive: ");
+    len = rx_queue[tail].length;
+    cprintf("len %d\n", len);
+    cprintf("copy data from %08x to %08x\n", rx_buffs[tail], buff);
+    //memcpy(buff, rx_buffs[tail], len);
+    memcpy(buff, "Hello World!", 12);
+    cprintf("end copy\n");
+    rx_queue[tail].sta &= ~(E1000_RXD_STA_DD | E1000_RXD_STA_EOP);
+    cprintf("end receive\n");
+
+    E1000_REG(E1000_RDT) = (tail + 1) % NRXDESC;
+
+    return 0; //len;
 }
