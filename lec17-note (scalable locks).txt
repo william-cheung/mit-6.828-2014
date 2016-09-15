@@ -1,0 +1,230 @@
+See https://pdos.csail.mit.edu/6.828/2014/lec/l-scalable-lock.md
+
+1. why locks?
+  locks avoid lost updates in read-modify-write cycles
+     and prevent anyone from seeing partially updated data structures
+
+2. why scalable locks?
+  the locks themselves are ruining performance
+    rather than letting us harness multi-core to improve performance
+  non-scalable locks can cause dramatic collapse in the performance 
+    of real workloads
+    
+3. what is performance of locks?
+  assume N cores are waiting for the lock
+  how long does it take to hand off the lock?
+    from previous holder to next holder
+  bottleneck is usually the interconnect
+    so we'll measure cost in terms of # of msgs (for cache consistency)
+
+4. what performance could we hope for?
+  if N cores waiting, get through them all will take O(N) time
+  so each critical section and handoff takes O(1) time
+    i.e. does not increase with N
+
+5. test&set spinlock 
+  waiting cores repeatedly execute e.g. atomic exchange (which will lock bus)
+  
+  Q: is that a problem?
+  yes!
+    we don't care if waiting cores waste their own time
+    we do care if waiting cores slow lock holder!
+  time for critical section and release:
+    holder must wait in line for access to bus
+    so holder's mem ops take O(N) time
+    so handoff time takes O(N)
+
+  On x86 processors, some atomic instructions automatically lock the 
+  bus (e.g. 'XCHG') while others require you to specify a 'LOCK' prefix
+  to the instruction to achieve this (e.g. 'CMPXCHG', which you should 
+  write as 'LOCK CMPXCHG op1, op2').
+
+
+6. ticket lock (linux, non-scalable)
+  goal: read-only spin loop, rather than repeated atomic instruction
+  goal: fairness (turns out t-s locks aren't fair)
+    fair:= the processor which has been waiting the longest gets the 
+           lock first
+  idea: assign numbers, wake up one at a time
+    avoid constant t-s atomic instructions by waiters
+  
+  Q: why is it fair?  FIFO
+
+  time analysis:
+    what happens in acquire?
+      atomic increment -- O(1) broadcast msg (invalidate cached data 
+      in other cores)
+        just once, not repeated
+      then read-only spin, no cost until next release
+    what happens after release?
+      invalidate msg for now_serving
+      N find msgs for N cores' reading now_serving
+    so handoff has cost O(N)
+    note: it was *reading* that was costly!
+  oops, just as bad O() cost as test-and-set
+  
+  See https://lwn.net/Articles/267968/
+
+  // -----------------------------------------------------------
+
+  void
+  ticket_acquire(struct lock *lock)
+  {
+      int me = atomic_get_and_inc(&lock->next_ticket);
+      while(lock->now_serving != me)
+          ;
+  }
+
+  void
+  ticket_release(struct lock *lock)
+  {
+      lock->now_serving += 1;   
+  }
+
+  // -----------------------------------------------------------
+
+  lock:
+       +----------+----------+
+       | tail     |    head  |
+       +----------+----------+
+
+  acquire: 
+      my_no <- atomic get and inc lock.tail
+      waiting while lock.head != my_no
+  
+  release:
+      inc lock.head
+
+  atomic_get_and_inc:
+      mov  acc 0x1
+      xadd mem acc
+
+
+7. test-and-set and ticket locks are "non-scalable" locks
+     == cost of single handoff increases with N
+  
+   is the cost of non-scalable locks a serious problem?
+     after all, programs do lots of other things than locking
+     maybe locking cost is tiny compared to other stuff
+
+
+8. Anderson lock (scalable lock) 
+  goal: O(1) release time, and fair
+  what if each core spins on a *different* cache line?
+  acquire cost?
+    atomic increment, then read-only spin
+  release cost?
+    invalidate next holder's slots[]
+    only they have to re-load
+    no other cores involved
+  so O(1) per release -- victory!
+  problem: high space cost
+    N slots per lock
+    often much more than size of protected object
+
+
+  void
+  anderson_acquire(struct lock *lock)
+  {
+      int myPlace = ReadAndIncrement(&lock->queueLast);
+      while(lock->has_lock[myPlace % numprocs].x == 0)
+          ;
+      lock->has_lock[myPlace % numprocs].x = 0;
+      lock->holderPlace = myPlace;
+  }
+
+  void
+  anderson_release(struct lock *lock)
+  {
+      int nxt = (lock->holderPlace + 1) % numprocs;
+      lock->has_lock[nxt].x = 1;
+  }
+
+
+9. MCS locks (scalable lock, in linux mutex)
+
+   See https://lwn.net/Articles/590243/
+   
+
+// atomic exchange:  
+//    *ptr, val = val, *ptr
+//    return val
+static inline long xchg(long *ptr, long val)
+{
+        __asm__ volatile(
+                "lock; xchgq %0, %1\n\t"
+                : "+m" (*ptr), "+r" (val)
+                :
+                : "memory", "cc");
+        return val;
+}
+
+// cmpxchg:
+//     if (*ptr == old) {
+//         *ptr = new;
+//         return old;
+//     } else 
+//         return *ptr   
+static inline long cmpxchg(long *ptr, long old, long val)
+{
+    uint64_t out;
+    __asm__ volatile(
+                "lock; cmpxchgq %2, %1"
+                : "=a" (out), "+m" (*ptr)
+                : "q" (val), "0"(old)
+                : "memory");
+
+    return out;
+}
+
+struct qnode {
+    volatile void *next;
+    volatile char locked; // 1 if lock acquired
+    char __pad[0] __attribute__((aligned(CACHELINE)));
+};
+
+
+typedef struct {
+    // tail of queue of threads holding or waiting the lock
+    struct qnode *tail  __attribute__((aligned(64)));
+    int lock_idx  __attribute__((aligned(64)));
+} mcslock_t;
+
+
+// initialize main lock
+static inline void
+mcs_init(mcslock_t *l)
+{
+    l->tail = NULL;
+}
+
+static inline void
+mcs_lock(mcslock_t *l, volatile struct qnode *mynode)
+{
+    struct qnode *predecessor; 
+
+    mynode->next = NULL;
+    predecessor = (struct qnode *)xchg((long *)&l->tail, (long)mynode);
+
+    if (predecessor) {
+        mynode->locked = 1; // mark the lock as taken
+        asm volatile("":::"memory")  // barrier
+        predecessor->next = mynode; 
+        while (mynode->locked) // busy waiting
+            nop_pause();
+    }
+}
+
+static inline void
+mcs_unlock(mcslock_t *l, volatile struct qnode *mynode)
+{
+    if (!mynode->next) { // if no cores waiting
+        // atomic lock-free pop: 
+        //     if we are the only node in the queue, reset l->tail and return
+        if (cmpxchg((long *)&l->tail, (long)mynode, 0) == (long)mynode)
+            return;
+        while (!mynode->next)
+            nop_pause();
+    }
+    ((struct qnode *)mynode->next)->locked = 0; // headoff lock to the successor
+}
