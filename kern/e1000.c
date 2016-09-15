@@ -117,14 +117,7 @@ e1000_receive(void *buff, size_t size)
     len = rx_queue[next].length;
     if (size < len)
         return -E_PKT_TOO_LONG;
-<<<<<<< HEAD
-   
-=======
-    
-    //cprintf("e1000: copy data from %08x to %08x, len %d\n", 
-    //    rx_buffs[next], buff, len);
-    
->>>>>>> 88155cc0e41c21014f54dee2789505f0903ae3b4
+
     memcpy(buff, rx_buffs[next], len);
     rx_queue[next].sta &= ~E1000_RXD_STA_DD;
 
